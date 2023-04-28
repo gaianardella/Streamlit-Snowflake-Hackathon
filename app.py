@@ -1,16 +1,6 @@
 import streamlit as st
 # from streamlit_option_menu import option_menu
-import pandas as pd
-from io import StringIO
-from PIL import Image
-import snowflake.connector
-import uuid
-import base64
-import io
-import os
-from PIL import Image
-import pandas as pd
-from snowflake.snowpark.session import Session
+# from snowflake.snowpark.session import Session
 # from urllib.error import URLError
 
 # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
