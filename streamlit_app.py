@@ -8,6 +8,11 @@ uploaded_file = st.file_uploader("Choose an image file", accept_multiple_files=F
 if uploaded_file is not None:
   # Convert image base64 string into hex 
   bytes_data_in_hex = uploaded_file.getvalue().hex()
+  cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+  id=1
+  item_selected="sweater"
+  with cnx.cursor() as my_cur:
+    my_cur.execute("insert into clothes_table values ('" +id+ "', '" +bytes_data_in_hex+ "', '" +item_selected+ "')")
 
   # Generate new image file name
 #   file_name = 'img_' + str(uuid.uuid4())
