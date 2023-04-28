@@ -1,2 +1,2 @@
 #requirements
-snowflake-snowpark-python==0.7.0
+snowflake-snowpark-python==1.0.0
