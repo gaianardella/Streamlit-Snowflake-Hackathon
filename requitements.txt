@@ -1,3 +1,2 @@
-requitements.txt
-snowflake-connector-python
+#requitements.txt
 snowflake-snowpark-python==0.7.0
