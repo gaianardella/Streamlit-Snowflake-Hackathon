@@ -3,7 +3,7 @@ from snowflake.snowpark.functions import avg, sum, col,lit
 import streamlit as st
 import pandas as pd
 import uuid
-from snowflake.connector.pandas_tools import write_pandas
+# from snowflake.connector.pandas_tools import write_pandas
 # import snowflake.connector
 
 st.write("ciao")
@@ -26,8 +26,8 @@ if uploaded_file is not None:
   file_name = 'img_' + str(uuid.uuid4())
 
   # Write image data in Snowflake table
-  df = pd.DataFrame({"id": [file_name], "item": [bytes_data_in_hex]})
-  session.write_pandas(df, "prova_table")
+  df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex]})
+  session.write_pandas(df, "PROVA_TABLE")
 
 
 
