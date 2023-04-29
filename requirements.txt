@@ -1,2 +1,3 @@
 #requirements
 snowflake-snowpark-python==0.8.0
+snowflake-connector-python
