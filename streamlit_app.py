@@ -1,8 +1,8 @@
+from snowflake.snowpark.session import Session
+from snowflake.snowpark.functions import avg, sum, col,lit
 import streamlit as st
 import pandas as pd
-import snowflake.connector
-import pandas as pd
-from snowflake.snowpark.session import Session
+# import snowflake.connector
 
 uploaded_file = st.file_uploader("Choose an image file", accept_multiple_files=False, label_visibility='hidden')
 if uploaded_file is not None:
