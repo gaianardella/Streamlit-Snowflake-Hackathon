@@ -186,22 +186,15 @@ if 'login' in st.session_state:
                 st.write('ok')
                 df =session.sql("SELECT * FROM clothes_table WHERE type = 'Sweater'")
                 row=df.sample(n = 1)
-                st.write(row.collect())
                 
-#                 df = session.sql("""
-#                     SELECT *
-#                     FROM clothes_table
-#                     WHERE type = 'Sweater'
-#                     ORDER BY RANDOM()
-#                     LIMIT 1;
-#                 """).toPandas()
-                
-                st.stop()
                 # Extract the binary data from the 'item' column
-                bytes_data = bytes.fromhex(df['item'][0])
-
-            top = Image.open('sweater.jpeg')
-            st.image(top, width=340)
+                bytes_data = bytes.fromhex(row['item'][0])
+                st.write(bytes_data)
+                st.stop()
+                top = Image.open('sweater.jpeg')
+                st.image(top, width=340)
+                
+                
             
 
         with col2:
