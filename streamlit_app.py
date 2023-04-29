@@ -185,7 +185,7 @@ if 'login' in st.session_state:
                 # Execute the SQL query to select a random record with type = 'Sweater'
                 df =session.sql("SELECT * FROM clothes_table WHERE type = 'Sweater'")
                 row=df.sample(n = 1)
-                row = row.to_pandas()
+#                 row = row.to_pandas()
                 st.write(row)
                 st.stop()
                 
