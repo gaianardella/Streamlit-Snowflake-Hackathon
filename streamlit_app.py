@@ -183,13 +183,16 @@ if 'login' in st.session_state:
             st.header("Top")
             if temperature == 'Hot':
                 # Execute the SQL query to select a random record with type = 'Sweater'
-                st.write('ok')
                 df =session.sql("SELECT * FROM clothes_table WHERE type = 'Sweater'")
                 row=df.sample(n = 1)
                 
                 # Extract the binary data from the 'item' column
 #                 bytes_data = bytes.fromhex(row['item'][0])
-                st.write(row['item'][0])
+#                 st.write(row['item'][0])
+
+                # Extract the 'item' value from the randomly selected row
+                item_value = row['item'].iloc[0]
+                st.write(item_value)
                 st.stop()
                 top = Image.open('sweater.jpeg')
                 st.image(top, width=340)
