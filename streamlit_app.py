@@ -183,6 +183,8 @@ if 'login' in st.session_state:
             st.header("Top")
             if temperature == 'Hot':
                 # Execute the SQL query to select a random record with type = 'Sweater'
+                st.write('ok')
+                st.stop()
                 df = session.sql("""
                     SELECT *
                     FROM clothes_table
