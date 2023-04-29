@@ -174,11 +174,14 @@ if 'login' in st.session_state:
                 with cnx.cursor() as my_cur:
                     my_cur.execute("SELECT item FROM clothes_table WHERE type = 'Sweater'")
                     byte_array=my_cur.fetchall()
-                    random_byte_array = random.choice(byte_array)
-                    st.write(random_byte_array)
-#                     for el in byte_array:
+#                     random_byte_array = random.choice(byte_array)
+#                     st.write(random_byte_array)
+                    li=[]
+                    for el in byte_array:
 #                         if el[0] == id:
-#                             byte_array=el[1]
+                            byte_array=el[1]
+                            li.append(byte_array)
+                    st.write(str(li))
 #                             item=el[2]
 #                             colors=el[3]
 #                             #se più di un colore
