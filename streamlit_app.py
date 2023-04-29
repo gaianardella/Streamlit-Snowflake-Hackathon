@@ -25,8 +25,8 @@ if uploaded_file is not None:
   file_name = 'img_' + str(uuid.uuid4())
 
   # Write image data in Snowflake table
-  df = pd.DataFrame({"FILE_NAME": [file_name], "IMAGE_BYTES": [bytes_data_in_hex]})
-  session.write_pandas(df, "IMAGES")
+  df = pd.DataFrame({"id": [file_name], "item": [bytes_data_in_hex]})
+  session.write_pandas(df, "clothes_table")
 
 
 
