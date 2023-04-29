@@ -185,6 +185,8 @@ if 'login' in st.session_state:
                 # Execute the SQL query to select a random record with type = 'Sweater'
                 df =session.sql("SELECT * FROM clothes_table WHERE type = 'Sweater'")
                 row=df.sample(n = 1)
+                st.write(type(row))
+                st.stop()
                 
                 # Extract the binary data from the 'item' column
 #                 bytes_data = bytes.fromhex(row['item'][0])
