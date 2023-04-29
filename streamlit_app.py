@@ -185,9 +185,9 @@ if 'login' in st.session_state:
                 # Execute the SQL query to select a random record with type = 'Sweater'
                 df =session.sql("SELECT item FROM clothes_table WHERE type = 'Sweater'")
                 row=df.sample(n = 1).collect()[0].ITEM
-                # Extract the 'item' value from the randomly selected row
-#                 item_value = row['item'].iloc[0]
-                st.write(type(row))
+                image_bytes = bytes.fromhex(row)
+                st.write(image_bytes)
+
                 st.stop()
                 
                 # Extract the binary data from the 'item' column
