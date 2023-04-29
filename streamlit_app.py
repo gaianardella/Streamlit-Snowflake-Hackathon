@@ -178,10 +178,11 @@ if 'login' in st.session_state:
 #                     st.write(random_byte_array)
                     li=[]
                     for el in byte_array:
+                        st.write(el)
 #                         if el[0] == id:
-                            byte_array=el[1]
-                            li.append(byte_array)
-                    st.write(str(li))
+#                             byte_array=el[1]
+#                             li.append(byte_array)
+#                     st.write(str(li))
 #                             item=el[2]
 #                             colors=el[3]
 #                             #se più di un colore
