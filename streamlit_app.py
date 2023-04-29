@@ -12,7 +12,8 @@ session = Session.builder.configs(st.secrets["snowflake"]).create()
 # Create Snowpark DataFrames that loads data
 snow_df_co2 = session.table("clothes_table")
 
-
+# Convert Snowpark DataFrames to Pandas DataFrames for Streamlit
+pd_df_co2 = snow_df_co2.to_pandas()
 
 
 
