@@ -9,18 +9,16 @@ st.write("ciao")
 # cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 
 session = Session.builder.configs(st.secrets["snowflake"]).create()
-#cnx.close()
+# Create Snowpark DataFrames that loads data
+ snow_df_co2 = session.table("clothes_table")
 
-# Create Session object
-# def create_session_object():
-#    connection_parameters = {
-#       "account": "<account_identifier>",
-#       "user": "<username>",
-#       "password": "<password>",
-#       "role": "<role_name>",
-#       "warehouse": "<warehouse_name>",
-#       "database": "ENVIRONMENT_DATA_ATLAS",
-#       "schema": "ENVIRONMENT"
-#    }
-#    session = Session.builder.configs(connection_parameters).create()
-#    return session
+
+
+
+
+
+
+
+
+
+#cnx.close()
