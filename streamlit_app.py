@@ -187,7 +187,7 @@ if 'login' in st.session_state:
                     SELECT *
                     FROM clothes_table
                     WHERE type = 'Sweater'
-                    ORDER BY RAND()
+                    ORDER BY RANDOM()
                     LIMIT 1;
                 """).toPandas()
                 
