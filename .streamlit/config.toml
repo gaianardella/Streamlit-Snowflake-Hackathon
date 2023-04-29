@@ -1,0 +1,8 @@
+[theme] # You have to add this line
+
+primaryColor = '#000000' # Black
+
+backgroundColor = '#00325B' # Dark Blue
+
+secondaryBackgroundColor = '#55B2FF' # Lighter Blue
+textColor = '#FFFFFF' # White
