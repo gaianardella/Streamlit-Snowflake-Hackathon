@@ -125,7 +125,7 @@ if 'login' in st.session_state:
                     st.success("Photo Uploaded")
                     
                     # Write image data in Snowflake table
-                    df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex]})
+                    df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex], "TYPE": [item_selected[0]], "COLORS": [TO_ARRAY(colors_selected)]})
                     session.write_pandas(df, "PROVA_TABLE")
 
                     # Establish a connection to your Snowflake database
