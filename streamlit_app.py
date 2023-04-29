@@ -3,6 +3,7 @@ from snowflake.snowpark.functions import avg, sum, col,lit
 import streamlit as st
 import pandas as pd
 import uuid
+from snowflake.connector.pandas_tools import write_pandas
 # import snowflake.connector
 
 st.write("ciao")
