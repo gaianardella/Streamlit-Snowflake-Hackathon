@@ -5,6 +5,10 @@ import pandas as pd
 # import snowflake.connector
 
 st.write("ciao")
+# Establish a connection to your Snowflake database
+cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+
+#cnx.close()
 
 # Create Session object
 # def create_session_object():
