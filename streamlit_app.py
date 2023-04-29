@@ -10,7 +10,7 @@ st.write("ciao")
 
 session = Session.builder.configs(st.secrets["snowflake"]).create()
 # Create Snowpark DataFrames that loads data
- snow_df_co2 = session.table("clothes_table")
+snow_df_co2 = session.table("clothes_table")
 
 
 
