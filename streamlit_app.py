@@ -7,7 +7,7 @@ import uuid
 
 # from io import StringIO
 # from PIL import Image
-# import snowflake.connector
+import snowflake.connector
 # import base64
 # import io
 # import os
@@ -184,9 +184,25 @@ if 'login' in st.session_state:
             if temperature == 'Hot':
                 # Execute the SQL query to select a random record with type = 'Sweater'
 #                 df =session.sql("SELECT item FROM clothes_table WHERE type = 'Sweater'")
-                df = session.table("clothes_table").filter(col("TYPE")=="Sweater").select(col("ITEM"))
+#                 df = session.table("clothes_table").filter(col("TYPE")=="Sweater").select(col("ITEM"))
 #                 row=df.sample(n = 1).collect()[0].ITEM
-                session.execute("SELECT * FROM clothes_table")
+
+                # Establish a connection to your Snowflake database
+                cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+                with cnx.cursor() as my_cur:
+                    my_cur.execute("SELECT * FROM clothes_table")
+                    byte_array=my_cur.fetchall()
+#                     for el in byte_array:
+#                         if el[0] == id:
+#                             byte_array=el[1]
+#                             item=el[2]
+#                             colors=el[3]
+#                             #se più di un colore
+#                             #if "," or "and" in colors
+#                             st.write(colors.split(","))
+#                             image = Image.open(io.BytesIO(byte_array))
+#                             st.image(image)
+
 
                 st.stop()
                 
