@@ -4,7 +4,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import uuid
-
 # from io import StringIO
 # from PIL import Image
 import snowflake.connector
@@ -12,6 +11,7 @@ import snowflake.connector
 # import io
 # import os
 from PIL import Image
+import random
 # import json
 
 
@@ -128,24 +128,6 @@ if 'login' in st.session_state:
                     # Write image data in Snowflake table
                     df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex], "TYPE": [item_selected[0]], "COLORS": [np.array(colors_selected)]})
                     session.write_pandas(df, "CLOTHES_TABLE")
-
-                    # Establish a connection to your Snowflake database
-#                     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-#                     with cnx.cursor() as my_cur:
-#                         my_cur.execute("insert into clothes_table values ('" +id+ "', '" +bytes_data_in_hex+ "', '" +str(item_selected[0])+ "', '" +colors_string+"')")
-                        
-#                         my_cur.execute("SELECT * FROM clothes_table")
-#                         byte_array=my_cur.fetchall()
-#                         for el in byte_array:
-#                             if el[0] == id:
-#                                 byte_array=el[1]
-#                                 item=el[2]
-#                                 colors=el[3]
-#                                 #se più di un colore
-#                                 #if "," or "and" in colors
-#                                 st.write(colors.split(","))
-#                                 image = Image.open(io.BytesIO(byte_array))
-#                                 st.image(image)
                     
                     # Prepare a SQL query to insert the photo data and colors into the appropriate table
                     # Use a dynamic SQL query to generate the appropriate number of columns based on the length of the colors_selected list
@@ -190,9 +172,10 @@ if 'login' in st.session_state:
                 # Establish a connection to your Snowflake database
                 cnx = snowflake.connector.connect(**st.secrets["snowflake"])
                 with cnx.cursor() as my_cur:
-                    my_cur.execute("SELECT * FROM clothes_table")
+                    my_cur.execute("SELECT item FROM clothes_table WHERE type = 'Sweater'")
                     byte_array=my_cur.fetchall()
-                    st.write(byte_array)
+                    random_byte_array = random.choice(byte_array)
+                    st.write(random_byte_array)
 #                     for el in byte_array:
 #                         if el[0] == id:
 #                             byte_array=el[1]
