@@ -127,7 +127,7 @@ if 'login' in st.session_state:
                     
                     # Write image data in Snowflake table
                     df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex], "TYPE": [item_selected[0]], "COLORS": [np.array(colors_selected)]})
-                    session.write_pandas(df, "PROVA_TABLE")
+                    session.write_pandas(df, "CLOTHES_TABLE")
 
                     # Establish a connection to your Snowflake database
 #                     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
