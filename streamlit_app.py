@@ -191,7 +191,7 @@ if 'login' in st.session_state:
 #                 st.write(row['item'][0])
 
                 # Extract the 'item' value from the randomly selected row
-                item_value = row['item'].iloc[0]
+                item_value = row['item']
                 st.write(item_value)
                 st.stop()
                 top = Image.open('sweater.jpeg')
