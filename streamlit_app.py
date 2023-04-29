@@ -186,7 +186,7 @@ if 'login' in st.session_state:
                 df =session.sql("SELECT item FROM clothes_table WHERE type = 'Sweater'")
                 df = df.to_pandas()
 #                 row=df.sample(n = 1).collect()[0].ITEM
-                st.write(df)
+#                 st.write(df)
 
                 st.stop()
                 
