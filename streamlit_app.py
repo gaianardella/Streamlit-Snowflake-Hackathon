@@ -187,7 +187,7 @@ if 'login' in st.session_state:
                 row=df.sample(n = 1).collect()[0].ITEM
                 # Extract the 'item' value from the randomly selected row
 #                 item_value = row['item'].iloc[0]
-                st.write(row)
+                st.write(type(row))
                 st.stop()
                 
                 # Extract the binary data from the 'item' column
