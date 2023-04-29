@@ -8,8 +8,7 @@ st.write("ciao")
 # Establish a connection to your Snowflake database
 # cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 
-# session = Session.builder.configs(connection_parameters).create()
-st.write(st.secrets["snowflake"])
+session = Session.builder.configs(st.secrets["snowflake"]).create()
 #cnx.close()
 
 # Create Session object
