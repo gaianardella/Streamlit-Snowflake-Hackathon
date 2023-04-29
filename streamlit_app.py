@@ -2,7 +2,7 @@ from snowflake.snowpark.session import Session
 from snowflake.snowpark.functions import avg, sum, col,lit
 import streamlit as st
 import pandas as pd
-from array import array
+from numpy as np
 import uuid
 
 # from io import StringIO
@@ -126,7 +126,7 @@ if 'login' in st.session_state:
                     st.success("Photo Uploaded")
                     
                     # Write image data in Snowflake table
-                    df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex], "TYPE": [item_selected[0]], "COLORS": [array(colors_selected)]})
+                    df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex], "TYPE": [item_selected[0]], "COLORS": [np.array(colors_selected)]})
                     session.write_pandas(df, "PROVA_TABLE")
 
                     # Establish a connection to your Snowflake database
