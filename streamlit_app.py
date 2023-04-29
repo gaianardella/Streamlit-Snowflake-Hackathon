@@ -188,8 +188,8 @@ if 'login' in st.session_state:
                 row=df.sample(n = 1)
                 
                 # Extract the binary data from the 'item' column
-                bytes_data = bytes.fromhex(row['item'][0])
-                st.write(bytes_data)
+#                 bytes_data = bytes.fromhex(row['item'][0])
+                st.write(row['item'][0])
                 st.stop()
                 top = Image.open('sweater.jpeg')
                 st.image(top, width=340)
