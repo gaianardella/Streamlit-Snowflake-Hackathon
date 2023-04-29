@@ -146,7 +146,7 @@ if 'login' in st.session_state:
 #                                 image = Image.open(io.BytesIO(byte_array))
 #                                 st.image(image)
 #                         
-                        st.stop()
+                    st.stop()
                 
                     query = "INSERT INTO clothes_table (id, item, type) VALUES ('{id}', '{bytes_data}', '{item_selected}')"
                     
