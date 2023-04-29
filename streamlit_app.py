@@ -11,7 +11,7 @@ import uuid
 # import base64
 # import io
 # import os
-# from PIL import Image
+from PIL import Image
 # import json
 
 
@@ -146,26 +146,22 @@ if 'login' in st.session_state:
 #                                 st.write(colors.split(","))
 #                                 image = Image.open(io.BytesIO(byte_array))
 #                                 st.image(image)
-#                         
-                    st.stop()
-                
-                    query = "INSERT INTO clothes_table (id, item, type) VALUES ('{id}', '{bytes_data}', '{item_selected}')"
                     
                     # Prepare a SQL query to insert the photo data and colors into the appropriate table
                     # Use a dynamic SQL query to generate the appropriate number of columns based on the length of the colors_selected list
-                    query = "INSERT INTO clothes_table (id, item, type"
-                    for i in range(len(colors_selected)):
-                        query += f", color{i+1}"
-                    query += ") VALUES ('{id}', '{bytes_data}', '{item_selected}'"
-                    for color in colors_selected:
-                        query += f", '{color}'"
-                    query += ")"
+#                     query = "INSERT INTO clothes_table (id, item, type"
+#                     for i in range(len(colors_selected)):
+#                         query += f", color{i+1}"
+#                     query += ") VALUES ('{id}', '{bytes_data}', '{item_selected}'"
+#                     for color in colors_selected:
+#                         query += f", '{color}'"
+#                     query += ")"
                     
-                    # Execute the SQL query using the established connection and the photo data
-                    cnx.cursor().execute(query)
+#                     # Execute the SQL query using the established connection and the photo data
+#                     cnx.cursor().execute(query)
 
                     # Close the database connection
-                    cnx.close()
+#                     cnx.close()
                 else:
                     st.error("Error")
             
@@ -185,6 +181,20 @@ if 'login' in st.session_state:
 
         with col1:
             st.header("Top")
+            if temperature == 'Hot':
+                # Execute the SQL query to select a random record with type = 'Sweater'
+                df = session.sql("""
+                    SELECT *
+                    FROM clothes_table
+                    WHERE type = 'Sweater'
+                    ORDER BY RAND()
+                    LIMIT 1;
+                """).toPandas()
+                
+                st.stop()
+                # Extract the binary data from the 'item' column
+                bytes_data = bytes.fromhex(df['item'][0])
+
             top = Image.open('sweater.jpeg')
             st.image(top, width=340)
             
