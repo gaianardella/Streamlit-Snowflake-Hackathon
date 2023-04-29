@@ -184,9 +184,10 @@ if 'login' in st.session_state:
             if temperature == 'Hot':
                 # Execute the SQL query to select a random record with type = 'Sweater'
                 df =session.sql("SELECT item FROM clothes_table WHERE type = 'Sweater'")
-                df = df.to_pandas()
+#                 df = df.to_pandas()
 #                 row=df.sample(n = 1).collect()[0].ITEM
-#                 st.write(df)
+                row=df.sample(n = 1).collect()[0]
+                st.write(row)
 
                 st.stop()
                 
