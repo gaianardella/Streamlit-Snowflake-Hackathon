@@ -172,7 +172,7 @@ if 'login' in st.session_state:
                 # Establish a connection to your Snowflake database
                 cnx = snowflake.connector.connect(**st.secrets["snowflake"])
                 with cnx.cursor() as my_cur:
-                    my_cur.execute("SELECT item FROM clothes_table WHERE type = 'Sweater'")
+                    my_cur.execute("SELECT * FROM clothes_table WHERE type = 'Sweater'")
                     byte_array=my_cur.fetchall()
 #                     random_byte_array = random.choice(byte_array)
 #                     st.write(random_byte_array)
