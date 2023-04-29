@@ -184,14 +184,16 @@ if 'login' in st.session_state:
             if temperature == 'Hot':
                 # Execute the SQL query to select a random record with type = 'Sweater'
                 st.write('ok')
-                st.stop()
-                df = session.sql("""
-                    SELECT *
-                    FROM clothes_table
-                    WHERE type = 'Sweater'
-                    ORDER BY RANDOM()
-                    LIMIT 1;
-                """).toPandas()
+                df =session.sql("SELECT * FROM clothes_table WHERE type = 'Sweater' LIMIT 1")
+                st.write(df.collect())
+                
+#                 df = session.sql("""
+#                     SELECT *
+#                     FROM clothes_table
+#                     WHERE type = 'Sweater'
+#                     ORDER BY RANDOM()
+#                     LIMIT 1;
+#                 """).toPandas()
                 
                 st.stop()
                 # Extract the binary data from the 'item' column
