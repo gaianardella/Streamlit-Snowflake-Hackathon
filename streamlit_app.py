@@ -192,6 +192,7 @@ if 'login' in st.session_state:
                 with cnx.cursor() as my_cur:
                     my_cur.execute("SELECT * FROM clothes_table")
                     byte_array=my_cur.fetchall()
+                    st.write(byte_array)
 #                     for el in byte_array:
 #                         if el[0] == id:
 #                             byte_array=el[1]
