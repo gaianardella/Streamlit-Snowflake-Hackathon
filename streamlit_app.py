@@ -256,20 +256,6 @@ if 'login' in st.session_state:
     elif selected == "Settings":
         st.title("Settings")
         st.subheader("This is the Settings page.")
-        
-
-    
-
-uploaded_file = st.file_uploader("Choose an image file", accept_multiple_files=False, label_visibility='hidden')
-if uploaded_file is not None:
-  
-
-
-
-
-
-
-
 
 #cnx.close()
 
