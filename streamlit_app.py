@@ -260,11 +260,13 @@ if 'login' in st.session_state:
 
             if 'button' in st.session_state:
 #                 st.empty() #cancella le variabili, NON il layout, creare nuove colonne mi fa l'empty
-                with st.container():
+                    col6, col7, col8 = st.columns(3)
                     if st.session_state.preference == 1:
-                        st.success("Preference saved!")
+                        with col7:
+                            st.success("Preference saved!")
                     elif st.session_state.preference == -1:
-                        st.error("Preference saved!")
+                        with col7:
+                            st.error("Preference saved!")
 #                 st.session_state.preference
 # #                 if flag=="Like":
 #                     for j in range(16):
