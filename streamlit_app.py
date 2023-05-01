@@ -401,7 +401,7 @@ def login():
     """Logs in the user"""
     CORRECT_USERNAME = "username"
     CORRECT_PASSWORD = "password"
-    
+
     if 'login' not in st.session_state:
         st.title("Login Page")
         st.subheader("Enter your credentials to log in.")
@@ -409,7 +409,7 @@ def login():
         username = login_form.text_input(label='username')
         password = login_form.text_input(label='password', type='password')
         submit_button = login_form.form_submit_button(label='submit')
-        
+
         if submit_button:
             if username == CORRECT_USERNAME and password == CORRECT_PASSWORD:
                 st.session_state.username = username
@@ -420,18 +420,19 @@ def login():
                 st.error('Invalid username or password')
     else:
         st.empty()
-        
+
 def sidebar():
     """Displays the sidebar menu"""
-    option_icons = {
-        "Home": "house",
-        "Upload Clothes": "box-arrow-in-up",
-        "Pick me an outfit": "palette-fill",
-        "Give me some stats": "bar-chart-fill",
-        "Settings": "gear"
-    }
-    selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0)
-    return selected
+    with st.sidebar:
+        option_icons = {
+            "Home": "house",
+            "Upload Clothes": "box-arrow-in-up",
+            "Pick me an outfit": "palette-fill",
+            "Give me some stats": "bar-chart-fill",
+            "Settings": "gear"
+        }
+        selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0)
+        return selected
 
 def home():
     """Displays the Home page"""
