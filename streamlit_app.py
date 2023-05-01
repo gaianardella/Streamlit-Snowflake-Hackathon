@@ -246,8 +246,8 @@ if 'login' in st.session_state:
             
             if 'like' in st.session_state:
                 st.empty()
-                col1 = st.columns(1)
-                st.write("Preference saved")
+#                 col1 = st.columns(1)
+#                 st.write("Preference saved")
 
 #             var=-1
 #             # if st.button("I don't like it", key="dislike"):
