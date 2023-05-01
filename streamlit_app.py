@@ -235,10 +235,10 @@ if 'login' in st.session_state:
                     for i in range(16):
                         st.write("")
                     like = st.button("Like :thumbsup:", use_container_width=True)
-                    st.session_state['button'] = True
                     if like:
                         # Initialization
                         st.session_state['preference'] = 'like'
+                        st.session_state['button'] = True
                     #salva conto dei vestiti indossati
 
                 with col5:
