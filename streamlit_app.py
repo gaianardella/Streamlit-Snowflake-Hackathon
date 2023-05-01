@@ -179,14 +179,17 @@ if 'login' in st.session_state:
                     random_row = my_cur.fetchone()
                     hex_str = random_row[0].strip('"')                    
                     byte_str = bytes.fromhex(hex_str)
-#                     image = Image.open(io.BytesIO(byte_str))
-                    # Create a file-like object from the raw bytes
-                    image = io.BytesIO(byte_str)
+                    image = Image.open(io.BytesIO(byte_str))
+                    
+                    img2 = np.array(image)
 
-                    # Read the image data using imread
-                    image = mpimg.imread(image, format='jpg')
+                    # Check the shape of the image arrays and rotate them if necessary
+                    if img2.shape[0] < img2.shape[1]:
+                        img2 = np.rot90(img2, k=3)
 
-                    st.image(image)
+
+
+                        st.image(img2)
                     st.stop()
                     
                      
