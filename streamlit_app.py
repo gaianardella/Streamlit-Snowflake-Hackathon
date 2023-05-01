@@ -230,14 +230,8 @@ if 'login' in st.session_state:
         with col3:
             col4, col5 = st.columns(2)
             with col4:
-                st.write("")
-                st.write("")
-                st.write("")
-                st.write("")
-                st.write("")
-                st.write("")
-                st.write("")
-                st.write("")
+                for i in range(50):
+                    st.write("")
                 st.button("Like :thumbsup:", use_container_width=True)
             with col5:
                 st.write("")
@@ -248,7 +242,7 @@ if 'login' in st.session_state:
                 st.write("")
                 st.write("")
                 st.write("")
-                st.button("Dislike :thumbsdown:")
+                st.button("Dislike :thumbsdown:", use_container_width=True)
                 st.stop()
             var=-1
             # if st.button("I don't like it", key="dislike"):
