@@ -155,9 +155,9 @@ if 'login' in st.session_state:
         temperature = st.radio("What\'s the temperature?",('Hot', 'Cold'))
 
         if temperature == 'Hot':
-            st.write('You selected hot.')
+            st.write('You selected Hot.')
         else:
-            st.write('You selected cold.')
+            st.write('You selected Cold.')
 
         col1, col2, col3 = st.columns(3)
         
@@ -183,82 +183,48 @@ if 'login' in st.session_state:
                     img_top = np.rot90(img_top, k=3)
 
                 st.image(img_top)
-                st.stop()
                     
                 #SNOWPARK
                 # Execute the SQL query to select a random record with type = 'Sweater'
 #                 df =session.sql("SELECT item FROM clothes_table WHERE type = 'Sweater'")
 #                 df = session.table("clothes_table").filter(col("TYPE")=="Sweater").select(col("ITEM"))
-#                 row=df.sample(n = 1).collect()[0].ITEM
-                
-#                 with cnx.cursor() as my_cur:
-#                     my_cur.execute("SELECT item FROM clothes_table sample row (1 rows) WHERE type = 'Sweater'")
-#                     random_row = my_cur.fetchone()
-#                     hex_str = random_row[0].strip('"')                    
-#                     byte_str = bytes.fromhex(hex_str)
-#                     image = Image.open(io.BytesIO(byte_str))
-                    
-#                     img_top = np.array(image)
-
-                    # Check the shape of the image arrays and rotate them if necessary
-#                     if img_top.shape[0] < img_top.shape[1]:
-#                         img_top = np.rot90(img_top, k=3)
-                        
-#                     st.image(img_top)
-#                     st.stop()
-                    
-                     
-
-
-
-
-
-
-
-
-                # Establish a connection to your Snowflake database
-#                 cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-#                 with cnx.cursor() as my_cur:
-#                     my_cur.execute("SELECT * FROM clothes_table WHERE type = 'Sweater'")
-#                     byte_array=my_cur.fetchall()
-#                     random_byte_array = random.choice(byte_array)
-#                     st.write(random_byte_array[1])
-#                     li=[]
-#                     st.stop()
-#                     for el in byte_array:
-# #                         if el[0] == id:
-#                             byte_array=el[1]
-#                             li.append(byte_array)
-#                     st.write(str(li))
-#                             item=el[2]
-#                             colors=el[3]
-#                             #se più di un colore
-#                             #if "," or "and" in colors
-#                             st.write(colors.split(","))
-#                             image = Image.open(io.BytesIO(byte_array))
-#                             st.image(image)
-
-
-                st.stop()
-                
+#                 row=df.sample(n = 1).collect()[0].ITEM     
                 # Extract the binary data from the 'item' column
 #                 bytes_data = bytes.fromhex(row['item'][0])
 #                 st.write(row['item'][0])
 
                 # Extract the 'item' value from the randomly selected row
-                item_value = row['item'].collect()
-                st.write(item_value)
-                st.stop()
-                top = Image.open('sweater.jpeg')
-                st.image(top, width=340)
+#                 item_value = row['item'].collect()
+#                 st.write(item_value)
+#                 st.stop()
+#                 top = Image.open('sweater.jpeg')
+#                 st.image(top, width=340)
                 
                 
             
 
         with col2:
             st.header("Bottom")
-            bottom = Image.open('trousers.jpeg')
-            st.image(bottom, width=340)
+            with cnx.cursor() as my_cur:
+                if temperature == 'Hot':
+                    my_cur.execute("SELECT item FROM clothes_table sample row (1 rows) WHERE type = 'Shorts'")
+                elif temperature == 'Cold':
+                     my_cur.execute("SELECT item FROM clothes_table sample row (1 rows) WHERE type = 'Trousers'")
+                
+                random_row = my_cur.fetchone()
+                hex_str = random_row[0].strip('"')                    
+                byte_str = bytes.fromhex(hex_str)
+                image = Image.open(io.BytesIO(byte_str))
+
+                img_bottom = np.array(image)
+
+#                 Check the shape of the image arrays and rotate them if necessary
+                if img_bottom.shape[0] < img_bottom.shape[1]:
+                    img_bottom = np.rot90(img_bottom, k=3)
+
+                st.image(img_bottom)
+                st.stop()
+#                 st.image(bottom, width=340)
 
       
         with col3:
