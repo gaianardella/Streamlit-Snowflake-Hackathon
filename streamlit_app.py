@@ -230,7 +230,7 @@ def generate_outfit(temp, flag_top, flag_bottom):
      if temperature == 'Hot':
         top_type = 'T-Shirt'
         bottom_type = 'Shorts'
-    elif temperature == 'Cold':
+     elif temperature == 'Cold':
         top_type = 'Sweater'
         bottom_type = 'Trousers'
         
