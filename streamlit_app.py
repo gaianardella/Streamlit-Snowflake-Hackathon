@@ -383,7 +383,6 @@ import uuid
 from PIL import Image
 import snowflake.connector
 import io
-import random
 
 st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
 my_color_list = ["Blue", "Red", "White", "Black", "Green", "Yellow", "Purple", "Pink", "Grey"]
@@ -431,8 +430,7 @@ def sidebar():
             "Give me some stats": "bar-chart-fill",
             "Settings": "gear"
         }
-        unique_key = random.randint(0,100000)
-        selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key=unique_key)
+        selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key="sidebar")
         st.write(selected)
         return selected
 
