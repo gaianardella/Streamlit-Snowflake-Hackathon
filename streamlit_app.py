@@ -369,9 +369,9 @@ if __name__ == '__main__':
     if selected == "Home":
         home()
     elif selected == "Upload Clothes":
-        upload_clothes(flag_top=True, flag_bottom=True)
+        upload_clothes()
     elif selected == "Pick me an outfit":
-        generate_outfit()
+        generate_outfit(flag_top=True, flag_bottom=True)
     elif selected == "Give me some stats":
         stats()
     elif selected == "Settings":
