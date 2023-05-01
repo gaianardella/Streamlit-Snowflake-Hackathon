@@ -177,7 +177,9 @@ if 'login' in st.session_state:
                     my_cur.execute("SELECT item FROM clothes_table sample row (1 rows) WHERE type = 'Sweater'")
                     random_row = my_cur.fetchone()
                     hex_str = random_row[0]
-                    st.write(hex_str)
+                    li=[]
+                    li.append(hex_str)
+                    st.write(li)
                     st.stop()
                     byte_str = bytes.fromhex(hex_str)
                     image = Image.open(io.BytesIO(byte_str))
