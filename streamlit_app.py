@@ -185,15 +185,17 @@ def generate_outfit(flag_top, flag_bottom):
         hot = st.button("Hot")
         cold = st.button("Cold")
      
-    if hot:
-       top_type = 'T-Shirt'
-       bottom_type = 'Shorts'
-       start_generate=True
-            
-    if cold:
-       top_type = 'Sweater'
-       bottom_type = 'Trousers'
-       start_generate=True
+        if hot:
+            st.write("You selected Hot")
+           top_type = 'T-Shirt'
+           bottom_type = 'Shorts'
+           start_generate=True
+
+        if cold:
+           st.write("You selected Cold")
+           top_type = 'Sweater'
+           bottom_type = 'Trousers'
+           start_generate=True
     
     if start_generate==True:
         col1, col2, col3 = st.columns(3)
