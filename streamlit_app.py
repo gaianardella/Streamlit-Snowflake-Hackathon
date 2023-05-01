@@ -254,20 +254,20 @@ if 'login' in st.session_state:
                         st.write("")
                     st.success("Preference saved!")
                 st.stop()
-                elif  flag=="Disike":
-                    col6, col7, col8 = st.columns(3)
-                    with col6:
-                        for j in range(16):
-                            st.write("")
-                        top = st.button("Generate Top", use_container_width=True)
-                    with col7:
-                        for j in range(16):
-                            st.write("")
-                        bottom = st.button("Generate Bottom", use_container_width=True)
-                    with col8:
-                        for j in range(16):
-                            st.write("")
-                        outfit = st.button("Generate Outfit", use_container_width=True)
+#                 elif  flag=="Disike":
+#                     col6, col7, col8 = st.columns(3)
+#                     with col6:
+#                         for j in range(16):
+#                             st.write("")
+#                         top = st.button("Generate Top", use_container_width=True)
+#                     with col7:
+#                         for j in range(16):
+#                             st.write("")
+#                         bottom = st.button("Generate Bottom", use_container_width=True)
+#                     with col8:
+#                         for j in range(16):
+#                             st.write("")
+#                         outfit = st.button("Generate Outfit", use_container_width=True)
                         
                         
                     
