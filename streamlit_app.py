@@ -251,6 +251,8 @@ def generate_outfit(flag_top, flag_bottom):
     #                 placeholder_like = st.empty()
 
                 with placeholder_like:
+                    for i in range(60):
+                        st.write("")
                     like = st.button("Like :thumbsup:", use_container_width=True)
                     if like:
                         st.session_state['button'] = True
