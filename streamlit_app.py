@@ -226,31 +226,6 @@ def generate_bottom(cnx, bottom_type):
 #     else:
 #         st.error("Select only one item")
 
-def buttons():
-    for i in range(16):
-            st.write("")
-#     placeholder_like = st.empty()
-#     placeholder_dislike = st.empty()
-    if 'preference' not in st.session_state:
-        st.session_state['preference'] = 0
-
-    if 'button' not in st.session_state:
-        col4, col5 = st.columns(2)
-
-        with col4:
-            placeholder_like = st.empty()
-            with placeholder_like:
-                like = st.button("Like :thumbsup:", use_container_width=True)
-                if like:
-                    st.session_state['button'] = True
-                    st.session_state['preference'] = 1
-
-            placeholder_dislike = st.empty()
-            with placeholder_dislike:
-                dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
-                if dislike:
-                    st.session_state['button'] = True
-                    st.session_state['preference'] = -1
 
 def generate_outfit(temperature, flag_top, flag_bottom):
     if temperature == 'Hot':
@@ -276,74 +251,74 @@ def generate_outfit(temperature, flag_top, flag_bottom):
             generate_bottom(cnx, bottom_type)
     
     with col3:
-        buttons()
-#     with col3:
-#         for i in range(15):
-#             st.write("")
-# #         placeholder_like = st.empty()
-# #         placeholder_dislike = st.empty()
-#         if 'preference' not in st.session_state:
-#             st.session_state['preference'] = 0
+        for i in range(15):
+            st.write("")
+#         placeholder_like = st.empty()
+#         placeholder_dislike = st.empty()
+        if 'preference' not in st.session_state:
+            st.session_state['preference'] = 0
 
-#         if 'button' not in st.session_state:
-#             col4, col5 = st.columns(2)
+        if 'button' not in st.session_state:
+            col4, col5 = st.columns(2)
 
-#             with col4:
-# #                 for i in range(60):
-# #                     st.write("")
+            with col4:
+#                 for i in range(60):
+#                     st.write("")
 
-#                 placeholder_like = st.empty()
-#                 with placeholder_like:
-#                     like = st.button("Like :thumbsup:", use_container_width=True)
-#                     if like:
-#                         st.session_state['button'] = True
-#                         st.session_state['preference'] = 1
+                placeholder_like = st.empty()
+                with placeholder_like:
+                    like = st.button("Like :thumbsup:", use_container_width=True)
+                    if like:
+                        st.session_state['button'] = True
+                        st.session_state['preference'] = 1
 
-#             with col5:
-# #                 for j in range(16):
-# #                     st.write("")
+            with col5:
+#                 for j in range(16):
+#                     st.write("")
 
-#                 placeholder_dislike = st.empty()
-#                 with placeholder_dislike:
-#                     dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
-#                     if dislike:
-#                         st.session_state['button'] = True
-#                         st.session_state['preference'] = -1
+                placeholder_dislike = st.empty()
+                with placeholder_dislike:
+                    dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
+                    if dislike:
+                        st.session_state['button'] = True
+                        st.session_state['preference'] = -1
 
-#         if 'button' in st.session_state:
+        if 'button' in st.session_state:
 #             placeholder_like.empty()
 #             placeholder_dislike.empty()
-# #             st.empty()
+#             st.empty()
 
-#             col6, col7, col8 = st.columns(3)
+            col6, col7, col8 = st.columns(3)
+            placeholder_like.empty()
+            placeholder_dislike.empty()
 
-#             with col6:
-#                 if st.session_state.preference == -1:
-#                     top = st.button("Generate Top", use_container_width=True)
-#                     if top:
-#                         for key in st.session_state.keys():
-#                             del st.session_state[key]
-# #                         generate_outfit(flag_top=True, flag_bottom=False)
-
-#             with col7:
-#                 if st.session_state.preference == 1:
-#                     st.success("Preference saved!")
-#                 if st.session_state.preference == -1:
-#                     bottom = st.button("Generate Bottom", use_container_width=True)
-#                     if bottom:
-#                         for key in st.session_state.keys():
-#                             st.write(st.session_state[key])
-#                             del st.session_state[key]
-#                             st.write(st.session_state[key])
-#                         generate_outfit(flag_top=False, flag_bottom=True)
-
-#             with col8:
-#                if st.session_state.preference == -1:
-#                     outfit = st.button("Generate Outfit", use_container_width=True)
-#                     if outfit:
-#                         for key in st.session_state.keys():
-#                             del st.session_state[key]
+            with col6:
+                if st.session_state.preference == -1:
+                    top = st.button("Generate Top", use_container_width=True)
+                    if top:
+                        for key in st.session_state.keys():
+                            del st.session_state[key]
 #                         generate_outfit(flag_top=True, flag_bottom=False)
+
+            with col7:
+                if st.session_state.preference == 1:
+                    st.success("Preference saved!")
+                if st.session_state.preference == -1:
+                    bottom = st.button("Generate Bottom", use_container_width=True)
+                    if bottom:
+                        for key in st.session_state.keys():
+                            st.write(st.session_state[key])
+                            del st.session_state[key]
+                            st.write(st.session_state[key])
+                        generate_outfit(flag_top=False, flag_bottom=True)
+
+            with col8:
+               if st.session_state.preference == -1:
+                    outfit = st.button("Generate Outfit", use_container_width=True)
+                    if outfit:
+                        for key in st.session_state.keys():
+                            del st.session_state[key]
+                        generate_outfit(flag_top=True, flag_bottom=False)
 
                 
 # def generate_outfit():
