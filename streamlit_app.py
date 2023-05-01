@@ -178,10 +178,9 @@ if 'login' in st.session_state:
                     random_row = my_cur.fetchone()
                     hex_str = random_row[0].strip('"')                    
                     byte_str = bytes.fromhex(hex_str)
-                    st.write(byte_str)
-                    st.stop()
                     image = Image.open(io.BytesIO(byte_str))
                     st.image(image)
+                    st.stop()
 #                     item_hex = random_row[0]
 #                     print(f"Randomly selected item hex: {item_hex}")
 
