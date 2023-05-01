@@ -197,6 +197,8 @@ def generate_outfit(flag_top, flag_bottom):
             generate_bottom(cnx, bottom_type)
 
     with col3:
+        placeholder_like = st.empty()
+        placeholder_dislike = st.empty()
         if 'preference' not in st.session_state:
             st.session_state['preference'] = 0
 
@@ -207,7 +209,7 @@ def generate_outfit(flag_top, flag_bottom):
                 for i in range(16):
                     st.write("")
 
-                placeholder_like = st.empty()
+#                 placeholder_like = st.empty()
 
                 with placeholder_like:
                     like = st.button("Like :thumbsup:", use_container_width=True)
@@ -219,7 +221,7 @@ def generate_outfit(flag_top, flag_bottom):
                 for j in range(16):
                     st.write("")
 
-                placeholder_dislike = st.empty()
+#                 placeholder_dislike = st.empty()
 
                 with placeholder_dislike:
                     dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
