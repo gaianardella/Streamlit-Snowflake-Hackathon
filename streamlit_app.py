@@ -189,7 +189,7 @@ if 'login' in st.session_state:
 
 
 
-                        st.image(img2)
+                    st.image(img2)
                     st.stop()
                     
                      
