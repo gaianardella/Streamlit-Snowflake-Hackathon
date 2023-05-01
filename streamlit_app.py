@@ -245,13 +245,13 @@ def generate_outfit(flag_top, flag_bottom):
             col4, col5 = st.columns(2)
 
             with col4:
-                for i in range(16):
+                for i in range(60):
                     st.write("")
 
 #                 placeholder_like = st.empty()
 
                 with placeholder_like:
-                    like = st.button("Like :thumbsup:", use_container_width=True)
+                    like = st.button("Like :thumbsup:")
                     if like:
                         st.session_state['button'] = True
                         st.session_state['preference'] = 1
