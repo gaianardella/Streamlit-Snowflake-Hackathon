@@ -182,8 +182,8 @@ if 'login' in st.session_state:
                 if img_top.shape[0] < img_top.shape[1]:
                     img_top = np.rot90(img_top, k=3)
 
-#                 st.image(img_top)
-                st.image(img_top, width=340)
+                st.image(img_top)
+#                 st.image(img_top, width=340)
                     
                 #SNOWPARK
                 # Execute the SQL query to select a random record with type = 'Sweater'
@@ -224,8 +224,7 @@ if 'login' in st.session_state:
                     img_bottom = np.rot90(img_bottom, k=3)
 
                 st.image(img_bottom)
-                st.stop()
-#                 st.image(bottom, width=340)
+#                 st.image(img_bottom, width=340)
 
       
         with col3:
