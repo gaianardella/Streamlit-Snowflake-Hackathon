@@ -259,14 +259,14 @@ if 'login' in st.session_state:
 #                         st.button("Generate again")
 
             if 'button' in st.session_state:
-#                 st.empty() #cancella le variabili, NON il layout, creare nuove colonne mi fa l'empty
-                    col6, col7, col8 = st.columns(3)
-                    if st.session_state.preference == 1:
-                        with col7:
-                            st.success("Preference saved!")
-                    elif st.session_state.preference == -1:
-                        with col7:
-                            st.error("Preference saved!")
+                st.empty() #cancella le variabili, NON il layout, creare nuove colonne mi fa l'empty
+                col6, col7, col8 = st.columns(3)
+                if st.session_state.preference == 1:
+                    with col7:
+                        st.success("Preference saved!")
+                elif st.session_state.preference == -1:
+                    with col7:
+                        st.error("Preference saved!")
 #                 st.session_state.preference
 # #                 if flag=="Like":
 #                     for j in range(16):
