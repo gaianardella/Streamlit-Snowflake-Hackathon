@@ -42,7 +42,7 @@ def login():
                 st.error('Invalid username or password')
     if 'login' in st.session_state:
         st.empty()
-        """Displays the sidebar menu"""
+#         """Displays the sidebar menu"""
         with st.sidebar:
             option_icons = {
                 "Home": "house",
@@ -180,29 +180,47 @@ def generate_outfit(flag_top, flag_bottom):
 #     elif temperature == 'Cold':
 #         top_type = 'Sweater'
 #         bottom_type = 'Trousers'
-    start_generate=False
-    question = st.empty()
-    with question:
+#     start_generate=False
+#     question = st.empty()
         
-#     with st.expander("Choose temperature", expanded=False)
-        hot = st.button("Hot")
-        cold = st.button("Cold")
+# #     with st.expander("Choose temperature", expanded=False)
+#         hot = st.button("Hot")
+#         cold = st.button("Cold")
 
-        if hot:
-           st.write("You selected Hot")
+#         if hot:
+#            st.write("You selected Hot")
+#            top_type = 'T-Shirt'
+#            bottom_type = 'Shorts'
+#            start_generate=True
+#            question.empty()
+
+#         if cold:
+#            st.write("You selected Cold")
+#            top_type = 'Sweater'
+#            bottom_type = 'Trousers'
+#            start_generate=True
+#            question.empty()
+    
+    st.subheader("Pick Temperature")
+    my_temperatures=["Hot", "Cold"]
+    show_generate=False
+    temp_selected = st.multiselect("Pick item:", list(my_temperatures))
+    if len(temp_selected) == 1:
+        st.write("You selected: " + temp_selected[0])
+        show_generate=True
+        if temp_selected[0] == "Hot":
            top_type = 'T-Shirt'
            bottom_type = 'Shorts'
-           start_generate=True
-           question.empty()
 
-        if cold:
-           st.write("You selected Cold")
+        if temp_selected[0]=="Cold":
            top_type = 'Sweater'
            bottom_type = 'Trousers'
-           start_generate=True
-           question.empty()
+           
+
+    else:
+        st.error("Select only one item")
     
-    if start_generate==True:
+    if show_generate==True:
         col1, col2, col3 = st.columns(3)
 
         # Establish a connection to your Snowflake database
