@@ -239,7 +239,7 @@ def generate_outfit(flag_top, flag_bottom):
                 if st.session_state.preference == -1:
                     top = st.button("Generate Top", use_container_width=True)
                     if top:
-                        generate_outfit(flag_top=True, flag_bottom=Flase)
+                        generate_outfit(flag_top=True, flag_bottom=False)
 
             with col7:
                 if st.session_state.preference == 1:
