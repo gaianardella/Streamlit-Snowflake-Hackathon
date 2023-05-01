@@ -173,29 +173,34 @@ def generate_outfit(flag_top, flag_bottom):
     st.title("Generate an outfit")
     st.subheader("This is the Pick me an outfit page.")
 #     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
-
+    
 #     if temperature == 'Hot':
 #         top_type = 'T-Shirt'
 #         bottom_type = 'Shorts'
-#     else:
+#     elif temperature == 'Cold':
 #         top_type = 'Sweater'
 #         bottom_type = 'Trousers'
     start_generate=False
+    question = st.empty()
+    with question:
+        
 #     with st.expander("Choose temperature", expanded=False)
-    hot = st.button("Hot")
-    cold = st.button("Cold")
+        hot = st.button("Hot")
+        cold = st.button("Cold")
 
-    if hot:
-       st.write("You selected Hot")
-       top_type = 'T-Shirt'
-       bottom_type = 'Shorts'
-       start_generate=True
+        if hot:
+           st.write("You selected Hot")
+           top_type = 'T-Shirt'
+           bottom_type = 'Shorts'
+           start_generate=True
+           question.empty()
 
-    if cold:
-       st.write("You selected Cold")
-       top_type = 'Sweater'
-       bottom_type = 'Trousers'
-       start_generate=True
+        if cold:
+           st.write("You selected Cold")
+           top_type = 'Sweater'
+           bottom_type = 'Trousers'
+           start_generate=True
+           question.empty()
     
     if start_generate==True:
         col1, col2, col3 = st.columns(3)
@@ -223,7 +228,7 @@ def generate_outfit(flag_top, flag_bottom):
                 col4, col5 = st.columns(2)
 
                 with col4:
-                    for i in range(50):
+                    for i in range(16):
                         st.write("")
 
     #                 placeholder_like = st.empty()
