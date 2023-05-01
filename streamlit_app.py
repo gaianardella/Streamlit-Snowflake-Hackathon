@@ -175,7 +175,7 @@ if 'login' in st.session_state:
                     my_cur.execute("SELECT * FROM clothes_table WHERE type = 'Sweater'")
                     byte_array=my_cur.fetchall()
                     random_byte_array = random.choice(byte_array)
-                    st.write(random_byte_array)
+                    st.write(random_byte_array[1])
                     li=[]
                     st.stop()
                     for el in byte_array:
