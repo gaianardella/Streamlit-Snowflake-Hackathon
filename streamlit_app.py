@@ -431,7 +431,7 @@ def sidebar():
             "Give me some stats": "bar-chart-fill",
             "Settings": "gear"
         }
-        selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0)
+        selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key="unique_key")
         return selected
 
 def home():
@@ -523,7 +523,6 @@ if __name__ == '__main__':
         # Display the sidebar menu
         while True:
             selected = sidebar()
-            st.write(selected)
             if selected == "Home":
                 home()
             elif selected == "Upload Clothes":
