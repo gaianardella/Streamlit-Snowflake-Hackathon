@@ -182,8 +182,11 @@ def generate_outfit(flag_top, flag_bottom):
 #         bottom_type = 'Trousers'
     start_generate=False
     with st.expander("Choose temperature", expanded=False):
-        hot = st.button("Hot")
-        cold = st.button("Cold")
+        colhot,colcold = st.columns(2)
+        with colhot:
+            hot = st.button("Hot")
+        with colcold:
+            cold = st.button("Cold")
      
         if hot:
            st.write("You selected Hot")
