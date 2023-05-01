@@ -247,11 +247,11 @@ if 'login' in st.session_state:
             
             if 'button' in st.session_state:
                 st.empty()
-                if flag=="Like":
+                if like:
                     for j in range(16):
                         st.write("")
                     st.success("Preference saved!")
-                elif flag=="Dislike":
+                elif dislike:
                     col6, col7, col8 = st.columns(3)
                     with col6:
                         for j in range(16):
