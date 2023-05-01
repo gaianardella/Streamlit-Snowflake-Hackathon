@@ -272,7 +272,7 @@ if 'login' in st.session_state:
 #                     for j in range(16):
 #                         st.write("")
 #                     st.success("Preference saved!")
-                st.stop()
+            st.stop()
 #                 elif  flag=="Disike":
 #                     col6, col7, col8 = st.columns(3)
 #                     with col6:
