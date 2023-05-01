@@ -137,7 +137,13 @@ def upload_clothes():
 #                     cnx.close()
             else:
                 st.error("Error")
-                
+
+def choose_temperature():
+    st.title("Generate an outfit")
+    st.subheader("This is the Pick me an outfit page.")
+    temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
+    return temperature
+    
                 
 def generate_top(cnx, top_type):
     with cnx.cursor() as my_cur:
@@ -168,18 +174,19 @@ def generate_bottom(cnx, bottom_type):
             img_bottom = np.rot90(img_bottom, k=3)
 
         st.image(img_bottom)
+        
 
-def generate_outfit(flag_top, flag_bottom):
-    st.title("Generate an outfit")
-    st.subheader("This is the Pick me an outfit page.")
-    temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
+def generate_outfit(temp, flag_top, flag_bottom):
+#     st.title("Generate an outfit")
+#     st.subheader("This is the Pick me an outfit page.")
+#     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
     
-    if temperature == 'Hot':
-        top_type = 'T-Shirt'
-        bottom_type = 'Shorts'
-    elif temperature == 'Cold':
-        top_type = 'Sweater'
-        bottom_type = 'Trousers'
+#     if temperature == 'Hot':
+#         top_type = 'T-Shirt'
+#         bottom_type = 'Shorts'
+#     elif temperature == 'Cold':
+#         top_type = 'Sweater'
+#         bottom_type = 'Trousers'
 #     start_generate=False
 #     question = st.empty()
         
@@ -219,7 +226,14 @@ def generate_outfit(flag_top, flag_bottom):
 
 #     else:
 #         st.error("Select only one item")
-   
+    
+     if temperature == 'Hot':
+        top_type = 'T-Shirt'
+        bottom_type = 'Shorts'
+    elif temperature == 'Cold':
+        top_type = 'Sweater'
+        bottom_type = 'Trousers'
+        
     col1, col2, col3 = st.columns(3)
 
     # Establish a connection to your Snowflake database
@@ -412,7 +426,8 @@ if __name__ == '__main__':
     elif selected == "Upload Clothes":
         upload_clothes()
     elif selected == "Pick me an outfit":
-        generate_outfit(flag_top=True, flag_bottom=True)
+        temp=choose_temperature()
+        generate_outfit(temp, flag_top=True, flag_bottom=True)
     elif selected == "Give me some stats":
         stats()
     elif selected == "Settings":
