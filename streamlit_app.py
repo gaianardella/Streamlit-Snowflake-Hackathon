@@ -260,6 +260,7 @@ if 'login' in st.session_state:
 
             if 'button' in st.session_state:
                 st.empty() #cancella le variabili, NON il layout, creare nuove colonne mi fa l'empty
+                st.session_state.preference
                 col6, col7, col8 = st.columns(3)
                 if st.session_state.preference == 1:
                     with col7:
