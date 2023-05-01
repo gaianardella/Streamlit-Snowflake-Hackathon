@@ -431,7 +431,7 @@ def sidebar():
             "Give me some stats": "bar-chart-fill",
             "Settings": "gear"
         }
-        unique_key = random.randint()
+        unique_key = random.randint(0,100000)
         selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key=unique_key)
         st.write(selected)
         return selected
