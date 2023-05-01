@@ -228,6 +228,7 @@ if 'login' in st.session_state:
 
       
         with col3:
+            st.session_state['preference'] = 'empty'
             if 'button' not in st.session_state:
                 col4, col5 = st.columns(2)
                 with col4:
