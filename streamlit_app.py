@@ -292,8 +292,8 @@ def generate_outfit(temperature, flag_top, flag_bottom):
                 if st.session_state.preference == -1:
                     top = st.button("Generate Top", use_container_width=True)
                     if top:
-                        del st.session_state['preference']
-                        del st.session_state['button']
+                        for key in st.session_stake.keys():
+                            del st.session_state[key]
                         generate_outfit(flag_top=True, flag_bottom=False)
 
             with col7:
@@ -302,17 +302,16 @@ def generate_outfit(temperature, flag_top, flag_bottom):
                 if st.session_state.preference == -1:
                     bottom = st.button("Generate Bottom", use_container_width=True)
                     if bottom:
-                        del st.session_state['preference']
-                        del st.session_state['button']
-                        st.session_state['button']
+                        for key in st.session_stake.keys():
+                            del st.session_state[key]
                         generate_outfit(flag_top=False, flag_bottom=True)
 
             with col8:
                if st.session_state.preference == -1:
                     outfit = st.button("Generate Outfit", use_container_width=True)
                     if outfit:
-                        del st.session_state['preference']
-                        del st.session_state['button']
+                        for key in st.session_stake.keys():
+                            del st.session_state[key]
                         generate_outfit(flag_top=True, flag_bottom=False)
 
                 
