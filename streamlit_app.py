@@ -228,6 +228,7 @@ if 'login' in st.session_state:
 
       
         with col3:
+            placeholder = st.empty()
 #             st.session_state['preference'] = 0
             if 'preference' not in st.session_state:
                 st.session_state['preference'] = 0
@@ -236,11 +237,10 @@ if 'login' in st.session_state:
                 with col4:
                     for i in range(16):
                         st.write("")
-                    with st.empty():
-                        like = st.button("Like :thumbsup:", use_container_width=True)
-                        if like:
-                            st.session_state['button'] = True
-                            st.session_state['preference'] = 1
+                    like = placeholder.button("Like :thumbsup:", use_container_width=True)
+                    if like:
+                        st.session_state['button'] = True
+                        st.session_state['preference'] = 1
                         # Initialization
 #                         st.session_state['preference'] = not st.session_state.preference
 #                         st.session_state.preference                        
@@ -249,11 +249,10 @@ if 'login' in st.session_state:
                 with col5:
                     for j in range(16):
                         st.write("")
-                    with st.empty():
-                        dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
-                        if dislike:
-                            st.session_state['button'] = True
-                            st.session_state['preference'] = -1
+                    dislike = placeholder.button("Dislike :thumbsdown:", use_container_width=True)
+                    if dislike:
+                        st.session_state['button'] = True
+                        st.session_state['preference'] = -1
 #                     if dislike:
 # #                         # Initialization
 # #                         if 'preference' not in st.session_state:
@@ -262,10 +261,12 @@ if 'login' in st.session_state:
 
             if 'button' in st.session_state:
 #                 st.empty() #cancella le variabili, NON il layout, creare nuove colonne mi fa l'empty
-                
-                col6, col7, col8 = st.columns(3)
-                with col7:
-                    st.session_state.preference
+                with placeholder.container():
+                    st.write("This is one element")
+
+#                 col6, col7, col8 = st.columns(3)
+#                 with col7:
+#                     st.session_state.preference
 #                 if st.session_state.preference == 1:
 #                     with col7:
 #                         st.success("Preference saved!")
