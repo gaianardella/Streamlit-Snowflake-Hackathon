@@ -229,8 +229,8 @@ if 'login' in st.session_state:
       
         with col3:
 #             st.session_state['preference'] = 0
-            if 'preference' not in st.session_state:
-                st.session_state['preference'] = False
+#             if 'preference' not in st.session_state:
+#                 st.session_state['preference'] = False
             if 'button' not in st.session_state:
                 col4, col5 = st.columns(2)
                 with col4:
