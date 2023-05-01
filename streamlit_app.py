@@ -176,7 +176,7 @@ def generate_bottom(cnx, bottom_type):
         st.image(img_bottom)
         
 
-def generate_outfit(temp, flag_top, flag_bottom):
+def generate_outfit(temperature, flag_top, flag_bottom):
 #     st.title("Generate an outfit")
 #     st.subheader("This is the Pick me an outfit page.")
 #     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
