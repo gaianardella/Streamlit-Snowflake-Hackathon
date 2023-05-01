@@ -180,16 +180,16 @@ def generate_outfit(flag_top, flag_bottom):
 #     else:
 #         top_type = 'Sweater'
 #         bottom_type = 'Trousers'
-     hot = st.button("Hot")
-     cold = st.button("Cold")
+    hot = st.button("Hot")
+    cold = st.button("Cold")
      
-     if hot:
-        top_type = 'T-Shirt'
-        bottom_type = 'Shorts'
+    if hot:
+       top_type = 'T-Shirt'
+       bottom_type = 'Shorts'
             
-     if cold:
-        top_type = 'Sweater'
-        bottom_type = 'Trousers'
+    if cold:
+       top_type = 'Sweater'
+       bottom_type = 'Trousers'
     
     col1, col2, col3 = st.columns(3)
 
