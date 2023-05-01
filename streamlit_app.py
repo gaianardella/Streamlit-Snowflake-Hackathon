@@ -238,7 +238,7 @@ if 'login' in st.session_state:
                 st.write("")
                 st.write("")
                 st.write("")
-                st.button("Like :thumbsup:")
+                st.button("Like :thumbsup:", type="primary")
             with col6:
                 st.write("")
                 st.write("")
