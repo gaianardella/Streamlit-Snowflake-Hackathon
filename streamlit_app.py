@@ -431,7 +431,8 @@ def sidebar():
             "Give me some stats": "bar-chart-fill",
             "Settings": "gear"
         }
-        selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0)
+        unique_key = str(uuid.uuid4())
+        selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key=unique_key)
         st.write(selected)
         return selected
 
