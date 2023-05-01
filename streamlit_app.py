@@ -271,6 +271,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
                     if like:
                         st.session_state['button'] = True
                         st.session_state['preference'] = 1
+                        return
 
             with col5:
 #                 for j in range(16):
