@@ -183,6 +183,9 @@ if 'login' in st.session_state:
                     img_top = np.rot90(img_top, k=3)
 
                 st.image(img_top)
+                # Get the height of the image
+                height = image.size[1]
+                st.write(f"The height of the image is: {height}px")
 #                 st.image(img_top, width=340)
                     
                 #SNOWPARK
