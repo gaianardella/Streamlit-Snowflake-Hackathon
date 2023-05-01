@@ -244,6 +244,8 @@ if 'login' in st.session_state:
             
             if 'button' in st.session_state:
                 st.empty()
+                for j in range(16):
+                        st.write("")
                 st.write("Preference saved")
 
 #             var=-1
