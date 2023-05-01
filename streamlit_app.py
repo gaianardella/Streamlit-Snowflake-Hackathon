@@ -258,10 +258,10 @@ if 'login' in st.session_state:
 
             if 'button' in st.session_state:
 #                 st.empty() #cancella le variabili, NON il layout
-                col6 = st.columns(1)
-                with col6:
-                    st.success("Preference saved!")
-                    st.session_state.preference
+#                 col6 = st.columns(1)
+#                 with col6:
+                st.success("Preference saved!")
+                st.session_state.preference
 #                 st.session_state.preference
 # #                 if flag=="Like":
 #                     for j in range(16):
