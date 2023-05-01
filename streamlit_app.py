@@ -241,6 +241,8 @@ if 'login' in st.session_state:
                     if like:
                         # Initialization
                         st.session_state['preference'] = not st.session_state.preference
+                        st.empty()
+                        st.success("Preference saved!")
                         
                     #salva conto dei vestiti indossati
 
@@ -254,9 +256,9 @@ if 'login' in st.session_state:
                         if 'preference' not in st.session_state:
                             st.session_state['preference'] = 'dislike'
 
-            if 'button' in st.session_state:
-                st.empty()
-                st.session_state.preference
+#             if 'button' in st.session_state:
+#                 st.empty()
+#                 st.session_state.preference
 #                 if flag=="Like":
 #                     for j in range(16):
 #                         st.write("")
