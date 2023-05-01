@@ -514,10 +514,111 @@ def upload_clothes():
 #                     cnx.close()
             else:
                 st.error("Error")
+                
+def generate_outfit():
+    st.title("Generate an outfit")
+    st.subheader("This is the Pick me an outfit page.")
+    temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
+
+    if temperature == 'Hot':
+        top_type = 'T-Shirt'
+        bottom_type = 'Shorts'
+    else:
+        top_type = 'Sweater'
+        bottom_type = 'Trousers'
+
+    col1, col2, col3 = st.columns(3)
+
+    # Establish a connection to your Snowflake database
+    cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+
+    with col1:
+        st.header("Top")
+        with cnx.cursor() as my_cur:
+            my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{top_type}'")
+            random_row = my_cur.fetchone()
+            hex_str = random_row[0].strip('"')
+            byte_str = bytes.fromhex(hex_str)
+            image = Image.open(io.BytesIO(byte_str))
+            img_top = np.array(image)
+
+            # Check the shape of the image arrays and rotate them if necessary
+            if img_top.shape[0] < img_top.shape[1]:
+                img_top = np.rot90(img_top, k=3)
+
+            st.image(img_top)
+
+    with col2:
+        st.header("Bottom")
+        with cnx.cursor() as my_cur:
+            my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{bottom_type}'")
+            random_row = my_cur.fetchone()
+            hex_str = random_row[0].strip('"')
+            byte_str = bytes.fromhex(hex_str)
+            image = Image.open(io.BytesIO(byte_str))
+            img_bottom = np.array(image)
+
+            # Check the shape of the image arrays and rotate them if necessary
+            if img_bottom.shape[0] < img_bottom.shape[1]:
+                img_bottom = np.rot90(img_bottom, k=3)
+
+            st.image(img_bottom)
+
+    with col3:
+        if 'preference' not in st.session_state:
+            st.session_state['preference'] = 0
+
+        if 'button' not in st.session_state:
+            col4, col5 = st.columns(2)
+
+            with col4:
+                for i in range(16):
+                    st.write("")
+
+                placeholder_like = st.empty()
+
+                with placeholder_like:
+                    like = st.button("Like :thumbsup:", use_container_width=True)
+                    if like:
+                        st.session_state['button'] = True
+                        st.session_state['preference'] = 1
+
+            with col5:
+                for j in range(16):
+                    st.write("")
+
+                placeholder_dislike = st.empty()
+
+                with placeholder_dislike:
+                    dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
+                    if dislike:
+                        st.session_state['button'] = True
+                        st.session_state['preference'] = -1
+
+        if 'button' in st.session_state:
+            placeholder_like.empty()
+            placeholder_dislike.empty()
+
+            col6, col7, col8 = st.columns(3)
+
+            with col6:
+                if st.session_state.preference == -1:
+                    st.button("Generate Top", use_container_width=True)
+
+            with col7:
+                if st.session_state.preference == 1:
+                    st.success("Preference saved!")
+                if st.session_state.preference == -1:
+                    st.button("Generate Bottom", use_container_width=True)
+
+            with col8:
+               if st.session_state.preference == -1:
+                    outfit = st.button("Generate Outfit", use_container_width=True)
             
-            
-            
-            
+def stats():
+    return
+def settings():
+    return
 if __name__ == '__main__':
     # Connect to Snowflake
     session = connect_to_snowflake()
@@ -529,6 +630,12 @@ if __name__ == '__main__':
         home()
     elif selected == "Upload Clothes":
         upload_clothes()
+    elif selected == "Pick me an outfit":
+        generate_outfit()
+    elif selected == "Give me some stats":
+        stats()
+    elif selected == "Settings":
+        settings()
 
 #     # If login is successful, display the sidebar menu
 #     if 'login' in st.session_state and st.session_state['login']:
