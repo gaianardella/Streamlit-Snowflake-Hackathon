@@ -233,18 +233,22 @@ if 'login' in st.session_state:
                 for i in range(16):
                     st.write("")
                 like = st.button("Like :thumbsup:", use_container_width=True)
-#                 if like:
+                if like:
 #                     st.write("Preference saved")
+                    st.session_state['like'] = True
+
             with col5:
                 for j in range(16):
                     st.write("")
                 dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
 #                 if disklike 
                 st.stop()
-            if like:
-                st.empty()
-                st.write("Preference saved")
             
+            if 'like' in st.session_state:
+                st.empty()
+                col1 = st.columns(1)
+                st.write("Preference saved")
+
 #             var=-1
 #             # if st.button("I don't like it", key="dislike"):
 #             #     show_generate=True
