@@ -418,18 +418,18 @@ def login():
             else:
                 st.error('Invalid username or password')
     if 'login' in st.session_state:
-    st.empty()
-    """Displays the sidebar menu"""
-    with st.sidebar:
-        option_icons = {
-            "Home": "house",
-            "Upload Clothes": "box-arrow-in-up",
-            "Pick me an outfit": "palette-fill",
-            "Give me some stats": "bar-chart-fill",
-            "Settings": "gear"
-        }
-        selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key="sidebar")
-        return selected
+        st.empty()
+        """Displays the sidebar menu"""
+        with st.sidebar:
+            option_icons = {
+                "Home": "house",
+                "Upload Clothes": "box-arrow-in-up",
+                "Pick me an outfit": "palette-fill",
+                "Give me some stats": "bar-chart-fill",
+                "Settings": "gear"
+            }
+            selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key="sidebar")
+            return selected
 
 # def sidebar():
 #     """Displays the sidebar menu"""
