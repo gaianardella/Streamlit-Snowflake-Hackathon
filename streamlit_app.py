@@ -172,14 +172,14 @@ def generate_bottom(cnx, bottom_type):
 def generate_outfit(flag_top, flag_bottom):
     st.title("Generate an outfit")
     st.subheader("This is the Pick me an outfit page.")
-#     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
+    temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
     
-#     if temperature == 'Hot':
-#         top_type = 'T-Shirt'
-#         bottom_type = 'Shorts'
-#     elif temperature == 'Cold':
-#         top_type = 'Sweater'
-#         bottom_type = 'Trousers'
+    if temperature == 'Hot':
+        top_type = 'T-Shirt'
+        bottom_type = 'Shorts'
+    elif temperature == 'Cold':
+        top_type = 'Sweater'
+        bottom_type = 'Trousers'
 #     start_generate=False
 #     question = st.empty()
         
@@ -201,24 +201,24 @@ def generate_outfit(flag_top, flag_bottom):
 #            start_generate=True
 #            question.empty()
     
-    st.subheader("Pick Temperature")
-    my_temperatures=["Hot", "Cold"]
-    show_generate=False
-    temp_selected = st.multiselect("Pick item:", list(my_temperatures))
-    if len(temp_selected) == 1:
-        st.write("You selected: " + temp_selected[0])
-        show_generate=True
-        if temp_selected[0] == "Hot":
-           top_type = 'T-Shirt'
-           bottom_type = 'Shorts'
+#     st.subheader("Pick Temperature")
+#     my_temperatures=["Hot", "Cold"]
+#     show_generate=False
+#     temp_selected = st.multiselect("Pick item:", list(my_temperatures))
+#     if len(temp_selected) == 1:
+#         st.write("You selected: " + temp_selected[0])
+#         show_generate=True
+#         if temp_selected[0] == "Hot":
+#            top_type = 'T-Shirt'
+#            bottom_type = 'Shorts'
 
-        if temp_selected[0]=="Cold":
-           top_type = 'Sweater'
-           bottom_type = 'Trousers'
+#         if temp_selected[0]=="Cold":
+#            top_type = 'Sweater'
+#            bottom_type = 'Trousers'
            
 
-    else:
-        st.error("Select only one item")
+#     else:
+#         st.error("Select only one item")
     
     if show_generate==True:
         col1, col2, col3 = st.columns(3)
