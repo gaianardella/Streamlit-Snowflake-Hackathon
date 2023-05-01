@@ -238,8 +238,7 @@ if 'login' in st.session_state:
                     st.session_state['button'] = True
                     if like:
                         # Initialization
-                        if 'preference' not in st.session_state:
-                            st.session_state['preference'] = 'like'
+                        st.session_state['preference'] = 'like'
                     #salva conto dei vestiti indossati
 
                 with col5:
