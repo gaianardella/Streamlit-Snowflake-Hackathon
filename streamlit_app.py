@@ -178,11 +178,17 @@ if 'login' in st.session_state:
                     random_row = my_cur.fetchone()
                     hex_str = random_row[0].strip('"')                    
                     byte_str = bytes.fromhex(hex_str)
-                    image = Image.open(io.BytesIO(byte_str))
+#                     image = Image.open(io.BytesIO(byte_str))
+                    # Create a file-like object from the raw bytes
+                    image = io.BytesIO(byte_str)
+
+                    # Read the image data using imread
+                    image = mpimg.imread(image, format='jpg')
+
                     st.image(image)
                     st.stop()
-#                     item_hex = random_row[0]
-#                     print(f"Randomly selected item hex: {item_hex}")
+                    
+                     
 
 
 
