@@ -238,12 +238,10 @@ if 'login' in st.session_state:
                         st.write("")
                     like = st.button("Like :thumbsup:", use_container_width=True)
                     st.session_state['button'] = True
-                    if like:
+#                     if like:
                         # Initialization
 #                         st.session_state['preference'] = not st.session_state.preference
-#                         st.session_state.preference
-                        st.success("Preference saved!")
-                        
+#                         st.session_state.preference                        
                     #salva conto dei vestiti indossati
 
                 with col5:
@@ -257,8 +255,9 @@ if 'login' in st.session_state:
 #                             st.session_state['preference'] = 'dislike'
                         st.button("Generate again")
 
-#             if 'button' in st.session_state:
-#                 st.empty()
+            if 'button' in st.session_state:
+                st.empty()
+                st.success("Preference saved!")
 #                 st.session_state.preference
 # #                 if flag=="Like":
 #                     for j in range(16):
