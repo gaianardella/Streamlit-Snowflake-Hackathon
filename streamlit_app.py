@@ -227,10 +227,10 @@ def generate_outfit(temp, flag_top, flag_bottom):
 #     else:
 #         st.error("Select only one item")
     
-     if temperature == 'Hot':
+    if temperature == 'Hot':
         top_type = 'T-Shirt'
         bottom_type = 'Shorts'
-     elif temperature == 'Cold':
+    elif temperature == 'Cold':
         top_type = 'Sweater'
         bottom_type = 'Trousers'
         
