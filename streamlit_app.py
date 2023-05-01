@@ -237,8 +237,8 @@ if 'login' in st.session_state:
                     for i in range(16):
                         st.write("")
                     like = st.button("Like :thumbsup:", use_container_width=True)
-                    st.session_state['button'] = True
-#                     if like:
+                    if like:
+                        st.session_state['button'] = True
                         # Initialization
 #                         st.session_state['preference'] = not st.session_state.preference
 #                         st.session_state.preference                        
@@ -248,12 +248,12 @@ if 'login' in st.session_state:
                     for j in range(16):
                         st.write("")
                     dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
-                    st.session_state['button'] = True
-                    if dislike:
-#                         # Initialization
-#                         if 'preference' not in st.session_state:
-#                             st.session_state['preference'] = 'dislike'
-                        st.button("Generate again")
+#                     st.session_state['button'] = True
+#                     if dislike:
+# #                         # Initialization
+# #                         if 'preference' not in st.session_state:
+# #                             st.session_state['preference'] = 'dislike'
+#                         st.button("Generate again")
 
             if 'button' in st.session_state:
                 st.empty()
