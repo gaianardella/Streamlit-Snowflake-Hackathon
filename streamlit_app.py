@@ -304,6 +304,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
                     if bottom:
                         del st.session_state['preference']
                         del st.session_state['button']
+                        st.session_state['button']
                         generate_outfit(flag_top=False, flag_bottom=True)
 
             with col8:
