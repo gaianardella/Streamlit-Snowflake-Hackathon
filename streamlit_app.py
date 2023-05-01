@@ -236,10 +236,13 @@ if 'login' in st.session_state:
                 with col4:
                     for i in range(16):
                         st.write("")
-                    like = st.button("Like :thumbsup:", use_container_width=True)
-                    if like:
-                        st.session_state['button'] = True
-                        st.session_state['preference'] = 1
+                    placeholder = st.empty()
+                    with placeholder:
+                        like = st.button("Like :thumbsup:", use_container_width=True)
+                        if like:
+                            st.session_state['button'] = True
+                            st.session_state['preference'] = 1
+                            placeholder.empty()
                         # Initialization
 #                         st.session_state['preference'] = not st.session_state.preference
 #                         st.session_state.preference                        
