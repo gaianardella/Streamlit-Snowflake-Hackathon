@@ -249,7 +249,9 @@ if 'login' in st.session_state:
                     for j in range(16):
                         st.write("")
                     dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
-#                     st.session_state['button'] = True
+                    if dislike:
+                        st.session_state['button'] = True
+                        st.session_state['preference'] = -1
 #                     if dislike:
 # #                         # Initialization
 # #                         if 'preference' not in st.session_state:
@@ -258,10 +260,10 @@ if 'login' in st.session_state:
 
             if 'button' in st.session_state:
 #                 st.empty() #cancella le variabili, NON il layout
-#                 col6 = st.columns(1)
-#                 with col6:
-                st.success("Preference saved!")
-                st.session_state.preference
+                if st.session_state.preference == 1:
+                    st.success("Preference saved!")
+                else if st.session_state.preference == -1:
+                    st.error("Preference saved!")
 #                 st.session_state.preference
 # #                 if flag=="Like":
 #                     for j in range(16):
