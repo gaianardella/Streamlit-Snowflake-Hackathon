@@ -180,13 +180,13 @@ if 'login' in st.session_state:
                     byte_str = bytes.fromhex(hex_str)
                     image = Image.open(io.BytesIO(byte_str))
                     
-                    img2 = np.array(image)
+                    img_top = np.array(image)
 
                     # Check the shape of the image arrays and rotate them if necessary
-                    if img2.shape[0] < img2.shape[1]:
-                        img2 = np.rot90(img2, k=3)
+                    if img_top.shape[0] < img_top.shape[1]:
+                        img_top = np.rot90(img_top, k=3)
                         
-                    st.image(img2)
+                    st.image(img_top)
                     st.stop()
                     
                      
