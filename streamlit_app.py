@@ -13,6 +13,7 @@ import io
 from PIL import Image
 import random
 # import json
+import matplotlib.image as mpimg
 
 
 st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
