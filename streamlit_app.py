@@ -228,6 +228,14 @@ if 'login' in st.session_state:
 
       
         with col3:
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
             st.button("Like")
             st.button("Dislike")
             st.stop()
