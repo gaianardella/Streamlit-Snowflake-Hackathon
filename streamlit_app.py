@@ -248,7 +248,7 @@ if 'login' in st.session_state:
                     flag="Dislike"
             
             if 'button' in st.session_state:
-                if session_state['preference'] == 'like'
+                if session_state['preference'] == 'like':
                     st.empty()
                     if flag=="Like":
                         for j in range(16):
