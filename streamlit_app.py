@@ -236,7 +236,7 @@ if 'login' in st.session_state:
 #                 for i in range(25):
 #                     st.write("")
                 # Set the width of the container in pixels
-                container_width = 3000
+                container_width = 1000000
 
                 # Create a container with the desired width
                 with st.container():
