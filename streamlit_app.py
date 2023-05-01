@@ -181,8 +181,10 @@ def generate_outfit(flag_top, flag_bottom):
 #         top_type = 'Sweater'
 #         bottom_type = 'Trousers'
     start_generate=False
-    hot = st.button("Hot")
-    cold = st.button("Cold")
+    with st.expander(temp, expanded=False):
+        st.write("Choose temperature)
+        hot = st.button("Hot")
+        cold = st.button("Cold")
      
     if hot:
        top_type = 'T-Shirt'
