@@ -231,7 +231,7 @@ if 'login' in st.session_state:
 #             st.session_state['preference'] = 0
             li=[]
             if 'preference' not in st.session_state:
-                st.session_state = False
+                st.session_state[preference] = False
             if 'button' not in st.session_state:
                 col4, col5 = st.columns(2)
                 with col4:
@@ -242,7 +242,7 @@ if 'login' in st.session_state:
                     if like:
                         li.append("like")
                         # Initialization
-#                         st.session_state['preference'] = not st.session_state.preference
+                        st.session_state['preference'] = not st.session_state.preference
                         
                     #salva conto dei vestiti indossati
 
@@ -251,15 +251,15 @@ if 'login' in st.session_state:
                         st.write("")
                     dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
                     st.session_state['button'] = True
-                    if dislike:
-                        # Initialization
-                        if 'preference' not in st.session_state:
-                            st.session_state['preference'] = 'dislike'
+#                     if dislike:
+#                         # Initialization
+#                         if 'preference' not in st.session_state:
+#                             st.session_state['preference'] = 'dislike'
 
             if 'button' in st.session_state:
+                st.empty()
+                st.session_state.preference
                 st.write(li)
-#                 st.empty()
-#                 st.session_state.preference
 #                 if flag=="Like":
 #                     for j in range(16):
 #                         st.write("")
