@@ -183,9 +183,6 @@ if 'login' in st.session_state:
                     img_top = np.rot90(img_top, k=3)
 
                 st.image(img_top)
-                # Get the height of the image
-                height = image.size[1]
-                st.write(f"The height of the image is: {height}px")
 #                 st.image(img_top, width=340)
                     
                 #SNOWPARK
@@ -233,22 +230,8 @@ if 'login' in st.session_state:
         with col3:
             col4, col5 = st.columns(2)
             with col4:
-#                 for i in range(25):
-#                     st.write("")
-              
-                # Set the height of the container in pixels
-                container_height = 400
-
-                # Create a container with the desired height
-                with st.container():
-                    st.write("This is some content that will be displayed inside a container with a height of 400 pixels.")
-
-                # Set the height of the container using CSS
-                st.write(f"""<style>.element-container{{height:{container_height}px;}}</style>""", unsafe_allow_html=True)
-
-                # Display some more content outside the container
-                st.write("This content is not inside the container and will not be affected by its height.")
-
+                for i in range(20):
+                    st.write("")
                 st.button("Like :thumbsup:", use_container_width=True)
             with col5:
                 st.write("")
