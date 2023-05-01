@@ -223,7 +223,7 @@ def generate_outfit(flag_top, flag_bottom):
                 col4, col5 = st.columns(2)
 
                 with col4:
-                    for i in range(16):
+                    for i in range(50):
                         st.write("")
 
     #                 placeholder_like = st.empty()
