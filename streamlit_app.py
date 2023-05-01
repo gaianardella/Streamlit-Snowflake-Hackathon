@@ -174,7 +174,7 @@ if 'login' in st.session_state:
                 cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 
                 with cnx.cursor() as my_cur:
-                    my_cur.execute("SELECT * FROM clothes_table WHERE type = 'Sweater' ORDER BY RAND()")
+                    my_cur.execute("SELECT * FROM clothes_table WHERE type = 'Sweater' SAMPLE (1)")
                     random_row = my_cur.fetchone()
                     st.write(random_row)
                     st.stop()
