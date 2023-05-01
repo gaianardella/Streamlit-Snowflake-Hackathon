@@ -194,7 +194,7 @@ def generate_outfit(flag_top, flag_bottom):
        bottom_type = 'Trousers'
        start_generate=True
     
-    if start_generate==True
+    if start_generate==True:
         col1, col2, col3 = st.columns(3)
 
         # Establish a connection to your Snowflake database
