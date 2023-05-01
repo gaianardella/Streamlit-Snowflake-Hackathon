@@ -262,7 +262,7 @@ if 'login' in st.session_state:
 #                 st.empty() #cancella le variabili, NON il layout
                 if st.session_state.preference == 1:
                     st.success("Preference saved!")
-                else if st.session_state.preference == -1:
+                elif st.session_state.preference == -1:
                     st.error("Preference saved!")
 #                 st.session_state.preference
 # #                 if flag=="Like":
