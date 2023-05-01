@@ -176,7 +176,6 @@ def generate_bottom(cnx, bottom_type):
         st.image(img_bottom)
         
 
-def generate_outfit(temperature, flag_top, flag_bottom):
 #     st.title("Generate an outfit")
 #     st.subheader("This is the Pick me an outfit page.")
 #     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
@@ -226,7 +225,41 @@ def generate_outfit(temperature, flag_top, flag_bottom):
 
 #     else:
 #         st.error("Select only one item")
-    
+
+def buttons():
+    for i in range(15):
+            st.write("")
+        placeholder_like = st.empty()
+        placeholder_dislike = st.empty()
+        if 'preference' not in st.session_state:
+            st.session_state['preference'] = 0
+
+        if 'button' not in st.session_state:
+            col4, col5 = st.columns(2)
+
+            with col4:
+                for i in range(60):
+                    st.write("")
+
+                placeholder_like = st.empty()
+                with placeholder_like:
+                    like = st.button("Like :thumbsup:", use_container_width=True)
+                    if like:
+                        st.session_state['button'] = True
+                        st.session_state['preference'] = 1
+
+            with col5:
+                for j in range(16):
+                    st.write("")
+
+                placeholder_dislike = st.empty()
+                with placeholder_dislike:
+                    dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
+                    if dislike:
+                        st.session_state['button'] = True
+                        st.session_state['preference'] = -1
+
+def generate_outfit(temperature, flag_top, flag_bottom):
     if temperature == 'Hot':
         top_type = 'T-Shirt'
         bottom_type = 'Shorts'
@@ -248,41 +281,41 @@ def generate_outfit(temperature, flag_top, flag_bottom):
         st.header("Bottom")
         if flag_bottom == True:
             generate_bottom(cnx, bottom_type)
-
+    
     with col3:
-        for i in range(15):
-            st.write("")
-#         placeholder_like = st.empty()
-#         placeholder_dislike = st.empty()
-        if 'preference' not in st.session_state:
-            st.session_state['preference'] = 0
+        buttons()
+#     with col3:
+#         for i in range(15):
+#             st.write("")
+# #         placeholder_like = st.empty()
+# #         placeholder_dislike = st.empty()
+#         if 'preference' not in st.session_state:
+#             st.session_state['preference'] = 0
 
-        if 'button' not in st.session_state:
-            col4, col5 = st.columns(2)
+#         if 'button' not in st.session_state:
+#             col4, col5 = st.columns(2)
 
-            with col4:
-#                 for i in range(60):
-#                     st.write("")
+#             with col4:
+# #                 for i in range(60):
+# #                     st.write("")
 
-                placeholder_like = st.empty()
-                with placeholder_like:
-                    like = st.button("Like :thumbsup:", use_container_width=True)
-                    if like:
-                        st.session_state['button'] = True
-                        st.session_state['preference'] = 1
+#                 placeholder_like = st.empty()
+#                 with placeholder_like:
+#                     like = st.button("Like :thumbsup:", use_container_width=True)
+#                     if like:
+#                         st.session_state['button'] = True
+#                         st.session_state['preference'] = 1
 
-            with col5:
-#                 for j in range(16):
-#                     st.write("")
+#             with col5:
+# #                 for j in range(16):
+# #                     st.write("")
 
-                placeholder_dislike = st.empty()
-                with placeholder_dislike:
-                    dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
-                    if dislike:
-                        st.session_state['button'] = True
-                        st.session_state['preference'] = -1
-        
-        
+#                 placeholder_dislike = st.empty()
+#                 with placeholder_dislike:
+#                     dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
+#                     if dislike:
+#                         st.session_state['button'] = True
+#                         st.session_state['preference'] = -1
 
         if 'button' in st.session_state:
             placeholder_like.empty()
