@@ -178,8 +178,8 @@ if 'login' in st.session_state:
                     random_row = my_cur.fetchone()
                     st.write(random_row)
                     st.stop()
-                    item_hex = random_row[0]
-                    print(f"Randomly selected item hex: {item_hex}")
+#                     item_hex = random_row[0]
+#                     print(f"Randomly selected item hex: {item_hex}")
 
 
 
