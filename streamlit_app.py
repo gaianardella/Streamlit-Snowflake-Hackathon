@@ -176,10 +176,10 @@ if 'login' in st.session_state:
                 with cnx.cursor() as my_cur:
                     my_cur.execute("SELECT item FROM clothes_table sample row (1 rows) WHERE type = 'Sweater'")
                     random_row = my_cur.fetchone()
-                    st.write(random_row[0].strip('"'))
-#                     hex_str = random_row[0]
-                    st.stop()
+                    hex_str = random_row[0].strip('"')                    
                     byte_str = bytes.fromhex(hex_str)
+                    st.write(byte_str)
+                    st.stop()
                     image = Image.open(io.BytesIO(byte_str))
                     st.image(image)
 #                     item_hex = random_row[0]
