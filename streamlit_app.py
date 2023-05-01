@@ -229,8 +229,8 @@ if 'login' in st.session_state:
       
         with col3:
 #             st.session_state['preference'] = 0
-#             if 'preference' not in st.session_state:
-            st.session_state['preference'] = "None"
+            if 'preference' not in st.session_state:
+                st.session_state['preference'] = 0
             if 'button' not in st.session_state:
                 col4, col5 = st.columns(2)
                 with col4:
@@ -239,7 +239,7 @@ if 'login' in st.session_state:
                     like = st.button("Like :thumbsup:", use_container_width=True)
                     if like:
                         st.session_state['button'] = True
-                        st.session_state['preference'] = "Like"
+                        st.session_state['preference'] = 1
                         # Initialization
 #                         st.session_state['preference'] = not st.session_state.preference
 #                         st.session_state.preference                        
