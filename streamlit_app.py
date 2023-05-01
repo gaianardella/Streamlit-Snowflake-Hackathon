@@ -256,8 +256,10 @@ if 'login' in st.session_state:
 #                         st.button("Generate again")
 
             if 'button' in st.session_state:
-                st.empty()
-                st.success("Preference saved!")
+#                 st.empty()
+                col6, col7, col8 = st.columns(3)
+                with col7:
+                    st.success("Preference saved!")
 #                 st.session_state.preference
 # #                 if flag=="Like":
 #                     for j in range(16):
