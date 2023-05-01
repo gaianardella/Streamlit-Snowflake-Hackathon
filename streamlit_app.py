@@ -193,7 +193,7 @@ def generate_outfit(flag_top, flag_bottom):
 
     with col2:
         st.header("Bottom")
-        if flag_bottom = True:
+        if flag_bottom == True:
             generate_bottom(cnx, bottom_type)
 
     with col3:
