@@ -234,8 +234,9 @@ if 'login' in st.session_state:
                     st.write("")
                 like = st.button("Like :thumbsup:", use_container_width=True)
                 if like:
-#                     st.write("Preference saved")
-                    st.session_state['like'] = True
+                    st.empty()
+                    st.write("Preference saved")
+#                     st.session_state['like'] = True
 
             with col5:
                 for j in range(16):
@@ -244,8 +245,8 @@ if 'login' in st.session_state:
 #                 if disklike 
                 st.stop()
             
-            if 'like' in st.session_state:
-                st.empty()
+#             if 'like' in st.session_state:
+#                 st.empty()
 #                 col1 = st.columns(1)
 #                 st.write("Preference saved")
 
