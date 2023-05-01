@@ -168,19 +168,38 @@ if 'login' in st.session_state:
 #                 df =session.sql("SELECT item FROM clothes_table WHERE type = 'Sweater'")
 #                 df = session.table("clothes_table").filter(col("TYPE")=="Sweater").select(col("ITEM"))
 #                 row=df.sample(n = 1).collect()[0].ITEM
+                
 
                 # Establish a connection to your Snowflake database
                 cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+
                 with cnx.cursor() as my_cur:
-                    my_cur.execute("SELECT * FROM clothes_table WHERE type = 'Sweater'")
-                    byte_array=my_cur.fetchall()
-                    random_byte_array = random.choice(byte_array)
-                    st.write(random_byte_array[1])
-                    li=[]
+                    my_cur.execute("SELECT hex FROM clothes_table WHERE type = 'Sweater' ORDER BY RAND()")
+                    random_row = my_cur.fetchone()
+                    st.write(random_row)
                     st.stop()
-                    for el in byte_array:
-#                         if el[0] == id:
-                            byte_array=el[1]
+                    item_hex = random_row[0]
+                    print(f"Randomly selected item hex: {item_hex}")
+
+
+
+
+
+
+
+
+                # Establish a connection to your Snowflake database
+#                 cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+#                 with cnx.cursor() as my_cur:
+#                     my_cur.execute("SELECT * FROM clothes_table WHERE type = 'Sweater'")
+#                     byte_array=my_cur.fetchall()
+#                     random_byte_array = random.choice(byte_array)
+#                     st.write(random_byte_array[1])
+#                     li=[]
+#                     st.stop()
+#                     for el in byte_array:
+# #                         if el[0] == id:
+#                             byte_array=el[1]
 #                             li.append(byte_array)
 #                     st.write(str(li))
 #                             item=el[2]
