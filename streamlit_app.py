@@ -256,8 +256,7 @@ if 'login' in st.session_state:
 
             if 'button' in st.session_state:
                 st.empty()
-                preference = st.session_state.get('preference', 0)
-                st.write(f"Preference: {preference}")
+                st.session_state.preference
 #                 if flag=="Like":
 #                     for j in range(16):
 #                         st.write("")
