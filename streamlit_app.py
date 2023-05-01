@@ -244,12 +244,10 @@ if 'login' in st.session_state:
             
             if 'button' in st.session_state:
                 st.empty()
-                col6, col7, col8 = st.columns(3)
-                with col7:
-                    for j in range(16):
-                            st.write("")
-                    st.write("Preference saved")
-
+#                 col6, col7, col8 = st.columns(3)
+                for j in range(16):
+                        st.write("")
+                st.success("Preference saved!")
 #             var=-1
 #             # if st.button("I don't like it", key="dislike"):
 #             #     show_generate=True
