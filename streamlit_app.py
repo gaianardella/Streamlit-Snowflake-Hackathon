@@ -246,11 +246,11 @@ if 'login' in st.session_state:
                         st.write("")
                     dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
                     st.session_state['button'] = True
-                     if dislike:
+                    if dislike:
                         # Initialization
                         if 'preference' not in st.session_state:
                             st.session_state['preference'] = 'dislike'
-            
+
             if 'button' in st.session_state:
                 st.empty()
                 st.write(st.session_state['preference'])
