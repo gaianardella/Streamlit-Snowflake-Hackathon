@@ -523,6 +523,7 @@ if __name__ == '__main__':
         # Display the sidebar menu
         while True:
             selected = sidebar()
+            st.write(selected)
             if selected == "Home":
                 home()
             elif selected == "Upload Clothes":
