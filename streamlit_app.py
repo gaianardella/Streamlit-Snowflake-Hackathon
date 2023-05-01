@@ -233,8 +233,20 @@ if 'login' in st.session_state:
         with col3:
             col4, col5 = st.columns(2)
             with col4:
-                for i in range(25):
-                    st.write("")
+#                 for i in range(25):
+#                     st.write("")
+                # Set the width of the container in pixels
+                container_width = 500 #1512
+
+                # Create a container with the desired width
+                with st.container():
+                    st.write("This is some text that will be displayed inside a container with a width of 500 pixels.")
+
+                # Set the width of the container using CSS
+                st.write(f"""<style>.element-container{{max-width:{container_width}px;}}</style>""", unsafe_allow_html=True)
+
+                # Display some more text outside the container
+                st.write("This text is not inside the container and will not be affected by its width.")
                 st.button("Like :thumbsup:", use_container_width=True)
             with col5:
                 st.write("")
