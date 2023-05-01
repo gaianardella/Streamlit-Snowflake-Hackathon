@@ -417,22 +417,33 @@ def login():
                 st.experimental_rerun()
             else:
                 st.error('Invalid username or password')
-    else:
+     if 'login' in st.session_state:
         st.empty()
+        # Display the sidebar menu
+        """Displays the sidebar menu"""
+        with st.sidebar:
+            option_icons = {
+                "Home": "house",
+                "Upload Clothes": "box-arrow-in-up",
+                "Pick me an outfit": "palette-fill",
+                "Give me some stats": "bar-chart-fill",
+                "Settings": "gear"
+            }
+            selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key="sidebar")
+            return selected
 
-def sidebar():
-    """Displays the sidebar menu"""
-    with st.sidebar:
-        option_icons = {
-            "Home": "house",
-            "Upload Clothes": "box-arrow-in-up",
-            "Pick me an outfit": "palette-fill",
-            "Give me some stats": "bar-chart-fill",
-            "Settings": "gear"
-        }
-        selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key="sidebar")
-        st.write(selected)
-        return selected
+# def sidebar():
+#     """Displays the sidebar menu"""
+#     with st.sidebar:
+#         option_icons = {
+#             "Home": "house",
+#             "Upload Clothes": "box-arrow-in-up",
+#             "Pick me an outfit": "palette-fill",
+#             "Give me some stats": "bar-chart-fill",
+#             "Settings": "gear"
+#         }
+#         selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key="sidebar")
+#         return selected
 
 def home():
     """Displays the Home page"""
@@ -513,25 +524,30 @@ if __name__ == '__main__':
     session = connect_to_snowflake()
 
     # Log in the user
-    login()
+#     login()
+    selected = login()
+    if selected == "Home":
+        home()
+    elif selected == "Upload Clothes":
+        upload_clothes()
 
-    # If login is successful, display the sidebar menu
-    if 'login' in st.session_state and st.session_state['login']:
-        # Set page config
-#         st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
+#     # If login is successful, display the sidebar menu
+#     if 'login' in st.session_state and st.session_state['login']:
+#         # Set page config
+# #         st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
 
-        # Display the sidebar menu
-        while True:
-            selected = sidebar()
-            if selected == "Home":
-                home()
-            elif selected == "Upload Clothes":
-                upload_clothes()
-#             elif selected == "Pick me an outfit":
-#                 pick_outfit()
-#             elif selected == "Give me some stats":
-#                 stats()
-#             elif selected == "Settings":
-#                 settings()
+#         # Display the sidebar menu
+#         while True:
+#             selected = sidebar()
+#             if selected == "Home":
+#                 home()
+#             elif selected == "Upload Clothes":
+#                 upload_clothes()
+# #             elif selected == "Pick me an outfit":
+# #                 pick_outfit()
+# #             elif selected == "Give me some stats":
+# #                 stats()
+# #             elif selected == "Settings":
+# #                 settings()
 
             
