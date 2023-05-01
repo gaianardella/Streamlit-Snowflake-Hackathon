@@ -228,8 +228,8 @@ if 'login' in st.session_state:
 
       
         with col3:
-            col4, col5, col6, col7 = st.columns(4)
-            with col5:
+            col4, col5 = st.columns(2)
+            with col4:
                 st.write("")
                 st.write("")
                 st.write("")
@@ -239,7 +239,7 @@ if 'login' in st.session_state:
                 st.write("")
                 st.write("")
                 st.button("Like :thumbsup:", use_container_width=True)
-            with col6:
+            with col5:
                 st.write("")
                 st.write("")
                 st.write("")
