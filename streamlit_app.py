@@ -228,6 +228,9 @@ if 'login' in st.session_state:
 
       
         with col3:
+            st.button("Like")
+            st.button("Dislike")
+            st.stop()
             var=-1
             # if st.button("I don't like it", key="dislike"):
             #     show_generate=True
