@@ -232,64 +232,71 @@ if 'login' in st.session_state:
             with col4:
                 for i in range(16):
                     st.write("")
-                st.button("Like :thumbsup:", use_container_width=True)
+                like = st.button("Like :thumbsup:", use_container_width=True)
+#                 if like:
+#                     st.write("Preference saved")
             with col5:
                 for j in range(16):
                     st.write("")
-                st.button("Dislike :thumbsdown:", use_container_width=True)
+                dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
+#                 if disklike 
                 st.stop()
-            var=-1
-            # if st.button("I don't like it", key="dislike"):
-            #     show_generate=True
-            # if st.button("I like it", key="like"):
-            #     show_generate=False
+            if like:
+                st.empty()
+                st.write("Preference saved")
+            
+#             var=-1
+#             # if st.button("I don't like it", key="dislike"):
+#             #     show_generate=True
+#             # if st.button("I like it", key="like"):
+#             #     show_generate=False
 
-            st.markdown("""
-                <style>
-                    div.stButton > button:first-child {
-                        text-align:center;
-                        background-color: #FF6347;
-                        padding-left: 20px;
-                        padding-right: 20px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        height: 100%; /* set the height of the container to 100% */
-                    }
-                </style>
-            """, unsafe_allow_html=True)
-            st.write("")
-            st.write("")
-            st.write("")
-            st.write("")
-            st.write("")
-            st.write("")
-            st.write("")
-            st.write("")
-            if st.button("Disike"):
-                var = 0
+#             st.markdown("""
+#                 <style>
+#                     div.stButton > button:first-child {
+#                         text-align:center;
+#                         background-color: #FF6347;
+#                         padding-left: 20px;
+#                         padding-right: 20px;
+#                         display: flex;
+#                         align-items: center;
+#                         justify-content: center;
+#                         height: 100%; /* set the height of the container to 100% */
+#                     }
+#                 </style>
+#             """, unsafe_allow_html=True)
+#             st.write("")
+#             st.write("")
+#             st.write("")
+#             st.write("")
+#             st.write("")
+#             st.write("")
+#             st.write("")
+#             st.write("")
+#             if st.button("Disike"):
+#                 var = 0
 
-            st.markdown("""
-                <style>
-                    div.stButton > button:first-child {
-                        text-align:center;
-                        background-color: #00FF00;
-                        padding-left: 20px;
-                        padding-right: 20px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        height: 100%; /* set the height of the container to 100% */
-                    }
-                </style>
-            """, unsafe_allow_html=True)
-            if st.button("Like"):
-                var = 1
+#             st.markdown("""
+#                 <style>
+#                     div.stButton > button:first-child {
+#                         text-align:center;
+#                         background-color: #00FF00;
+#                         padding-left: 20px;
+#                         padding-right: 20px;
+#                         display: flex;
+#                         align-items: center;
+#                         justify-content: center;
+#                         height: 100%; /* set the height of the container to 100% */
+#                     }
+#                 </style>
+#             """, unsafe_allow_html=True)
+#             if st.button("Like"):
+#                 var = 1
         
-        if var==1:
-            st.write("Cool!")
-        elif var == 0:
-            st.write("generate again")
+#         if var==1:
+#             st.write("Cool!")
+#         elif var == 0:
+#             st.write("generate again")
             
 
      
