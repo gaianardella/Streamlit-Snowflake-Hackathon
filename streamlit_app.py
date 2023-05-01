@@ -282,12 +282,12 @@ def generate_outfit(temperature, flag_top, flag_bottom):
                         st.session_state['button'] = True
                         st.session_state['preference'] = -1
         
-        placeholder_like.empty()
-        placeholder_dislike.empty()
+        
 
         if 'button' in st.session_state:
 #             placeholder_like.empty()
 #             placeholder_dislike.empty()
+            st.empty()
 
             col6, col7, col8 = st.columns(3)
 
