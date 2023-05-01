@@ -230,11 +230,11 @@ if 'login' in st.session_state:
         with col3:
             col4, col5 = st.columns(2)
             with col4:
-                for i in range(18):
+                for i in range(16):
                     st.write("")
                 st.button("Like :thumbsup:", use_container_width=True)
             with col5:
-                for j in range(18):
+                for j in range(16):
                     st.write("")
                 st.button("Dislike :thumbsdown:", use_container_width=True)
                 st.stop()
