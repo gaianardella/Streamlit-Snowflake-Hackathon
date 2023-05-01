@@ -172,12 +172,22 @@ def generate_bottom(cnx, bottom_type):
 def generate_outfit(flag_top, flag_bottom):
     st.title("Generate an outfit")
     st.subheader("This is the Pick me an outfit page.")
-    temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
+#     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
 
-    if temperature == 'Hot':
+#     if temperature == 'Hot':
+#         top_type = 'T-Shirt'
+#         bottom_type = 'Shorts'
+#     else:
+#         top_type = 'Sweater'
+#         bottom_type = 'Trousers'
+     hot = st.button("Hot")
+     cold = st.button("Cold")
+     
+     if hot:
         top_type = 'T-Shirt'
         bottom_type = 'Shorts'
-    else:
+            
+     if cold:
         top_type = 'Sweater'
         bottom_type = 'Trousers'
     
