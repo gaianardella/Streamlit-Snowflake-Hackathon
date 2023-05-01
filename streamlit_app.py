@@ -270,7 +270,17 @@ if 'login' in st.session_state:
                 placeholder_dislike.empty()
                 col6, col7, col8 = st.columns(3)
                 with col6:
-                    st.session_state.preference
+                    if st.session_state.preference == -1:
+                        top = st.button("Generate Top", use_container_width=True)
+                with col7:
+                    if st.session_state.preference == 1:
+                        st.success("Preference saved!")
+                    elif st.session_state.preference == -1:
+                        bottom = st.button("Generate Bottom", use_container_width=True)
+                with col8:
+                    if st.session_state.preference == -1:
+                        outfit = st.button("Generate Outfit", use_container_width=True)
+                        
 #                 if st.session_state.preference == 1:
 #                     with col7:
 #                         st.success("Preference saved!")
