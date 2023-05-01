@@ -238,7 +238,7 @@ if 'login' in st.session_state:
                 st.write("")
                 st.write("")
                 st.write("")
-                st.button("Like")
+                st.button("Like :thumbsup:")
             with col6:
                 st.write("")
                 st.write("")
@@ -248,7 +248,7 @@ if 'login' in st.session_state:
                 st.write("")
                 st.write("")
                 st.write("")
-                st.button("Dislike")
+                st.button("Dislike :thumbsdown:")
                 st.stop()
             var=-1
             # if st.button("I don't like it", key="dislike"):
