@@ -228,27 +228,27 @@ if 'login' in st.session_state:
 
       
         with col3:
-            if 'buttons' not in st.session_state:
+            if 'like' or 'dislike' not in st.session_state:
                 col4, col5 = st.columns(2)
                 with col4:
                     for i in range(16):
                         st.write("")
                     like = st.button("Like :thumbsup:", use_container_width=True)
-                    if like:
-                        st.empty()
-                        st.write("Preference saved")
-                        st.session_state['buttons'] = True
+                    st.session_state['like'] = True
 
                 with col5:
                     for j in range(16):
                         st.write("")
                     dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
-                    st.session_state['buttons'] = True
+                    st.session_state['dislike'] = True
             
-            if 'buttons' in st.session_state:
+            if 'like' in st.session_state:
                 st.empty()
-#                 col1 = st.columns(1)
-                st.write("Preference saved")
+                col6, col7, col8 = st.columns(3)
+                with col7:
+                    for l in range(16):
+                        st.write("")
+                    st.write("Preference saved")
 
 #             var=-1
 #             # if st.button("I don't like it", key="dislike"):
