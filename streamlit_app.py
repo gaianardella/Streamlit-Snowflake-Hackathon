@@ -228,17 +228,19 @@ if 'login' in st.session_state:
 
       
         with col3:
-            st.write("")
-            st.write("")
-            st.write("")
-            st.write("")
-            st.write("")
-            st.write("")
-            st.write("")
-            st.write("")
-            st.button("Like")
-            st.button("Dislike")
-            st.stop()
+            col4, col5, col6 = st.columns(3)
+            with col5:
+                st.write("")
+                st.write("")
+                st.write("")
+                st.write("")
+                st.write("")
+                st.write("")
+                st.write("")
+                st.write("")
+                st.button("Like")
+                st.button("Dislike")
+                st.stop()
             var=-1
             # if st.button("I don't like it", key="dislike"):
             #     show_generate=True
