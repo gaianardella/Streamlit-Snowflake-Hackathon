@@ -4,11 +4,11 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import uuid
-from io import StringIO
+# from io import StringIO
 from PIL import Image
 import snowflake.connector
 # import base64
-# import io
+import io
 # import os
 from PIL import Image
 import random
