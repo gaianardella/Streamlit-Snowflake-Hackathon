@@ -181,24 +181,21 @@ def generate_outfit(flag_top, flag_bottom):
 #         top_type = 'Sweater'
 #         bottom_type = 'Trousers'
     start_generate=False
-    with st.expander("Choose temperature", expanded=False):
-        colhot,colcold = st.columns(2)
-        with colhot:
-            hot = st.button("Hot")
-        with colcold:
-            cold = st.button("Cold")
-     
-        if hot:
-           st.write("You selected Hot")
-           top_type = 'T-Shirt'
-           bottom_type = 'Shorts'
-           start_generate=True
+#     with st.expander("Choose temperature", expanded=False)
+    hot = st.button("Hot")
+    cold = st.button("Cold")
 
-        if cold:
-           st.write("You selected Cold")
-           top_type = 'Sweater'
-           bottom_type = 'Trousers'
-           start_generate=True
+    if hot:
+       st.write("You selected Hot")
+       top_type = 'T-Shirt'
+       bottom_type = 'Shorts'
+       start_generate=True
+
+    if cold:
+       st.write("You selected Cold")
+       top_type = 'Sweater'
+       bottom_type = 'Trousers'
+       start_generate=True
     
     if start_generate==True:
         col1, col2, col3 = st.columns(3)
