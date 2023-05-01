@@ -259,6 +259,7 @@ if 'login' in st.session_state:
 #                         st.button("Generate again")
 
             if 'button' in st.session_state:
+                st.empty()
                 col6, col7, col8 = st.columns(3)
                 with col6:
                     st.session_state.preference
