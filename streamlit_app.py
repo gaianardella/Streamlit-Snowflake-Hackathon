@@ -242,7 +242,7 @@ if 'login' in st.session_state:
                         if like:
                             st.session_state['button'] = True
                             st.session_state['preference'] = 1
-                            placeholder_like.empty()
+                           
                         # Initialization
 #                         st.session_state['preference'] = not st.session_state.preference
 #                         st.session_state.preference                        
@@ -257,7 +257,7 @@ if 'login' in st.session_state:
                         if dislike:
                             st.session_state['button'] = True
                             st.session_state['preference'] = -1
-                            placeholder_dislike.empty()
+                            
 #                     if dislike:
 # #                         # Initialization
 # #                         if 'preference' not in st.session_state:
@@ -266,6 +266,8 @@ if 'login' in st.session_state:
 
             if 'button' in st.session_state:
 #                 st.empty()
+                placeholder_like.empty()
+                placeholder_dislike.empty()
                 col6, col7, col8 = st.columns(3)
                 with col6:
                     st.session_state.preference
