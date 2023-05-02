@@ -363,7 +363,6 @@ if __name__ == '__main__':
     elif selected == "Pick me an outfit":
         temp=choose_temperature()
         generate_outfit(temp, flag_top=True, flag_bottom=True)
-        home()
     elif selected == "Give me some stats":
         stats()
     elif selected == "Settings":
