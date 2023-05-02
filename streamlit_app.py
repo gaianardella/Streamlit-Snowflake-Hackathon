@@ -218,8 +218,9 @@ def generate_outfit(temperature, flag_top, flag_bottom):
             st.success("Preference saved!")
             cnx = snowflake.connector.connect(**st.secrets["snowflake"])
             with cnx.cursor() as my_cur:
-                my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{item}'")
-                cnx.close()
+                my_cur.execute(f"UPDATE clothes_table SET LIKES = LIKES + 1 WHERE ITEM = '{images[0]}'")
+                my_cur.execute(f"UPDATE clothes_table SET LIKES = LIKES + 1 WHERE ITEM = '{images[1]}'")
+            cnx.close()
 #             home_button=st.button("Return home :arrow_right:", use_container_width=True)
 #             if home_button:
 #                 home()
