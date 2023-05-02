@@ -322,10 +322,21 @@ def stats():
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
         my_cur.execute("SELECT * FROM clothes_table ORDER BY LIKES DESC LIMIT 3")
-
+        
+        rows=my_cur.fetchall()
+        st.write(rows)
         # Print the results
-        for row in my_cur.fetchall():
-            st.write(row)
+#         for row in my_cur.fetchall():
+#             st.write(row)
+#             random_row = my_cur.fetchone()
+#             hex_str = random_row[0].strip('"')
+#             items["items_hex"].append(hex_str)
+#             byte_str = bytes.fromhex(hex_str)
+#             image = Image.open(io.BytesIO(byte_str))
+#             img = np.array(image)
+#             # Check the shape of the image arrays and rotate them if necessary
+#             if img.shape[0] < img.shape[1]:
+#                 img = np.rot90(img, k=3)
     # Close the connection
     cnx.close()
     
