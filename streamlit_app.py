@@ -204,14 +204,14 @@ def generate_outfit(temperature, flag_top, flag_bottom):
 #             generate_top(cnx, top_type)
         if st.session_state.top==True:  #(if st.session_state.top == True)
             img_top=generate_top(top_type)
+            st.image(img_top)
         else:
             st.write("Già generato")
-        st.image(img_top)
         st.write(st.session_state.top)
     with col2:
         bottone_si=st.button("Bottone si")
         if bottone_si:
-            st.session_state.top==False
+            st.session_state.top=False
             st.write("finito")
             st.write(st.session_state.top)
             return
