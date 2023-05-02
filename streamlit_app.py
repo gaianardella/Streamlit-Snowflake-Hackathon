@@ -313,48 +313,27 @@ def generate_outfit(temperature, flag_top, flag_bottom):
 #                         generate_outfit(temperature, flag_top=True, flag_bottom=False)
                         
 
-
-# def generate_outfit(temperature, flag_top, flag_bottom):
-#     st.empty()
-#     if temperature == 'Hot':
-#         top_type = 'T-Shirt'
-#         bottom_type = 'Shorts'
-#     elif temperature == 'Cold':
-#         top_type = 'Sweater'
-#         bottom_type = 'Trousers'
-
-#     # Establish a connection to your Snowflake database
-#     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-#     like=st.button("Like")
-#     dislike=st.button("Generate again")
-#     flag=0
-# #     placeholder = st.empty()
-#     col1, col2, col3 = st.columns(3)
-# #     with placeholder.container():
-#     with col1:
-#         st.header("Top")
-#         generate_top(cnx, top_type)
-
-#     with col2:
-#         st.header("Bottom")
-#         generate_bottom(cnx, bottom_type)
-#     if like:
-#         st.success("Salvato!")
-#     if dislike:          
-#         # Clear all those elements:
-# #         placeholder.empty()
-#         generate_outfit(temperature, flag_top, flag_bottom)
-
     
 def stats():
     st.title("Stats Page")
     st.header("This is the Stats page.")
-    st.write("Your favourite items")
-    st.write("Your least favourite items")
-    st.write("Your favourite outfits")
-    st.write("Your least favourite outfits")
-    st.write("Your favourite colors")
-    st.write("Your least favourite colors")
+    #Ordina sql in base a lke/dislike e scegli i primi 3
+    # Execute the query
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM clothes_table ORDER BY LIKES DESC LIMIT 3")
+
+    # Print the results
+    for row in cur.fetchall():
+        st.write(row)
+    # Close the connection
+    cur.close()
+    conn.close()
+   
+    st.write("Your favourite items: ")
+    st.write("Your least favourite items: ")
+    #controllo colori
+    st.write("Your favourite colors: ")
+    st.write("Your least favourite colors: ")
     
     return
 def settings():
