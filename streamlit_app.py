@@ -324,7 +324,9 @@ def stats():
         my_cur.execute("SELECT * FROM clothes_table ORDER BY LIKES DESC LIMIT 3")
         
         rows=my_cur.fetchall()
-        st.write(rows)
+        for row in rows:
+            id=row[0]
+            st.write(id)
         # Print the results
 #         for row in my_cur.fetchall():
 #             st.write(row)
