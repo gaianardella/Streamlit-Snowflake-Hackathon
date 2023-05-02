@@ -342,16 +342,15 @@ def generate_outfit(temperature, flag_top, flag_bottom):
                 like=st.button("Like")
                 if like:
                     st.success("Salvato!")
-
-        with col2:
-            secondo = st.empty()
-            st.header("Bottom")
-            generate_bottom(cnx, bottom_type)
-            dislike=st.button("Generate again")
-                if dislike:
-                    primo.empty()
-                    secondo.empty()
-                    generate_outfit(temperature, flag_top, flag_bottom)
+            with col2:
+                secondo = st.empty()
+                st.header("Bottom")
+                generate_bottom(cnx, bottom_type)
+                dislike=st.button("Generate again")
+                    if dislike:
+                        primo.empty()
+                        secondo.empty()
+                        generate_outfit(temperature, flag_top, flag_bottom)
 
     
 def stats():
