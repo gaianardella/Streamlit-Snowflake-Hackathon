@@ -242,8 +242,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     with col1:
         st.header("Top")
         if flag_top == True:
-            image_top=generate_top(cnx, top_type)
-            st.image(image_top)
+            generate_top(cnx, top_type)
 
     with col2:
         st.header("Bottom")
