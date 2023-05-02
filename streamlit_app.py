@@ -216,10 +216,10 @@ def generate_outfit(temperature, flag_top, flag_bottom):
         if like:
             st.session_state.top_bottom=False
             st.success("Preference saved!")
-            home_button=st.button("Return home :arrow_right:", use_container_width=True)
-            if home_button:
-                selected == "Home"
-                return selected
+#             home_button=st.button("Return home :arrow_right:", use_container_width=True)
+#             if home_button:
+#                 home()
+            return
             
         dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
         if dislike:
