@@ -157,8 +157,8 @@ def generate_top(cnx, top_type):
         # Check the shape of the image arrays and rotate them if necessary
         if img_top.shape[0] < img_top.shape[1]:
             img_top = np.rot90(img_top, k=3)
-
-        st.image(img_top)
+        return img_top
+#         st.image(img_top)
 
 def generate_bottom(cnx, bottom_type):
     with cnx.cursor() as my_cur:
@@ -172,7 +172,6 @@ def generate_bottom(cnx, bottom_type):
         # Check the shape of the image arrays and rotate them if necessary
         if img_bottom.shape[0] < img_bottom.shape[1]:
             img_bottom = np.rot90(img_bottom, k=3)
-
         st.image(img_bottom)
         
 
@@ -243,7 +242,8 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     with col1:
         st.header("Top")
         if flag_top == True:
-            generate_top(cnx, top_type)
+            image_top=generate_top(cnx, top_type)
+            st.image(image_top)
 
     with col2:
         st.header("Bottom")
