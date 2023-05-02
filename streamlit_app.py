@@ -330,7 +330,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     # Establish a connection to your Snowflake database
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
   
-    placeholder = st.empty
+    placeholder = st.empty()
     with placeholder:
         col1, col2 = st.columns(2)
 
