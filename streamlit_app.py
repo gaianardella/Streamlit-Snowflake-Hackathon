@@ -206,7 +206,8 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     
     with col1:
         st.header("Top")
-        st.image(images[items_bytes][0])
+#         st.image(images[items_bytes][0])
+        st.write(images)
     with col2:
         st.header("Bottom")
 #         st.image(images[items_bytes][1])
