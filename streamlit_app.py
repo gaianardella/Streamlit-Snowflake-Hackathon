@@ -145,7 +145,7 @@ def choose_temperature():
     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
     return temperature
 
-@st.cache
+@st.cache_data
 def generate_top(top_type):
     #     # Establish a connection to your Snowflake database
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
