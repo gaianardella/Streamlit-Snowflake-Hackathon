@@ -308,7 +308,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
                     if bottom:
                         for key in st.session_state.keys():
                             st.write(st.session_state[key])
-                            if key=="button":
+                            if key=="button" or key=="preference":
                                 del st.session_state[key]
                             st.write(st.session_state[key])
                         generate_outfit(temperature, flag_top=False, flag_bottom=True)
