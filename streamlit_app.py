@@ -147,6 +147,8 @@ def choose_temperature():
     
                 
 def generate_top(cnx, top_type):
+    #     # Establish a connection to your Snowflake database
+    cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
         my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{top_type}'")
         random_row = my_cur.fetchone()
@@ -161,6 +163,8 @@ def generate_top(cnx, top_type):
         st.image(img_top)
 
 def generate_bottom(cnx, bottom_type):
+    #     # Establish a connection to your Snowflake database
+    cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
         my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{bottom_type}'")
         random_row = my_cur.fetchone()
@@ -224,12 +228,6 @@ def generate_bottom(cnx, bottom_type):
 
 #     else:
 #         st.error("Select only one item")
-
-
-
-def callback():
-    st.session_state['button'] = True
-    st.session_state['preference'] = 1
     
 
 
@@ -243,19 +241,22 @@ def generate_outfit(temperature, flag_top, flag_bottom):
         
     col1, col2, col3 = st.columns(3)
 
-    # Establish a connection to your Snowflake database
-    cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+#     # Establish a connection to your Snowflake database
+#     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 
     with col1:
         st.header("Top")
         if flag_top == True:
-            generate_top(cnx, top_type)
+#             generate_top(cnx, top_type)
+            generate_top(top_type)
+        st.image(img_hot)
 
     with col2:
         st.header("Bottom")
         if flag_bottom == True:
-            generate_bottom(cnx, bottom_type)
-    
+#             generate_bottom(cnx, bottom_type)
+            img_bottom=generate_bottom(cnx, bottom_type)
+        st.image(img_bottom)
     with col3:
         for i in range(15):
             st.write("")
@@ -274,9 +275,9 @@ def generate_outfit(temperature, flag_top, flag_bottom):
                 placeholder_like = st.empty()
                 with placeholder_like:
                     like = st.button("Like :thumbsup:", use_container_width=True, on_click=callback())
-#                     if like:
-#                         st.session_state['button'] = True
-#                         st.session_state['preference'] = 1
+                    if like:
+                        st.session_state['button'] = True
+                        st.session_state['preference'] = 1
 
             with col5:
 #                 for j in range(16):
@@ -360,6 +361,15 @@ def generate_outfit(temperature, flag_top, flag_bottom):
 
     
 def stats():
+    st.title("Stats Page")
+    st.header("This is the Stats page.")
+    st.write("Your favourite items")
+    st.write("Your least favourite items")
+    st.write("Your favourite outfits")
+    st.write("Your least favourite outfits")
+    st.write("Your favourite colors")
+    st.write("Your least favourite colors")
+    
     return
 def settings():
     return
