@@ -219,7 +219,6 @@ def generate_outfit(temperature, flag_top, flag_bottom):
 #             home_button=st.button("Return home :arrow_right:", use_container_width=True)
 #             if home_button:
 #                 home()
-            return
             
         dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
         if dislike:
