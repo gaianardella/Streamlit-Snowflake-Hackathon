@@ -210,6 +210,8 @@ def generate_outfit(temperature, flag_top, flag_bottom):
         st.header("Bottom")
         st.image(images[1])
     with col3:
+        for i in range(16):
+            st.write("")
         like = st.button("Like :thumbsup:", use_container_width=True)
         if like:
             st.session_state.top_bottom=False
