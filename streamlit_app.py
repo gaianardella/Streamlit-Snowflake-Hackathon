@@ -155,8 +155,8 @@ def generate_top_bottom(top_type,bottom_type):
         for item in items_strings:
             my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{item}'")
             random_row = my_cur.fetchone()
-            items["items_hex"].append(random_row[0])
             hex_str = random_row[0].strip('"')
+            items["items_hex"].append(hex_str)
             byte_str = bytes.fromhex(hex_str)
             image = Image.open(io.BytesIO(byte_str))
             img = np.array(image)
