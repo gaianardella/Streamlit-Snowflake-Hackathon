@@ -329,27 +329,26 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     
     # Establish a connection to your Snowflake database
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-    with st.container:
-     
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            st.header("Top")
-            if flag_top == True:
-                generate_top(cnx, top_type)
-            like = st.button("Like :thumbsup:", use_container_width=True)
-            if like:
-                st.succes("Preference saved!")
+  
+    col1, col2 = st.columns(2)
 
-        with col2:
-            st.header("Bottom")
-            if flag_bottom == True:
-                generate_bottom(cnx, bottom_type)
-            dislike = st.button("Generate again :thumbsdown:", use_container_width=True)
-            if dislike:
-                generate_outfit(temperature, flag_top, flag_bottom)
-                
-        
+    with col1:
+        st.header("Top")
+        if flag_top == True:
+            generate_top(cnx, top_type)
+        like = st.button("Like :thumbsup:", use_container_width=True)
+        if like:
+            st.succes("Preference saved!")
+
+    with col2:
+        st.header("Bottom")
+        if flag_bottom == True:
+            generate_bottom(cnx, bottom_type)
+        dislike = st.button("Generate again :thumbsdown:", use_container_width=True)
+        if dislike:
+            generate_outfit(temperature, flag_top, flag_bottom)
+
+
         
         
     
