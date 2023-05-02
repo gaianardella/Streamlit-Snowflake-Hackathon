@@ -149,7 +149,7 @@ def choose_temperature():
 def generate_top_bottom(top_type,bottom_type):
     #     # Establish a connection to your Snowflake database
     items_strings=[top_type,bottom_type]
-    items={items_hex:[], items_bytes=[]}
+    items={items_hex:[], items_bytes:[]}
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
         for item in items_strings:
