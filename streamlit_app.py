@@ -218,7 +218,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
             st.success("Preference saved!")
             home_button=st.button("Return home :arrow_right:", use_container_width=True)
             if home_button:
-                home()
+                return
             
         dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
         if dislike:
@@ -363,6 +363,7 @@ if __name__ == '__main__':
     elif selected == "Pick me an outfit":
         temp=choose_temperature()
         generate_outfit(temp, flag_top=True, flag_bottom=True)
+        home()
     elif selected == "Give me some stats":
         stats()
     elif selected == "Settings":
