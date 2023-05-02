@@ -145,7 +145,7 @@ def choose_temperature():
     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
     return temperature
 
-@st.cache_data
+@st.cache_resource
 def generate_top(top_type):
     #     # Establish a connection to your Snowflake database
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
@@ -219,7 +219,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
         bottone_no=st.button("Bottone no")
         if bottone_no:
             st.write(st.session_state.top)
-            st.cache_data.clear()
+            st.cache_resource.clear()
             img_top=generate_outfit(temperature,flag_top=True,flag_bottom=True)
 #             st.image(img_top)
             
