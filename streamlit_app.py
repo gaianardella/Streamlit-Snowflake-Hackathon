@@ -144,7 +144,8 @@ def choose_temperature():
     st.subheader("This is the Pick me an outfit page.")
     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
     return temperature
-    
+
+@st.cache
 def generate_top(top_type):
     #     # Establish a connection to your Snowflake database
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
