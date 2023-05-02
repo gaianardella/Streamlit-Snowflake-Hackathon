@@ -387,5 +387,5 @@ if __name__ == '__main__':
 # #             elif selected == "Settings":
 # #                 settings()
 
-# cnx.close()
+#MANCANO: ALGORITMO COLORI, STATISTICHE, RENDERE BELLA L'APP, CREA USER, DATABASE UTENTI, 
             
