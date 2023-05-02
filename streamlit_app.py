@@ -348,9 +348,9 @@ def generate_outfit(temperature, flag_top, flag_bottom):
                 generate_bottom(cnx, bottom_type)
                 dislike=st.button("Generate again")
                 if dislike:
-                    primo.empty()
-                    secondo.empty()
-                    generate_outfit(temperature, flag_top, flag_bottom)
+#                     primo.empty()
+#                     secondo.empty()
+#                     generate_outfit(temperature, flag_top, flag_bottom)
 
     
 def stats():
