@@ -221,7 +221,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
             st.write(st.session_state.top)
             st.cache_data.clear()
             img_top=generate_outfit(temperature,flag_top=True,flag_bottom=True)
-            st.image(img_top)
+#             st.image(img_top)
             
             
 
