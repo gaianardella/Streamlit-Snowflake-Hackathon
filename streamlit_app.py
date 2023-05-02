@@ -220,7 +220,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
         if bottone_no:
             st.write(st.session_state.top)
             st.cache_resource.clear()
-            img_top=generate_outfit(temperature,flag_top=True,flag_bottom=True)
+#             img_top=generate_outfit(temperature,flag_top=True,flag_bottom=True)
 #             st.image(img_top)
             
             
