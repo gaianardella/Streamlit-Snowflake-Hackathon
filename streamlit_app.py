@@ -202,8 +202,10 @@ def generate_outfit(temperature, flag_top, flag_bottom):
         st.header("Top")
 #         if flag_top == True:  
 #             generate_top(cnx, top_type)
-        if st.session_state.top:  #(if st.session_state.top == True)
+        if st.session_state.top==True:  #(if st.session_state.top == True)
             img_top=generate_top(top_type)
+        else:
+            st.write("Già generato")
         st.image(img_top)
         st.write(st.session_state.top)
     with col2:
