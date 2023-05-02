@@ -149,12 +149,13 @@ def choose_temperature():
 def generate_top_bottom(top_type,bottom_type):
     #     # Establish a connection to your Snowflake database
     items_strings=[top_type,bottom_type]
-    items_bytes=[]
+    items={items_hex:[],items_bytes:[]}
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
         for item in items_strings:
             my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{item}'")
             random_row = my_cur.fetchone()
+            items[items_hex].append(random_row[0])
             hex_str = random_row[0].strip('"')
             byte_str = bytes.fromhex(hex_str)
             image = Image.open(io.BytesIO(byte_str))
@@ -162,9 +163,9 @@ def generate_top_bottom(top_type,bottom_type):
             # Check the shape of the image arrays and rotate them if necessary
             if img.shape[0] < img.shape[1]:
                 img = np.rot90(img, k=3)
-            items_bytes.append(img)
+            items[items_bytes].append(img)
     cnx.close()    
-    return items_bytes
+    return items
 
 # def generate_bottom(bottom_type):
 #     #     # Establish a connection to your Snowflake database
@@ -205,10 +206,10 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     
     with col1:
         st.header("Top")
-        st.image(images[0])
+        st.image(images[items_bytes][0])
     with col2:
         st.header("Bottom")
-        st.image(images[1])
+        st.image(images[items_bytes][1])
     with col3:
         for i in range(16):
             st.write("")
@@ -218,8 +219,8 @@ def generate_outfit(temperature, flag_top, flag_bottom):
             st.success("Preference saved!")
             cnx = snowflake.connector.connect(**st.secrets["snowflake"])
             with cnx.cursor() as my_cur:
-                my_cur.execute(f"UPDATE clothes_table SET LIKES = LIKES + 1 WHERE ITEM = '{images[0]}'")
-                my_cur.execute(f"UPDATE clothes_table SET LIKES = LIKES + 1 WHERE ITEM = '{images[1]}'")
+                my_cur.execute(f"UPDATE clothes_table SET LIKES = LIKES + 1 WHERE ITEM = '{images[items_hex][0]}'")
+                my_cur.execute(f"UPDATE clothes_table SET LIKES = LIKES + 1 WHERE ITEM = '{images[items_hex][1]}'")
             cnx.close()
 #             home_button=st.button("Return home :arrow_right:", use_container_width=True)
 #             if home_button:
