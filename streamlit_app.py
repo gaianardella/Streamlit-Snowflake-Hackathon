@@ -219,6 +219,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
             return
         dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
         if dislike:
+            st.spinner(text="In progress...")
             st.cache_resource.clear()
             
             
