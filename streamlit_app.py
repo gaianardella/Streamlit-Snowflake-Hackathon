@@ -200,14 +200,13 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     if st.session_state.top_bottom==True:  #(if st.session_state.top == True)
         #lista [top,bottom]
         images=generate_top_bottom(top_type,bottom_type)    
-        st.write(images)
             
         
     col1, col2, col3 = st.columns(3)
     
     with col1:
         st.header("Top")
-#         st.image(images[items_bytes][0])
+        st.image(images[items_bytes][0])
     with col2:
         st.header("Bottom")
 #         st.image(images[items_bytes][1])
