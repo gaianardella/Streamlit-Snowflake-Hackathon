@@ -121,7 +121,7 @@ def upload_clothes():
             if len(item_selected) == 1 and len(colors_selected) > 0:
                 st.success("Photo Uploaded")
                 # Write image data in Snowflake table
-                df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex], "TYPE": [item_selected[0]], "COLORS": [np.array(colors_selected)]})
+                df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex], "TYPE": [item_selected[0]], "COLORS": [np.array(colors_selected)], "LIKES":[0], "DISLIKES":[0]})
                 session.write_pandas(df, "CLOTHES_TABLE")
                 # Prepare a SQL query to insert the photo data and colors into the appropriate table
                 # Use a dynamic SQL query to generate the appropriate number of columns based on the length of the colors_selected list
@@ -216,6 +216,10 @@ def generate_outfit(temperature, flag_top, flag_bottom):
         if like:
             st.session_state.top_bottom=False
             st.success("Preference saved!")
+            cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+            with cnx.cursor() as my_cur:
+                my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{item}'")
+                cnx.close()
 #             home_button=st.button("Return home :arrow_right:", use_container_width=True)
 #             if home_button:
 #                 home()
@@ -387,5 +391,5 @@ if __name__ == '__main__':
 # #             elif selected == "Settings":
 # #                 settings()
 
-#MANCANO: ALGORITMO COLORI, STATISTICHE, RENDERE BELLA L'APP, CREA USER, DATABASE UTENTI, 
+#MANCANO: ALGORITMO COLORI, STATISTICHE, RENDERE BELLA L'APP, CREA USER, DATABASE UTENTI, GLI ITEM DEVONO ESSERE ASSOCIATI AGLI UTENTI, PAGINA DI ELIMINAZIONE ITEM (con checkbox per selezione)
             
