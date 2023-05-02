@@ -146,39 +146,42 @@ def choose_temperature():
     return temperature
 
 @st.cache_resource
-def generate_top(top_type):
+def generate_top_bottom(top_type,bottom_type):
     #     # Establish a connection to your Snowflake database
+    items_strings=[top_type,bottom_type]
+    items_bytes=[]
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
-        my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{top_type}'")
-        random_row = my_cur.fetchone()
-        hex_str = random_row[0].strip('"')
-        byte_str = bytes.fromhex(hex_str)
-        image = Image.open(io.BytesIO(byte_str))
-        img_top = np.array(image)
+        for item in items_strings:
+            my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{item}'")
+            random_row = my_cur.fetchone()
+            hex_str = random_row[0].strip('"')
+            byte_str = bytes.fromhex(hex_str)
+            image = Image.open(io.BytesIO(byte_str))
+            img = np.array(image)
+            # Check the shape of the image arrays and rotate them if necessary
+            if img.shape[0] < img.shape[1]:
+                img = np.rot90(img, k=3)
+            items_bytes.append(img)
+    cnx.close()    
+    return items_bytes
 
-        # Check the shape of the image arrays and rotate them if necessary
-        if img_top.shape[0] < img_top.shape[1]:
-            img_top = np.rot90(img_top, k=3)
-#         st.image(img_top)
-        return img_top
+# def generate_bottom(bottom_type):
+#     #     # Establish a connection to your Snowflake database
+#     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+#     with cnx.cursor() as my_cur:
+#         my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{bottom_type}'")
+#         random_row = my_cur.fetchone()
+#         hex_str = random_row[0].strip('"')
+#         byte_str = bytes.fromhex(hex_str)
+#         image = Image.open(io.BytesIO(byte_str))
+#         img_bottom = np.array(image)
 
-def generate_bottom(bottom_type):
-    #     # Establish a connection to your Snowflake database
-    cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-    with cnx.cursor() as my_cur:
-        my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{bottom_type}'")
-        random_row = my_cur.fetchone()
-        hex_str = random_row[0].strip('"')
-        byte_str = bytes.fromhex(hex_str)
-        image = Image.open(io.BytesIO(byte_str))
-        img_bottom = np.array(image)
-
-        # Check the shape of the image arrays and rotate them if necessary
-        if img_bottom.shape[0] < img_bottom.shape[1]:
-            img_bottom = np.rot90(img_bottom, k=3)
-#         st.image(img_bottom)
-        return img_bottom
+#         # Check the shape of the image arrays and rotate them if necessary
+#         if img_bottom.shape[0] < img_bottom.shape[1]:
+#             img_bottom = np.rot90(img_bottom, k=3)
+# #         st.image(img_bottom)
+#         return img_bottom
         
 
 
@@ -190,38 +193,31 @@ def generate_outfit(temperature, flag_top, flag_bottom):
         top_type = 'Sweater'
         bottom_type = 'Trousers'
         
-    if 'top' not in st.session_state:
-            st.session_state.top = True
+    if 'top_bottom' not in st.session_state:
+            st.session_state.top_bottom = True
+    #devo ancora generare
+    if st.session_state.top_bottom==True:  #(if st.session_state.top == True)
+        #lista [top,bottom]
+        images=generate_top_bottom(top_type,bottom_type)    
+            
         
     col1, col2, col3 = st.columns(3)
     
-
-#     # Establish a connection to your Snowflake database
-#     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-
     with col1:
         st.header("Top")
-#         if flag_top == True:  
-#             generate_top(cnx, top_type)
-        if st.session_state.top==True:  #(if st.session_state.top == True)
-            img_top=generate_top(top_type)
-            st.image(img_top)
-        else:
-            st.write("Già generato")
-        st.write(st.session_state.top)
+            st.image(images[0])
     with col2:
-        bottone_si=st.button("Bottone si")
-        if bottone_si:
-            st.session_state.top=False
-            st.write("finito")
-            st.write(st.session_state.top)
+        st.header("Bottom")
+            st.image(images[1])
+    with col3:
+        like = st.button("Like :thumbsup:", use_container_width=True, on_click=callback())
+        if like:
+            st.session_state.top_bottom=False
+            st.success("Preference saved!")
             return
-        bottone_no=st.button("Bottone no")
-        if bottone_no:
-            st.write(st.session_state.top)
+        dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
+        if dislike:
             st.cache_resource.clear()
-#             img_top=generate_outfit(temperature,flag_top=True,flag_bottom=True)
-#             st.image(img_top)
             
             
 
