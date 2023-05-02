@@ -319,16 +319,16 @@ def stats():
     st.header("This is the Stats page.")
     #Ordina sql in base a lke/dislike e scegli i primi 3
     # Execute the query
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM clothes_table ORDER BY LIKES DESC LIMIT 3")
+    cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+    with cnx.cursor() as my_cur:
+        my_cur.execute("SELECT * FROM clothes_table ORDER BY LIKES DESC LIMIT 3")
 
-    # Print the results
-    for row in cur.fetchall():
-        st.write(row)
+        # Print the results
+        for row in my_cur.fetchall():
+            st.write(row)
     # Close the connection
-    cur.close()
-    conn.close()
-   
+    cnx.close()
+    
     st.write("Your favourite items: ")
     st.write("Your least favourite items: ")
     #controllo colori
