@@ -321,6 +321,7 @@ def generate_bottom(cnx, bottom_type):
 
 
 def generate_outfit(temperature, flag_top, flag_bottom):
+    st.empty()
     if temperature == 'Hot':
         top_type = 'T-Shirt'
         bottom_type = 'Shorts'
@@ -333,21 +334,21 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     like=st.button("Like")
     dislike=st.button("Generate again")
     flag=0
-    placeholder = st.empty()
+#     placeholder = st.empty()
     col1, col2, col3 = st.columns(3)
-    with placeholder.container():
-        with col1:
-            st.header("Top")
-            generate_top(cnx, top_type)
-                
-        with col2:
-            st.header("Bottom")
-            generate_bottom(cnx, bottom_type
+#     with placeholder.container():
+    with col1:
+        st.header("Top")
+        generate_top(cnx, top_type)
+
+    with col2:
+        st.header("Bottom")
+        generate_bottom(cnx, bottom_type)
     if like:
         st.success("Salvato!")
     if dislike:          
         # Clear all those elements:
-        placeholder.empty()
+#         placeholder.empty()
         generate_outfit(temperature, flag_top, flag_bottom)
 
     
