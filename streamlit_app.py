@@ -205,10 +205,10 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     
     with col1:
         st.header("Top")
-            st.image(images[0])
+        st.image(images[0])
     with col2:
         st.header("Bottom")
-            st.image(images[1])
+        st.image(images[1])
     with col3:
         like = st.button("Like :thumbsup:", use_container_width=True, on_click=callback())
         if like:
