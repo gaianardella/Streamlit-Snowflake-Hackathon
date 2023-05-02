@@ -333,6 +333,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     
     bottone=st.button("Submit")
     placeholder = st.empty()
+    flag=0
     if bottone:
         col1, col2, col3 = st.columns(3)
         with placeholder.container():
@@ -346,10 +347,12 @@ def generate_outfit(temperature, flag_top, flag_bottom):
                 st.header("Bottom")
                 generate_bottom(cnx, bottom_type)
                 dislike=st.button("Generate again")
-    #                 if dislike:
-#                     primo.empty()
-#                     secondo.empty()
-#                     generate_outfit(temperature, flag_top, flag_bottom)
+                if dislike:
+                    flag=-1
+        if flag ==-1:            
+            # Clear all those elements:
+            placeholder.empty()
+            generate_outfit(temperature, flag_top, flag_bottom)
 
     
 def stats():
