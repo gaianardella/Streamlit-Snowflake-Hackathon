@@ -337,18 +337,15 @@ def generate_outfit(temperature, flag_top, flag_bottom):
         col1, col2, col3 = st.columns(3)
         with placeholder.container():
             with col1:
-                primo = st.empty()
-                with primo:
-                    st.header("Top")
-                    generate_top(cnx, top_type)
-                    like=st.button("Like")
-                    if like:
-                        st.success("Salvato!")
-                with col2:
-                    secondo = st.empty()
-                    st.header("Bottom")
-                    generate_bottom(cnx, bottom_type)
-                    dislike=st.button("Generate again")
+                st.header("Top")
+                generate_top(cnx, top_type)
+                like=st.button("Like")
+                if like:
+                    st.success("Salvato!")
+            with col2:
+                st.header("Bottom")
+                generate_bottom(cnx, bottom_type)
+                dislike=st.button("Generate again")
     #                 if dislike:
 #                     primo.empty()
 #                     secondo.empty()
