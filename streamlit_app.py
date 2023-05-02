@@ -200,16 +200,17 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     if st.session_state.top_bottom==True:  #(if st.session_state.top == True)
         #lista [top,bottom]
         images=generate_top_bottom(top_type,bottom_type)    
+        st.write(images)
             
         
     col1, col2, col3 = st.columns(3)
     
     with col1:
         st.header("Top")
-        st.image(images[items_bytes][0])
+#         st.image(images[items_bytes][0])
     with col2:
         st.header("Bottom")
-        st.image(images[items_bytes][1])
+#         st.image(images[items_bytes][1])
     with col3:
         for i in range(16):
             st.write("")
@@ -218,10 +219,10 @@ def generate_outfit(temperature, flag_top, flag_bottom):
             st.session_state.top_bottom=False
             st.success("Preference saved!")
             cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-            with cnx.cursor() as my_cur:
-                my_cur.execute(f"UPDATE clothes_table SET LIKES = LIKES + 1 WHERE ITEM = '{images[items_hex][0]}'")
-                my_cur.execute(f"UPDATE clothes_table SET LIKES = LIKES + 1 WHERE ITEM = '{images[items_hex][1]}'")
-            cnx.close()
+#             with cnx.cursor() as my_cur:
+# #                 my_cur.execute(f"UPDATE clothes_table SET LIKES = LIKES + 1 WHERE ITEM = '{images[items_hex][0]}'")
+# #                 my_cur.execute(f"UPDATE clothes_table SET LIKES = LIKES + 1 WHERE ITEM = '{images[items_hex][1]}'")
+#             cnx.close()
 #             home_button=st.button("Return home :arrow_right:", use_container_width=True)
 #             if home_button:
 #                 home()
