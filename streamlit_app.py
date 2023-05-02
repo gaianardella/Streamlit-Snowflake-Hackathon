@@ -189,26 +189,35 @@ def generate_outfit(temperature, flag_top, flag_bottom):
         top_type = 'Sweater'
         bottom_type = 'Trousers'
         
+    if 'top' not in st.session_state:
+            st.session_state.top = True
+        
     col1, col2, col3 = st.columns(3)
+    
 
 #     # Establish a connection to your Snowflake database
 #     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 
     with col1:
         st.header("Top")
-        if flag_top == True:
+#         if flag_top == True:  
 #             generate_top(cnx, top_type)
+        if st.session_state.top:  #(if st.session_state.top == True)
             img_top=generate_top(top_type)
         st.image(img_top)
+        st.write(st.session_state.top)
     with col2:
         bottone_si=st.button("Bottone si")
-        bottone_no=st.button("Bottone no")
         if bottone_si:
+            st.session_state.top==False
             st.write("finito")
+            st.write(st.session_state.top)
             return
-        elif bottone_no:
-            img_top=generate_outfit(temperature,flag_top=True,flag_bottom=True)
-            st.image(img_top)
+        bottone_no=st.button("Bottone no")
+        if bottone_no:
+            st.write(st.session_state.top)
+#             img_top=generate_outfit(temperature,flag_top=True,flag_bottom=True)
+#             st.image(img_top)
             
             
 
