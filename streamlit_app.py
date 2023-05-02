@@ -226,6 +226,13 @@ def generate_bottom(cnx, bottom_type):
 #         st.error("Select only one item")
 
 
+
+def callback():
+    st.session_state['button'] = True
+    st.session_state['preference'] = 1
+    
+
+
 def generate_outfit(temperature, flag_top, flag_bottom):
     if temperature == 'Hot':
         top_type = 'T-Shirt'
@@ -266,10 +273,10 @@ def generate_outfit(temperature, flag_top, flag_bottom):
 
                 placeholder_like = st.empty()
                 with placeholder_like:
-                    like = st.button("Like :thumbsup:", use_container_width=True)
-                    if like:
-                        st.session_state['button'] = True
-                        st.session_state['preference'] = 1
+                    like = st.button("Like :thumbsup:", use_container_width=True, on_click=callback())
+#                     if like:
+#                         st.session_state['button'] = True
+#                         st.session_state['preference'] = 1
 
             with col5:
 #                 for j in range(16):
