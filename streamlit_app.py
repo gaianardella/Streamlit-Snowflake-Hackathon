@@ -145,8 +145,7 @@ def choose_temperature():
     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
     return temperature
     
-                
-def generate_top(cnx, top_type):
+def generate_top(top_type):
     #     # Establish a connection to your Snowflake database
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
@@ -160,9 +159,10 @@ def generate_top(cnx, top_type):
         # Check the shape of the image arrays and rotate them if necessary
         if img_top.shape[0] < img_top.shape[1]:
             img_top = np.rot90(img_top, k=3)
-        st.image(img_top)
+#         st.image(img_top)
+        return img_top
 
-def generate_bottom(cnx, bottom_type):
+def generate_bottom(bottom_type):
     #     # Establish a connection to your Snowflake database
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
@@ -176,59 +176,9 @@ def generate_bottom(cnx, bottom_type):
         # Check the shape of the image arrays and rotate them if necessary
         if img_bottom.shape[0] < img_bottom.shape[1]:
             img_bottom = np.rot90(img_bottom, k=3)
-        st.image(img_bottom)
+#         st.image(img_bottom)
+        return img_bottom
         
-
-#     st.title("Generate an outfit")
-#     st.subheader("This is the Pick me an outfit page.")
-#     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
-    
-#     if temperature == 'Hot':
-#         top_type = 'T-Shirt'
-#         bottom_type = 'Shorts'
-#     elif temperature == 'Cold':
-#         top_type = 'Sweater'
-#         bottom_type = 'Trousers'
-#     start_generate=False
-#     question = st.empty()
-        
-# #     with st.expander("Choose temperature", expanded=False)
-#         hot = st.button("Hot")
-#         cold = st.button("Cold")
-
-#         if hot:
-#            st.write("You selected Hot")
-#            top_type = 'T-Shirt'
-#            bottom_type = 'Shorts'
-#            start_generate=True
-#            question.empty()
-
-#         if cold:
-#            st.write("You selected Cold")
-#            top_type = 'Sweater'
-#            bottom_type = 'Trousers'
-#            start_generate=True
-#            question.empty()
-    
-#     st.subheader("Pick Temperature")
-#     my_temperatures=["Hot", "Cold"]
-#     show_generate=False
-#     temp_selected = st.multiselect("Pick item:", list(my_temperatures))
-#     if len(temp_selected) == 1:
-#         st.write("You selected: " + temp_selected[0])
-#         show_generate=True
-#         if temp_selected[0] == "Hot":
-#            top_type = 'T-Shirt'
-#            bottom_type = 'Shorts'
-
-#         if temp_selected[0]=="Cold":
-#            top_type = 'Sweater'
-#            bottom_type = 'Trousers'
-           
-
-#     else:
-#         st.error("Select only one item")
-    
 
 
 def generate_outfit(temperature, flag_top, flag_bottom):
@@ -248,68 +198,79 @@ def generate_outfit(temperature, flag_top, flag_bottom):
         st.header("Top")
         if flag_top == True:
 #             generate_top(cnx, top_type)
-            generate_top(top_type)
-        st.image(img_hot)
-
+            img_top=generate_top(top_type)
+        st.image(img_top)
     with col2:
-        st.header("Bottom")
-        if flag_bottom == True:
-#             generate_bottom(cnx, bottom_type)
-            img_bottom=generate_bottom(cnx, bottom_type)
-        st.image(img_bottom)
-    with col3:
-        for i in range(15):
-            st.write("")
-#         placeholder_like = st.empty()
-#         placeholder_dislike = st.empty()
-        if 'preference' not in st.session_state:
-            st.session_state['preference'] = 0
+        bottone_si=st.button("Bottone si")
+        bottone_no=st.button("Bottone no")
+        if bottone_si:
+            st.write("finito")
+            return
+        elif bottone_no:
+            img_top=generate_outfit(temperature,flag_top=True,flag_bottom=True)
+            st.image(img_top)
+            
+            
 
-        if 'button' not in st.session_state:
-            col4, col5 = st.columns(2)
+#     with col2:
+#         st.header("Bottom")
+#         if flag_bottom == True:
+# #             generate_bottom(cnx, bottom_type)
+#             img_bottom=generate_bottom(bottom_type)
+#         st.image(img_bottom)
+#     with col3:
+#         for i in range(15):
+#             st.write("")
+# #         placeholder_like = st.empty()
+# #         placeholder_dislike = st.empty()
+#         if 'preference' not in st.session_state:
+#             st.session_state['preference'] = 0
 
-            with col4:
-#                 for i in range(60):
-#                     st.write("")
+#         if 'button' not in st.session_state:
+#             col4, col5 = st.columns(2)
 
-                placeholder_like = st.empty()
-                with placeholder_like:
-                    like = st.button("Like :thumbsup:", use_container_width=True, on_click=callback())
-                    if like:
-                        st.session_state['button'] = True
-                        st.session_state['preference'] = 1
+#             with col4:
+# #                 for i in range(60):
+# #                     st.write("")
 
-            with col5:
-#                 for j in range(16):
-#                     st.write("")
-
-                placeholder_dislike = st.empty()
-#                 with placeholder_dislike:
-#                     dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
-#                     if dislike:
+#                 placeholder_like = st.empty()
+#                 with placeholder_like:
+#                     like = st.button("Like :thumbsup:", use_container_width=True, on_click=callback())
+#                     if like:
 #                         st.session_state['button'] = True
-#                         st.session_state['preference'] = -1
+#                         st.session_state['preference'] = 1
 
-        if 'button' in st.session_state:
-#             placeholder_like.empty()
-#             placeholder_dislike.empty()
-#             st.empty()
+#             with col5:
+# #                 for j in range(16):
+# #                     st.write("")
 
-            col6, col7, col8 = st.columns(3)
-#             placeholder_like.empty()
-#             placeholder_dislike.empty()
+#                 placeholder_dislike = st.empty()
+# #                 with placeholder_dislike:
+# #                     dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
+# #                     if dislike:
+# #                         st.session_state['button'] = True
+# #                         st.session_state['preference'] = -1
 
-#             with col6:
-#                 if st.session_state.preference == -1:
-#                     top = st.button("Generate Top", use_container_width=True)
-#                     if top:
-#                         for key in st.session_state.keys():
-#                             del st.session_state[key]
-#                         generate_outfit(temperature, flag_top=True, flag_bottom=False)
+#         if 'button' in st.session_state:
+# #             placeholder_like.empty()
+# #             placeholder_dislike.empty()
+# #             st.empty()
 
-            with col7:
-                if st.session_state.preference == 1:
-                    st.success("Preference saved!")
+#             col6, col7, col8 = st.columns(3)
+# #             placeholder_like.empty()
+# #             placeholder_dislike.empty()
+
+# #             with col6:
+# #                 if st.session_state.preference == -1:
+# #                     top = st.button("Generate Top", use_container_width=True)
+# #                     if top:
+# #                         for key in st.session_state.keys():
+# #                             del st.session_state[key]
+# #                         generate_outfit(temperature, flag_top=True, flag_bottom=False)
+
+#             with col7:
+#                 if st.session_state.preference == 1:
+#                     st.success("Preference saved!")
 #                 if st.session_state.preference == -1:
 #                     bottom = st.button("Generate Bottom", use_container_width=True)
 #                     if bottom:
