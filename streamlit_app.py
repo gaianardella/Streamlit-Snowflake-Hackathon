@@ -471,6 +471,7 @@ def delete_clothes():
             with cnx.cursor() as my_cur:
                 for item in checked:
                     my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{item}'")
+                    #non elimina record, controllare item
             cnx.close()
             st.success("Items succesfully deleted")
             st.experimental_rerun()
