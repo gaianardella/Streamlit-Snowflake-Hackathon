@@ -25,8 +25,8 @@ def login():
     CORRECT_PASSWORD = "password"
 
     if 'login' not in st.session_state:
-        st.title("Login Page :closed_lock_with_key:")
-        st.subheader("Enter your credentials to log in")
+        st.title("Welcome to you cloud closet! :cloud:")
+        st.subheader("Enter your credentials to log in :closed_lock_with_key:")
         login_form = st.form(key='login_form')
         username = login_form.text_input(label='**Username**')
         password = login_form.text_input(label='**Password**', type='password')
