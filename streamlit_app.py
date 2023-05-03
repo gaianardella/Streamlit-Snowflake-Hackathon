@@ -367,7 +367,7 @@ def stats():
             st.image(likes[1], width=300)
         with col3:
             st.image(likes[2], width=300)
-        
+    st.divider()
 #     st.write("Your least favourite items: ")
     with st.expander("**Your least favourite items :x: :dress:**", expanded=True):
         col4,col5,col6 = st.columns(3)
@@ -377,8 +377,10 @@ def stats():
             st.image(dislikes[1], width=300)
         with col6:
             st.image(dislikes[2], width=300)
+    st.divider()
     #controllo colori
     st.write("**Your favourite colors :heart: :rainbow:**")
+    st.divider()
     st.write("**Your least favourite colors :x: :rainbow:**")
     # Close the connection
     cnx.close()
