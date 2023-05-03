@@ -465,12 +465,12 @@ def delete_clothes():
                 index=1
             else:
                 index+=1
-        st.write(checked)
         delete = st.button("Delete")
         if delete:
-#             DELETE FROM clothes_table
-# WHERE item = 'your_item_value';
-
+            with cnx.cursor() as my_cur:
+                for item in checked:
+                    my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{item}'")
+            cnx.close()
             st.success("Items succesfully deleted")
             
     
