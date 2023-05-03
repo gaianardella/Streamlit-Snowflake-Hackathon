@@ -355,11 +355,11 @@ def stats():
     with st.expander("Your favourite items:", expanded=True):
         col1,col2,col3 = st.columns(3)
         with col1:
-            st.image(likes[0])
+            st.image(likes[0], width=300)
         with col2:
-            st.image(likes[1])
+            st.image(likes[1], width=300)
         with col3:
-            st.image(likes[2])
+            st.image(likes[2], width=300)
         
 #     st.write("Your least favourite items: ")
     with st.expander("Your least favourite items:", expanded=True):
