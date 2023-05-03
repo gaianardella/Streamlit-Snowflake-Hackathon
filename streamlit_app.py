@@ -218,7 +218,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     with col3:
         for i in range(16):
             st.write("")
-        like = st.button("Like :thumbsup:", use_container_width=True)
+        like = st.button("**Like :thumbsup:**", use_container_width=True)
         if like:
             st.session_state.top_bottom=False
             st.success("Preference saved!")
@@ -231,7 +231,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
 #             if home_button:
 #                 home()
             
-        dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
+        dislike = st.button("**Dislike :thumbsdown:**", use_container_width=True)
         if dislike:
             cnx = snowflake.connector.connect(**st.secrets["snowflake"])
             with cnx.cursor() as my_cur:
