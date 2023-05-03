@@ -429,24 +429,27 @@ def delete_clothes():
                 
     cnx.close()
     col1,col2,col3 = st.columns(3)
+    checked=[]
     with col1:
         index=1
         for item in column:
             if index == 1:
                 st.image(item, width=300)
-                st.checkbox(label="", value=False, key=item)
+                box = st.checkbox(label="", value=False, key=item)
+                if box:
+                    checked.append(item)
             if index ==3:
                 index=1
             else:
                 index+=1
-        
-        #st.checkbox(label
     with col2:
         index=1
         for item in column:
             if index == 2:
                 st.image(item, width=300)
-                st.checkbox(label="", value=False, key=item)
+                box = st.checkbox(label="", value=False, key=item)
+                if box:
+                    checked.append(item)
             if index ==3:
                 index=1
             else:
@@ -457,10 +460,12 @@ def delete_clothes():
             if index == 3:
                 st.image(item, width=300)
                 box = st.checkbox(label="", value=False, key=item)
-                st.write(box)
+                if box:
+                    checked.append(item)
                 index=1
             else:
                 index+=1
+        st.write(checked)
         delete = st.button("Delete")
         if delete:
 #             DELETE FROM clothes_table
