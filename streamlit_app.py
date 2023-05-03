@@ -412,7 +412,7 @@ def delete_clothes():
         
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
-            index=0
+        index=0
         for item in clothes_selected:
             if index ==3:
                 index=0
