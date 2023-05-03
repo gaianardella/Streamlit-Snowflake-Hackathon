@@ -335,9 +335,21 @@ def stats():
             if img.shape[0] < img.shape[1]:
                 img = np.rot90(img, k=3)
             likes.append(img)
-#             st.image(img)
-    # Close the connection
-    cnx.close()
+        
+        my_cur.execute("SELECT * FROM clothes_table ORDER BY LIKES ASC LIMIT 3")
+        dislikes=[]
+        rows=my_cur.fetchall()
+        for row in rows:
+            file=row[1]
+#             st.write(id)
+            hex_str = file.strip('"')
+            byte_str = bytes.fromhex(hex_str)
+            image = Image.open(io.BytesIO(byte_str))
+            img = np.array(image)
+            # Check the shape of the image arrays and rotate them if necessary
+            if img.shape[0] < img.shape[1]:
+                img = np.rot90(img, k=3)
+            dislikes.append(img)
     
     st.write("Your favourite items: ")
     col1,col2,col3 = st.columns(3)
@@ -349,9 +361,18 @@ def stats():
         st.image(likes[2])
         
     st.write("Your least favourite items: ")
+    col4,col5,col6 = st.columns(3)
+    with col4:
+        st.image(dislikes[0])
+    with col5:
+        st.image(dislikes[1])
+    with col6:
+        st.image(dislikes[2])
     #controllo colori
     st.write("Your favourite colors: ")
     st.write("Your least favourite colors: ")
+    # Close the connection
+    cnx.close()
     
     return
 def settings():
