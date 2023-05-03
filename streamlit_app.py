@@ -352,7 +352,7 @@ def stats():
             dislikes.append(img)
     
 #     st.write("Your favourite items: ")
-    with st.expander("Your favourite items:"):
+    with st.expander("Your favourite items:", expanded=True):
         col1,col2,col3 = st.columns(3)
         with col1:
             st.image(likes[0])
@@ -362,7 +362,7 @@ def stats():
             st.image(likes[2])
         
 #     st.write("Your least favourite items: ")
-    with st.expander("Your least favourite items:"):
+    with st.expander("Your least favourite items:", expanded=True):
         col4,col5,col6 = st.columns(3)
         with col4:
             st.image(dislikes[0])
