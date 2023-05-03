@@ -142,7 +142,7 @@ def upload_clothes():
 def choose_temperature():
     st.title("Generate an outfit :dress::necktie:")
     st.subheader("This is the Pick me an outfit page.")
-    temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
+    temperature = st.radio("What's the temperature?", ('Hot :fire:', 'Cold :snowflake:'))
     return temperature
 
 @st.cache_resource
