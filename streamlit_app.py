@@ -404,7 +404,7 @@ def delete_clothes():
             # Add the last color to the string
             clothes_string += ' and ' + clothes_selected[-1]
         else:
-            clothes_string = colors_selected[0]
+            clothes_string = clothes_selected[0]
         # Write color string
         st.write(f"You selected: _{clothes_string}_")
     else:
