@@ -431,14 +431,13 @@ def delete_clothes():
                 if img.shape[0] < img.shape[1]:
                     img = np.rot90(img, k=3)
                 column.append(img)
-    for el in column:
-        st.write(el)
+                
     cnx.close()
     col1,col2,col3 = st.columns(3)
     with col1:
         clothes_1 = column[1]
-        for item in clothes_1:
-            st.image(item, width=300)
+        i=0
+        st.write(len(column))
     with col2:
         clothes_2 = column[2]
         for item in clothes_2:
