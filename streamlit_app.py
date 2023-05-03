@@ -434,7 +434,7 @@ def delete_clothes():
         for item in column:
             if index == 1:
                 st.image(item, width=300)
-                st.checkbox(label="", value=True)
+                st.checkbox(label="", value=False, key=item)
             if index ==3:
                 index=1
             else:
@@ -446,7 +446,7 @@ def delete_clothes():
         for item in column:
             if index == 2:
                 st.image(item, width=300)
-                st.checkbox(label="", value=True)
+                st.checkbox(label="", value=False, key=item)
             if index ==3:
                 index=1
             else:
@@ -456,7 +456,7 @@ def delete_clothes():
         for item in column:
             if index == 3:
                 st.image(item, width=300)
-                st.checkbox(label="", value=True)
+                st.checkbox(label="", value=False, key=item)
                 index=1
             else:
                 index+=1
