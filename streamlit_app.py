@@ -473,7 +473,7 @@ def delete_clothes():
                     my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{item}'")
             cnx.close()
             st.success("Items succesfully deleted")
-#             st.experimental_rerun()
+            st.experimental_rerun()
 #             return
 
 if __name__ == '__main__':
@@ -517,4 +517,3 @@ if __name__ == '__main__':
 
 #MANCANO: ALGORITMO COLORI, STATISTICHE, RENDERE BELLA L'APP, CREA USER, DATABASE UTENTI, GLI ITEM DEVONO ESSERE ASSOCIATI AGLI UTENTI, PAGINA DI ELIMINAZIONE ITEM (con checkbox per selezione)
 #SCONTORNARE IMMAGINI, DIRE IN HOMEPAGE CHE APP E' CONNESSA A STREAMLIT
-            
