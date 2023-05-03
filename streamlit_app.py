@@ -149,6 +149,7 @@ def choose_temperature():
             st.write("**You selected: Hot :fire:**")
         elif temperature == 'Cold':
             st.write("**You selected: Cold :snowflake:**")
+            st.divider()
     return temperature
 
 @st.cache_resource
