@@ -73,9 +73,9 @@ def home():
     st.header("Welcome to your cloud closet! :cloud: :dress:")
     st.subheader(":one: Upload your photos :camera_with_flash:")
     st.write("Upload your clothes photos in the app")
-    st.subheader("2) Generate an outfit :tshirt: :jeans:")
+    st.subheader(":two: Generate an outfit :tshirt: :jeans:")
     st.write("Click to generate an outfit")
-    st.subheader("3) Manage your wardrobe :hammer_and_wrench:")
+    st.subheader(":three: Manage your wardrobe :hammer_and_wrench:")
     st.write("See which clothes you never wear")
 
 def upload_clothes():
