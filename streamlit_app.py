@@ -142,7 +142,8 @@ def upload_clothes():
 def choose_temperature():
     st.title("Generate an outfit :dress::necktie:")
     st.subheader("This is the Pick me an outfit page.")
-    temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
+    with st.expander("**Select Temperature** :fire: :snowflake:", expanded=True)
+        temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
     if temperature == 'Hot':
         st.write("**You selected: Hot :fire:**")
     elif temperature == 'Cold':
