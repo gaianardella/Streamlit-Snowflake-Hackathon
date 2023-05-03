@@ -28,9 +28,9 @@ def login():
         st.title("Login Page")
         st.subheader("Enter your credentials to log in.")
         login_form = st.form(key='login_form')
-        username = login_form.text_input(label='username')
-        password = login_form.text_input(label='password', type='password')
-        submit_button = login_form.form_submit_button(label='submit')
+        username = login_form.text_input(label='**Username**')
+        password = login_form.text_input(label='**Password**', type='password')
+        submit_button = login_form.form_submit_button(label='Submit')
 
         if submit_button:
             if username == CORRECT_USERNAME and password == CORRECT_PASSWORD:
