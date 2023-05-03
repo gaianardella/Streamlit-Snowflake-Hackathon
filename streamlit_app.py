@@ -441,14 +441,22 @@ def delete_clothes():
         
         #st.checkbox(label
     with col2:
-        clothes_2 = column[2]
-        for item in clothes_2:
-            st.image(item, width=300)
+        index=1
+        for item in column:
+            if index == 2:
+                st.image(item)
+            if index ==3:
+                index=1
+            else:
+                index+=1
     with col3:
-        clothes_3 = column[3]
-        for item in clothes_3:
-            st.image(item, width=300)
-        
+        index=1
+        for item in column:
+            if index == 3:
+                st.image(item)
+                index=1
+            else:
+                index+=1
     
     
     return
