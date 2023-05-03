@@ -88,7 +88,7 @@ def upload_clothes():
 #     st.subheader("1) Pick Item")
     item_selected = st.multiselect("**1) Pick Item**", list(my_item_list), ['Sweater'])
     if len(item_selected) == 1:
-        st.write(f"You selected: **{item_selected[0]}**")
+        st.write(f"You selected: _{item_selected[0]}_")
 
     else:
         st.error("Select only one item")
