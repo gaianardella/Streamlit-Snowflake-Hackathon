@@ -86,15 +86,15 @@ def upload_clothes():
     # Let's put a pick list here so they can pick the fruit they want to include
     #vedere se usare st.form()
     st.subheader("1) Pick Item")
-    item_selected = st.multiselect("**Item:**", list(my_item_list), ['Sweater'])
+    item_selected = st.multiselect("", list(my_item_list), ['Sweater'])
     if len(item_selected) == 1:
         st.write("You selected: " + item_selected[0])
 
     else:
         st.error("Select only one item")
                 
-    st.subheader("2) Pick Color")   
-    colors_selected = st.multiselect("**Colors:**", list(my_color_list), ['Blue','Red'])
+    st.subheader("2) Pick Colors")   
+    colors_selected = st.multiselect("", list(my_color_list), ['Blue','Red'])
     if len(colors_selected) > 0:
         if len(colors_selected)>1:
             # Join the colors with commas, except for the last on
