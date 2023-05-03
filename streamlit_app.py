@@ -48,7 +48,8 @@ def login():
                 "Home": "house",
                 "Upload Clothes": "box-arrow-in-up",
                 "Pick me an outfit": "palette-fill",
-                "Give me some stats": "bar-chart-fill",
+#                 "Give me some stats": "bar-chart-fill",
+                "Give me some stats :chart:",
                 "Settings": "gear"
             }
             selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key="sidebar")
