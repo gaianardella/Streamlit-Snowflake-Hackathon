@@ -104,7 +104,7 @@ def upload_clothes():
         else:
             colors_string = colors_selected[0]
         # Write color string
-        st.write("You selected: "+ colors_string)
+        st.write(f"**You selected: {colors_string}**")
     else:
         st.error("Insert Colors")
 
