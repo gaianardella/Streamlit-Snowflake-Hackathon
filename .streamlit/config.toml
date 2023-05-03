@@ -9,7 +9,7 @@
 
 [theme]
 # Custom theme colors
-primaryColor = "#FFFFFF" # White
+primaryColor = "#0B4F6C" # Dark blue
 backgroundColor = "#0B4F6C" # Dark blue
 secondaryBackgroundColor = "#3D84A8" # Light blue
 textColor = "#FFFFFF" # White
