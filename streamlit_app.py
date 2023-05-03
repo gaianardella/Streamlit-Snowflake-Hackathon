@@ -377,7 +377,7 @@ def stats():
             st.image(dislikes[2], width=300)
     #controllo colori
     st.write("**Your favourite colors :heart: :rainbow:**")
-    st.write("Your least favourite colors :x: :rainbow:**")
+    st.write("**Your least favourite colors :x: :rainbow:**")
     # Close the connection
     cnx.close()
     
