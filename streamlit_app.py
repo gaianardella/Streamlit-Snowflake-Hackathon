@@ -474,10 +474,7 @@ def delete_clothes():
             cnx.close()
             st.success("Items succesfully deleted")
             st.experimental_rerun()
-            
-    
-    
-    return
+            return
 
 if __name__ == '__main__':
     # Connect to Snowflake
