@@ -86,7 +86,7 @@ def upload_clothes():
     # Let's put a pick list here so they can pick the fruit they want to include
     #vedere se usare st.form()
 #     st.subheader("1) Pick Item")
-    item_selected = st.multiselect("**1) Pick Item**", list(my_item_list), ['Sweater'])
+    item_selected = st.multiselect("**1) Pick Item :womans_clothes: :shorts:**", list(my_item_list), ['Sweater'])
     if len(item_selected) == 1:
         st.write(f"You selected: _{item_selected[0]}_") #inserire icona vestito
 
@@ -94,7 +94,7 @@ def upload_clothes():
         st.error("Select only one item")
                 
 #     st.subheader("2) Pick Colors")   
-    colors_selected = st.multiselect("**2) Pick Colors**", list(my_color_list), ['Blue','Red'])
+    colors_selected = st.multiselect("**2) Pick Colors :large_yellow_square: :large_green_square:**", list(my_color_list), ['Blue','Red'])
     if len(colors_selected) > 0:
         if len(colors_selected)>1:
             # Join the colors with commas, except for the last on
@@ -110,7 +110,7 @@ def upload_clothes():
 
     # Upload photo
 #     st.subheader("3) Upload Photo")
-    uploaded_file = st.file_uploader("**3) Upload Photo**") #Choose a file
+    uploaded_file = st.file_uploader("**3) Upload Photo :outbox_tray:**") #Choose a file
     if uploaded_file is not None:
         # Convert image base64 string into hex
         bytes_data_in_hex = uploaded_file.getvalue().hex()
