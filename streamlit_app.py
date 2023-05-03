@@ -72,10 +72,13 @@ def home():
     st.title("Home page :house:")
     st.header("Welcome to your cloud closet! :cloud: :dress:")
     st.write("Welcome to our clothing management app! With our app, you can easily upload your clothing photos and save them to our secure Snowflake database. Here's a step-by-step guide to using our app:")
+    st.divider()
     st.subheader(":one: Upload your photos :camera_with_flash:")
     st.write("    Start by choosing the type of clothing and its color that you want to upload. Simply click on the 'Upload' button and select the photo from your device. Your photo will be saved securely in our Snowflake database.")
+    st.divider()
     st.subheader(":two: Generate an outfit :tshirt: :jeans:")
     st.write("    Our app allows you to generate an outfit for both hot and cold temperatures. You can select the temperature and choose from a variety of clothing items to create the perfect outfit for any occasion.")
+    st.divider()
     st.subheader(":three: Manage your wardrobe :hammer_and_wrench:")
     st.write("    With our app, you can easily manage your wardrobe by checking which items you like the most and the least. You can also remove items that you no longer need or add new items to your collection.")
     st.write("Our clothing management app is designed to make it easy for you to manage your wardrobe and create stylish outfits for any occasion. Start using our app today to simplify your clothing management process!")
@@ -93,6 +96,8 @@ def upload_clothes():
 
     else:
         st.error("Select only one item")
+    
+    st.divider()
                 
 #     st.subheader("2) Pick Colors")   
     colors_selected = st.multiselect("**2) Pick Colors :large_yellow_square: :large_green_square:**", list(my_color_list), ['Blue','Red'])
@@ -108,6 +113,8 @@ def upload_clothes():
         st.write(f"You selected: _{colors_string}_") #:blue[colors] per scrivere la parola colors di colore blu
     else:
         st.error("Insert Colors")
+        
+    st.divider()
 
     # Upload photo
 #     st.subheader("3) Upload Photo")
