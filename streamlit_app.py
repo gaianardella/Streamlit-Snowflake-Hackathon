@@ -140,7 +140,7 @@ def upload_clothes():
                 st.error("Error")
 
 def choose_temperature():
-    st.title("Generate an outfit :dress::tshirt::jeans:")
+    st.title("Generate an outfit :dress::necktie:")
     st.subheader("This is the Pick me an outfit page.")
     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
     return temperature
@@ -205,10 +205,10 @@ def generate_outfit(temperature, flag_top, flag_bottom):
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.header("Top")
+        st.header("Top :tshirt:")
         st.image(images["items_bytes"][0])
     with col2:
-        st.header("Bottom")
+        st.header("Bottom :jeans:")
         st.image(images["items_bytes"][1])
     with col3:
         for i in range(16):
