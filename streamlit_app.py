@@ -7,10 +7,7 @@ from PIL import Image
 import snowflake.connector
 import io
 
-page_bg = 'https://i.pinimg.com/originals/b9/9e/35/b99e35c7f85f55c748dd0f47291b1fb5.gif'
-st.set_page_config(page_title="Cute Outfit Generator", page_icon=":dress:", layout="wide", page_bg_img=page_bg)
-
-# st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
+st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
 my_color_list = ["Blue", "Red", "White", "Black", "Green", "Yellow", "Purple", "Pink", "Grey"]
 my_item_list = ["Sweater", "Trousers", "T-Shirt", "Shorts"]
 
