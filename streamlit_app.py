@@ -71,7 +71,7 @@ def home():
     """Displays the Home page"""
     st.title("Home page :house:")
     st.header("Welcome to your cloud closet! :cloud: :dress:")
-    st.subheader("1) Upload your photos :outbox_tray:")
+    st.subheader("1) Upload your photos :camera_with_flash:")
     st.write("Upload your clothes photos in the app")
     st.subheader("2) Generate an outfit :tshirt: :jeans:")
     st.write("Click to generate an outfit")
