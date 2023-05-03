@@ -456,11 +456,18 @@ def delete_clothes():
         for item in column:
             if index == 3:
                 st.image(item, width=300)
-                st.checkbox(label="", value=False, key=item)
+                box = st.checkbox(label="", value=False, key=item)
+                st.write(box)
                 index=1
             else:
                 index+=1
-        st.button("Delete")
+        delete = st.button("Delete")
+        if delete:t
+            DELETE FROM clothes_table
+WHERE item = 'your_item_value';
+
+            st.success("Items succesfully deleted")
+            
     
     
     return
