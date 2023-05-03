@@ -420,9 +420,10 @@ def delete_clothes():
                 index+=1
             my_cur.execute(f"SELECT item FROM clothes_table WHERE type = '{item}'")
             rows=my_cur.fetchall()
-            st.write(rows)
+#             st.write(rows)
             column={1:[],2:[],3:[]}
             for row in rows:
+                st.write(row)
                 file=row[1]
                 hex_str = file.strip('"')
                 byte_str = bytes.fromhex(hex_str)
