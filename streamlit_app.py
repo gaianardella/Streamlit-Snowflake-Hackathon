@@ -493,6 +493,7 @@ if __name__ == '__main__':
     elif selected == "Give me some stats":
         stats()
     elif selected == "Manage your closet":
+        delete_clothes()
         
         #st.experimental_memo
 
