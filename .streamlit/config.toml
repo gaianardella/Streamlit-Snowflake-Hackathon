@@ -1,8 +1,15 @@
-[theme] # You have to add this line
+#[theme] # You have to add this line
 
-primaryColor = '#000000' # Black
+#primaryColor = '#000000' # Black
 
-backgroundColor = '#00325B' # Dark Blue
+#backgroundColor = '#00325B' # Dark Blue
 
-secondaryBackgroundColor = '#55B2FF' # Lighter Blue
-textColor = '#FFFFFF' # White
+#secondaryBackgroundColor = '#55B2FF' # Lighter Blue
+#textColor = '#FFFFFF' # White
+
+[theme]
+# Custom theme colors
+primaryColor = "#F8D7DA" # Pinkish-red
+backgroundColor = "#291C49" # Dark purple
+secondaryBackgroundColor = "#FFD7B5" # Light peach
+textColor = "#FFFFFF" # White
