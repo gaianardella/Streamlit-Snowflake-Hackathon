@@ -144,9 +144,9 @@ def choose_temperature():
     st.subheader("This is the Pick me an outfit page.")
     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
     if temperature == 'Hot':
-        st.write("**You selected: Hot :fire:")
+        st.write("**You selected: Hot :fire:**")
     elif temperature == 'Cold':
-        st.write("**You selected: Cold :snowflake:")
+        st.write("**You selected: Cold :snowflake:**")
     return temperature
 
 @st.cache_resource
