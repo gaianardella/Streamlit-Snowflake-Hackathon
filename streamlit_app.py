@@ -434,7 +434,7 @@ def delete_clothes():
         for item in column:
             if index == 1:
                 st.image(item)
-           if index ==3:
+            if index ==3:
                 index=1
             else:
                 index+=1
