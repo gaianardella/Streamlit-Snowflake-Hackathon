@@ -466,7 +466,7 @@ if __name__ == '__main__':
         generate_outfit(temp, flag_top=True, flag_bottom=True)
     elif selected == "Give me some stats":
         stats()
-    elif selected == "Settings":
+    elif selected == "Manage your closet":
         delete_clothes()
 
 #     # If login is successful, display the sidebar menu
