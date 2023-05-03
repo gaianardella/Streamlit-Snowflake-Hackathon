@@ -71,7 +71,7 @@ def home():
     """Displays the Home page"""
     st.title("Home page :house:")
     st.header("Welcome to your cloud closet! :cloud: :dress:")
-    st.write("Welcome to our clothing management app! With our app, you can easily upload your clothing photos and save them to our secure Snowflake database. Here's a step-by-step guide to using our app:"
+    st.write("Welcome to our clothing management app! With our app, you can easily upload your clothing photos and save them to our secure Snowflake database. Here's a step-by-step guide to using our app:")
     st.subheader(":one: Upload your photos :camera_with_flash:")
     st.write("    Start by choosing the type of clothing and its color that you want to upload. Simply click on the 'Upload' button and select the photo from your device. Your photo will be saved securely in our Snowflake database.")
     st.subheader(":two: Generate an outfit :tshirt: :jeans:")
