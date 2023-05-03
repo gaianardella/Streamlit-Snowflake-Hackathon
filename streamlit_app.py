@@ -412,12 +412,7 @@ def delete_clothes():
         
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
-        index=0
         for item in clothes_selected:
-            if index ==3:
-                index=0
-            else:
-                index+=1
             my_cur.execute(f"SELECT item FROM clothes_table WHERE type = '{item}'")
             rows=my_cur.fetchall()
             column=[]
@@ -435,9 +430,16 @@ def delete_clothes():
     cnx.close()
     col1,col2,col3 = st.columns(3)
     with col1:
-        clothes_1 = column[1]
-        i=0
-        st.write(len(column))
+        index=1
+        for item in column:
+            if index == 1:
+                st.image(item)
+           if index ==3:
+                index=1
+            else:
+                index+=1
+        
+        #st.checkbox(label
     with col2:
         clothes_2 = column[2]
         for item in clothes_2:
