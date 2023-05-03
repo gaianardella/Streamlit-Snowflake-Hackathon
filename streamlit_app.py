@@ -466,6 +466,7 @@ def delete_clothes():
             else:
                 index+=1
         delete = st.button("Delete")
+        cnx = snowflake.connector.connect(**st.secrets["snowflake"])
         if delete:
             with cnx.cursor() as my_cur:
                 for item in checked:
