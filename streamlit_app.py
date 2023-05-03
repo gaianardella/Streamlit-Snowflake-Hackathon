@@ -49,7 +49,7 @@ def login():
                 "Upload Clothes": "box-arrow-in-up",
                 "Pick me an outfit": "palette-fill",
                 "Give me some stats": "bar-chart-fill",
-                "Settings": "gear"
+                "Manage your closet": "gear"
             }
             selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key="sidebar")
             return selected
@@ -393,7 +393,61 @@ def stats():
     cnx.close()
     
     return
-def settings():
+def delete_clothes():
+    st.title("Manage your wardrobe :hammer_and_wrench:")
+    st.header("Here you can delete the clothes you don't wear anymore")
+    clothes_selected = st.multiselect("**Pick Clothes :womans_clothes: :shorts:**", list(my_item_list), ['Sweater'])
+    if len(clothes_selected) > 0:
+        if len(clothes_selected)>1:
+            # Join the colors with commas, except for the last on
+            clothes_string = ', '.join(clothes_selected[:-1])
+            # Add the last color to the string
+            clothes_string += ' and ' + clothes_selected[-1]
+        else:
+            clothes_string = colors_selected[0]
+        # Write color string
+        st.write(f"You selected: _{clothes_string}_")
+    else:
+        st.error("Select Items")
+        
+    cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+    with cnx.cursor() as my_cur:
+            index=0
+        for item in clothes_selected:
+            if index ==3:
+                index=0
+            else:
+                index+=1
+            my_cur.execute(f"SELECT item FROM clothes_table WHERE type = '{item}'")
+            rows=my_cur.fetchall()
+            column={1:[],2:[],3:[]}
+            for row in rows:
+                file=row[1]
+                hex_str = file.strip('"')
+                byte_str = bytes.fromhex(hex_str)
+                image = Image.open(io.BytesIO(byte_str))
+                img = np.array(image)
+                # Check the shape of the image arrays and rotate them if necessary
+                if img.shape[0] < img.shape[1]:
+                    img = np.rot90(img, k=3)
+                column[index].append(img)
+    cnx.close()
+    col1,col2,col3 = st.columns(3)
+    with col1:
+        clothes_1 = column[1]
+        for item in clothes_1:
+            st.image(item, width=300)
+    with col2:
+        clothes_2 = column[2]
+        for item in clothes_2:
+            st.image(item, width=300)
+    with col3:
+        clothes_3 = column[3]
+        for item in clothes_3:
+            st.image(item, width=300)
+        
+    
+    
     return
 
 if __name__ == '__main__':
@@ -413,7 +467,7 @@ if __name__ == '__main__':
     elif selected == "Give me some stats":
         stats()
     elif selected == "Settings":
-        settings()
+        delete_clothes()
 
 #     # If login is successful, display the sidebar menu
 #     if 'login' in st.session_state and st.session_state['login']:
