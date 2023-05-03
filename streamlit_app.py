@@ -420,7 +420,6 @@ def delete_clothes():
                 index+=1
             my_cur.execute(f"SELECT item FROM clothes_table WHERE type = '{item}'")
             rows=my_cur.fetchall()
-#             st.write(rows)
             column={1:[],2:[],3:[]}
             for row in rows:
                 file=row[0]
@@ -432,6 +431,7 @@ def delete_clothes():
                 if img.shape[0] < img.shape[1]:
                     img = np.rot90(img, k=3)
                 column[index].append(img)
+                st.write(column)
     cnx.close()
     col1,col2,col3 = st.columns(3)
     with col1:
