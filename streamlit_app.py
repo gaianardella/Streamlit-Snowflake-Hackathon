@@ -423,8 +423,7 @@ def delete_clothes():
 #             st.write(rows)
             column={1:[],2:[],3:[]}
             for row in rows:
-                st.write(row)
-                file=row[1]
+                file=row[0]
                 hex_str = file.strip('"')
                 byte_str = bytes.fromhex(hex_str)
                 image = Image.open(io.BytesIO(byte_str))
