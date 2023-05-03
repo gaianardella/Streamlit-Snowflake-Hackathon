@@ -322,7 +322,7 @@ def stats():
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
         my_cur.execute("SELECT * FROM clothes_table ORDER BY LIKES DESC LIMIT 3")
-        
+        likes=[]
         rows=my_cur.fetchall()
         for row in rows:
             file=row[1]
@@ -334,11 +334,20 @@ def stats():
             # Check the shape of the image arrays and rotate them if necessary
             if img.shape[0] < img.shape[1]:
                 img = np.rot90(img, k=3)
-            st.image(img)
+            likes.append(img)
+#             st.image(img)
     # Close the connection
     cnx.close()
     
     st.write("Your favourite items: ")
+    col1,col2,col3 = st.columns(3)
+    with col1:
+        st.image(img0)
+    with col2:
+        st.image(img1)
+    with col3:
+        st.image(img2)
+        
     st.write("Your least favourite items: ")
     #controllo colori
     st.write("Your favourite colors: ")
