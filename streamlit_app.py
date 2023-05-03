@@ -351,23 +351,25 @@ def stats():
                 img = np.rot90(img, k=3)
             dislikes.append(img)
     
-    st.write("Your favourite items: ")
-    col1,col2,col3 = st.columns(3)
-    with col1:
-        st.image(likes[0])
-    with col2:
-        st.image(likes[1])
-    with col3:
-        st.image(likes[2])
+#     st.write("Your favourite items: ")
+    with st.expander("Your favourite items:"):
+        col1,col2,col3 = st.columns(3)
+        with col1:
+            st.image(likes[0])
+        with col2:
+            st.image(likes[1])
+        with col3:
+            st.image(likes[2])
         
-    st.write("Your least favourite items: ")
-    col4,col5,col6 = st.columns(3)
-    with col4:
-        st.image(dislikes[0])
-    with col5:
-        st.image(dislikes[1])
-    with col6:
-        st.image(dislikes[2])
+#     st.write("Your least favourite items: ")
+    with st.expander("Your least favourite items:"):
+        col4,col5,col6 = st.columns(3)
+        with col4:
+            st.image(dislikes[0])
+        with col5:
+            st.image(dislikes[1])
+        with col6:
+            st.image(dislikes[2])
     #controllo colori
     st.write("Your favourite colors: ")
     st.write("Your least favourite colors: ")
