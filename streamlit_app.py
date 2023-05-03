@@ -365,11 +365,11 @@ def stats():
     with st.expander("Your least favourite items:", expanded=True):
         col4,col5,col6 = st.columns(3)
         with col4:
-            st.image(dislikes[0])
+            st.image(dislikes[0], width=300)
         with col5:
-            st.image(dislikes[1])
+            st.image(dislikes[1], width=300)
         with col6:
-            st.image(dislikes[2])
+            st.image(dislikes[2], width=300)
     #controllo colori
     st.write("Your favourite colors: ")
     st.write("Your least favourite colors: ")
