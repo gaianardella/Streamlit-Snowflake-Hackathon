@@ -28,8 +28,8 @@ def login():
         st.title("Welcome to you cloud closet! :cloud:")
         st.subheader("Enter your credentials to log in :closed_lock_with_key:")
         login_form = st.form(key='login_form')
-        username = login_form.text_input(label='**Username**', value="Insert _username_ to test the app")
-        password = login_form.text_input(label='**Password**', type='password', value="Insert _password_ to test the app")
+        username = login_form.text_input(label='**Username**', value="username")
+        password = login_form.text_input(label='**Password**', type='password', value="password")
         submit_button = login_form.form_submit_button(label='Submit')
 
         if submit_button:
