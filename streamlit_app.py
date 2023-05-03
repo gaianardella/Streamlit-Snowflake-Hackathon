@@ -80,7 +80,7 @@ def home():
 
 def upload_clothes():
     """Displays the Upload Clothes page"""
-    st.title("Upload your clothes")
+    st.title("Upload your clothes :camera_with_flash:")
     st.subheader("This is the Upload Clothes page.")
         
     # Let's put a pick list here so they can pick the fruit they want to include
@@ -140,7 +140,7 @@ def upload_clothes():
                 st.error("Error")
 
 def choose_temperature():
-    st.title("Generate an outfit")
+    st.title("Generate an outfit :dress::tshirt::jeans:")
     st.subheader("This is the Pick me an outfit page.")
     temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
     return temperature
@@ -315,7 +315,7 @@ def generate_outfit(temperature, flag_top, flag_bottom):
 
     
 def stats():
-    st.title("Stats Page :chart:")
+    st.title("Stats Page :bar_chart:")
     st.header("This is the Stats page.")
     #Ordina sql in base a lke/dislike e scegli i primi 3
     # Execute the query
