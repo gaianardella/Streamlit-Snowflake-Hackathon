@@ -462,9 +462,9 @@ def delete_clothes():
             else:
                 index+=1
         delete = st.button("Delete")
-        if delete:t
-            DELETE FROM clothes_table
-WHERE item = 'your_item_value';
+        if delete:
+#             DELETE FROM clothes_table
+# WHERE item = 'your_item_value';
 
             st.success("Items succesfully deleted")
             
