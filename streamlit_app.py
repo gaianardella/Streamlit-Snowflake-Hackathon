@@ -473,7 +473,7 @@ def delete_clothes():
                     my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{item}'")
             cnx.close()
             st.success("Items succesfully deleted")
-            st.experimental_rerun()
+#             st.experimental_rerun()
             return
 
 if __name__ == '__main__':
