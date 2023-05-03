@@ -412,10 +412,10 @@ def delete_clothes():
         
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
+        column=[]
         for item in clothes_selected:
             my_cur.execute(f"SELECT item FROM clothes_table WHERE type = '{item}'")
             rows=my_cur.fetchall()
-            column=[]
             for row in rows:
                 file=row[0]
                 hex_str = file.strip('"')
