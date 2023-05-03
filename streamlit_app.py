@@ -325,20 +325,16 @@ def stats():
         
         rows=my_cur.fetchall()
         for row in rows:
-            id=row[0]
-            st.write(id)
-        # Print the results
-#         for row in my_cur.fetchall():
-#             st.write(row)
-#             random_row = my_cur.fetchone()
-#             hex_str = random_row[0].strip('"')
-#             items["items_hex"].append(hex_str)
-#             byte_str = bytes.fromhex(hex_str)
-#             image = Image.open(io.BytesIO(byte_str))
-#             img = np.array(image)
-#             # Check the shape of the image arrays and rotate them if necessary
-#             if img.shape[0] < img.shape[1]:
-#                 img = np.rot90(img, k=3)
+            file=row[1]
+#             st.write(id)
+            hex_str = file.strip('"')
+            byte_str = bytes.fromhex(hex_str)
+            image = Image.open(io.BytesIO(byte_str))
+            img = np.array(image)
+            # Check the shape of the image arrays and rotate them if necessary
+            if img.shape[0] < img.shape[1]:
+                img = np.rot90(img, k=3)
+            st.image(img)
     # Close the connection
     cnx.close()
     
