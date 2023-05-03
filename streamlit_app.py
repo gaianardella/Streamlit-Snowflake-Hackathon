@@ -342,11 +342,11 @@ def stats():
     st.write("Your favourite items: ")
     col1,col2,col3 = st.columns(3)
     with col1:
-        st.image(img0)
+        st.image(likes[0])
     with col2:
-        st.image(img1)
+        st.image(likes[1])
     with col3:
-        st.image(img2)
+        st.image(likes[2])
         
     st.write("Your least favourite items: ")
     #controllo colori
