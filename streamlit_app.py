@@ -462,7 +462,7 @@ if __name__ == '__main__':
     # Connect to Snowflake
     session = connect_to_snowflake()
     
-    url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/color_pairs.csv'
+    url = 'https://raw.githubusercontent.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/color_pairs.csv'
 #     df = pd.read_csv(url)
     df = pd.read_csv(url, index_col=0)
     # Convert the DataFrame to a Snowpark DataFrame
