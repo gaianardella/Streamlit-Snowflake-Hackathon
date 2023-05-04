@@ -444,11 +444,30 @@ def delete_clothes():
             cnx.close()
             st.success("Items succesfully deleted")
             st.experimental_rerun()
-#             return
+
+# def model():
+    
+#     url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/color_pairs.csv'
+#     df = pd.read_csv(url)
+#     # Convert the DataFrame to a Snowpark DataFrame
+# #     session.create_dataframe(df)
+#     session.write_pandas(df, "COLOR_PAIRS")
+
+    
+        # Write image data in Snowflake table
+#         df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex], "TYPE": [item_selected[0]], "COLORS": [np.array(colors_selected)], "LIKES":[0], "DISLIKES":[0]})
+                
 
 if __name__ == '__main__':
     # Connect to Snowflake
     session = connect_to_snowflake()
+    
+    url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/color_pairs.csv'
+    df = pd.read_csv(url)
+    # Convert the DataFrame to a Snowpark DataFrame
+#     session.create_dataframe(df)
+    session.write_pandas(df, "COLOR_PAIRS")
+
 
     # Log in the user
 #     login()
