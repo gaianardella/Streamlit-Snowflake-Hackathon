@@ -54,19 +54,6 @@ def login():
             selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key="sidebar")
             return selected
 
-# def sidebar():
-#     """Displays the sidebar menu"""
-#     with st.sidebar:
-#         option_icons = {
-#             "Home": "house",
-#             "Upload Clothes": "box-arrow-in-up",
-#             "Pick me an outfit": "palette-fill",
-#             "Give me some stats": "bar-chart-fill",
-#             "Settings": "gear"
-#         }
-#         selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key="sidebar")
-#         return selected
-
 def home():
     """Displays the Home page"""
     st.title("Home page :house:")
@@ -180,24 +167,6 @@ def generate_top_bottom(top_type,bottom_type):
             items["items_bytes"].append(img)
     cnx.close()    
     return items
-
-# def generate_bottom(bottom_type):
-#     #     # Establish a connection to your Snowflake database
-#     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-#     with cnx.cursor() as my_cur:
-#         my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{bottom_type}'")
-#         random_row = my_cur.fetchone()
-#         hex_str = random_row[0].strip('"')
-#         byte_str = bytes.fromhex(hex_str)
-#         image = Image.open(io.BytesIO(byte_str))
-#         img_bottom = np.array(image)
-
-#         # Check the shape of the image arrays and rotate them if necessary
-#         if img_bottom.shape[0] < img_bottom.shape[1]:
-#             img_bottom = np.rot90(img_bottom, k=3)
-# #         st.image(img_bottom)
-#         return img_bottom
-        
 
 
 def generate_outfit(temperature, flag_top, flag_bottom):
@@ -517,5 +486,6 @@ if __name__ == '__main__':
 # #             elif selected == "Settings":
 # #                 settings()
 
-#MANCANO: ALGORITMO COLORI, STATISTICHE, RENDERE BELLA L'APP, CREA USER, DATABASE UTENTI, GLI ITEM DEVONO ESSERE ASSOCIATI AGLI UTENTI, PAGINA DI ELIMINAZIONE ITEM (con checkbox per selezione)
+#MANCANO: ALGORITMO COLORI, STATISTICHE, RENDERE BELLA L'APP
+#CREA USER, DATABASE UTENTI, GLI ITEM DEVONO ESSERE ASSOCIATI AGLI UTENTI, PAGINA DI ELIMINAZIONE ITEM (con checkbox per selezione)
 #SCONTORNARE IMMAGINI, DIRE IN HOMEPAGE CHE APP E' CONNESSA A STREAMLIT
