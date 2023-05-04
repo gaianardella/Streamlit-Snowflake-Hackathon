@@ -132,7 +132,7 @@ def upload_clothes():
                     # Close the database connection
 #                     cnx.close()
             else:
-                st.error("Error")
+                st.error("Please select an item and color(s) before uploading a photo.")
 
 def choose_temperature():
     st.title("Generate an outfit :dress::necktie:")
