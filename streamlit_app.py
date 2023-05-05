@@ -477,18 +477,17 @@ if __name__ == '__main__':
     
 
         # Query the data from Snowflake
-        cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-        with cnx.cursor() as cur:
-            cur.execute('SELECT color_1, color_2, target FROM COLOR_PAIRS')
-            rows = cur.fetchall()
-            col_names = [desc[0] for desc in cur.description]
+#         cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+#         with cnx.cursor() as cur:
+#             cur.execute('SELECT color_1, color_2, target FROM COLOR_PAIRS')
+#             rows = cur.fetchall()
+#             col_names = [desc[0] for desc in cur.description]
 
         # Convert the resultset to a pandas DataFrame
-        df = pd.DataFrame(rows, columns=col_names)
-        st.write(df.collect())
+#         df = pd.DataFrame(rows, columns=col_names)
 
         # Split the data into training and testing sets
-#         X_train, X_test, y_train, y_test = train_test_split(df[['color_1', 'color_2']], df['target'], test_size=0.2, random_state=42)
+        X_train, X_test, y_train, y_test = train_test_split(df[['color_1', 'color_2']], df['target'], test_size=0.2, random_state=42)
 
 
 #         # Convert the color names into numerical values
