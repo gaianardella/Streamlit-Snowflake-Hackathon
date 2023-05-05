@@ -187,9 +187,9 @@ def generate_top_bottom(top_type,bottom_type):
             colors = random_row[1].strip("[").strip("]").replace('"','').split(",")
             for color in colors:
                 if item == "Sweater" or item=="T-Shirt":
-                    top_colors.append(strip_color)
+                    top_colors.append(color)
                 elif item == "Trousers" or item=="Shorts":
-                    bottom_colors.append(strip_color)
+                    bottom_colors.append(color)
                     
             pair =colors(top_colors,bottom_colors)
             st.write(pair)
