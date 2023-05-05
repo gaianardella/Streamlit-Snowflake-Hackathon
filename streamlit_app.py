@@ -162,7 +162,7 @@ def check_colors(colors_top,colors_bottom):
             color_2=bottom.lower()
             st.write(color_1)
 #             new_input = pd.DataFrame({'color_1': [top.lower()], 'color_2': [bottom.lower()]})
-            input = pd.DataFrame({'color_1': ['blue'], 'color_2': ['red']})
+            input = pd.DataFrame({'color_1': [str(color_1)], 'color_2': ['red']})
             st.write(input)
 #             st.write(new_input)
 #             new_input = new_input.replace(color_dict)
