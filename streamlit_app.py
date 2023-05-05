@@ -333,7 +333,7 @@ def stats():
     
     range_colors=[]
     for key in like_colors.keys():
-        range.append(key.lower())
+        range_colors.append(key.lower())
     st.write(range_colors)
     
     # Define the color palette
