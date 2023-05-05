@@ -69,14 +69,16 @@ def home():
     st.divider()
     st.subheader(":one: Upload your photos :camera_with_flash:")
     st.write("Start by choosing the type of clothing and its color that you want to upload. Simply click on the 'Upload' button and select the photo from your device. Your photo will be saved securely in our Snowflake database.")
-    st.video("https://youtu.be/0tkyvmZ0xmE")
+    with st.expander("**Watch the video :clapper:**", expanded=False):
+        st.video("https://youtu.be/0tkyvmZ0xmE")
     st.divider()
     st.subheader(":two: Generate an outfit :tshirt: :jeans:")
     st.write("Our app allows you to generate an outfit for both hot and cold temperatures. You can select the temperature and choose from a variety of clothing items to create the perfect outfit for any occasion.")
     st.divider()
     st.subheader(":three: Manage your wardrobe :hammer_and_wrench:")
     st.write("With our app, you can easily manage your wardrobe by checking which items you like the most and the least. You can also remove items that you no longer need or add new items to your collection.")
-    st.video("https://youtu.be/jYB_Jion5OQ")
+    with st.expander("**Watch the video :clapper:**", expanded=False):
+        st.video("https://youtu.be/jYB_Jion5OQ")
 #     st.write("Our clothing management app is designed to make it easy for you to manage your wardrobe and create stylish outfits for any occasion. Start using our app today to simplify your clothing management process!")
 
 def upload_clothes():
