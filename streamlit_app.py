@@ -285,8 +285,12 @@ def stats():
                 img = np.rot90(img, k=3)
             likes.append(img)
             colors = row[3].strip("[").strip("]").replace('"','').replace("\n","").replace(" ","").split(",")
-        st.write(colors)
-
+            for color in colors:
+                if color not in like_colors:
+                    like_colors[color]=row[4]
+                else:
+                    like_colors[color]+=row[4]
+        st.write(like_colors)
         
         my_cur.execute("SELECT * FROM clothes_table ORDER BY LIKES ASC LIMIT 3")
         dislikes=[]
