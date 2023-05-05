@@ -529,7 +529,6 @@ def delete_clothes():
                 for item in checked:
                     hex_str = binascii.hexlify(item).decode('utf-8')
                     quoted_item = '"{}"'.format(hex_str)
-                    st.write(quoted_item)
                     my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{quoted_item}'")
                     #non elimina record, controllare item
             cnx.close()
