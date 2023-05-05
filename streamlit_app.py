@@ -471,7 +471,7 @@ if __name__ == '__main__':
         col3 = row['target']
     # Convert the DataFrame to a Snowpark DataFrame
 #     session.create_dataframe(df, ["color_1", "color_2", "target"])
-        df = pd.DataFrame({"COLOR_1": [col1], "COLOR_2": [col2], "TARGET": [col3})
+        df = pd.DataFrame({"COLOR_1": [col1], "COLOR_2": [col2], "TARGET": [col3]})
 #                 session.write_pandas(df, "CLOTHES_TABLE")
         session.write_pandas(df, "COLOR_PAIRS")
 
