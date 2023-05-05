@@ -359,7 +359,7 @@ def stats():
         rows=my_cur.fetchall()
         for row in rows:
             file=row[1]
-#             st.write(id)
+            like_colors = row[3].strip("[").strip("]").replace('"','').split(",")
             hex_str = file.strip('"')
             byte_str = bytes.fromhex(hex_str)
             image = Image.open(io.BytesIO(byte_str))
@@ -405,7 +405,7 @@ def stats():
             st.image(dislikes[2], width=300)
     st.divider()
     #controllo colori
-    st.write("**Your favourite colors :heart: :rainbow:**")
+    st.write("**Your favourite colors :heart: :rainbow:**"+ str(like_colors))
     st.divider()
     st.write("**Your least favourite colors :x: :rainbow:**")
     # Close the connection
