@@ -422,32 +422,17 @@ def stats():
     color_df = color_df.sort_values('frequency', ascending=False)
 
     # Define the color palette
-    scale = alt.Scale(domain=color_df.index.tolist(),
+    color_palette = alt.Scale(domain=color_df.index.tolist(),
                               range=['red', 'green', 'blue', 'yellow'])
 
     # Create the chart using Altair
-#     chart = alt.Chart(color_df.reset_index()).mark_bar().encode(
-#         x='index',
-#         y='frequency',
-#         color=alt.Color('index', scale=color_palette),
-#         tooltip=['index', 'frequency']
-#     ).properties(width=500, height=300)
-    color = alt.Color("weather:N", scale=scale)
+    chart = alt.Chart(color_df.reset_index()).mark_bar().encode(
+        x='index',
+        y='frequency',
+        color=alt.Color('index', scale=color_palette),
+        tooltip=['index', 'frequency']
+    ).properties(width=500, height=300)
 
-    chart = (
-        alt.Chart()
-        .mark_bar()
-        .encode(
-            x="count()",
-            y="weather:N",
-            color=alt.condition(click, color, alt.value("lightgray")),
-        )
-        .transform_filter(brush)
-        .properties(
-            width=550,
-        )
-        .add_selection(click)
-    )
 
 
     with st.expander("**Your favourite colors :heart: :rainbow:**", expanded=True):
