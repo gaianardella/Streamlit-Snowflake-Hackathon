@@ -6,6 +6,8 @@ import uuid
 from PIL import Image
 import snowflake.connector
 import io
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 
 st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
 my_color_list = ["Blue", "Red", "White", "Black", "Green", "Yellow", "Purple", "Pink", "Grey"]
