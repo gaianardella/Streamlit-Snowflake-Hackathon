@@ -418,8 +418,10 @@ def stats():
     color_df = color_df.sort_values('frequency', ascending=False)
 
     # Define the color palette
-    color_palette = alt.Scale(domain=color_df.index.tolist(),
-                              range=['red', 'green', 'blue', 'yellow'])
+#     color_palette = alt.Scale(domain=color_df.index.tolist(),
+#                               range=['red', 'green', 'blue', 'yellow'])
+    color_palette = alt.Scale(domain=['red', 'green', 'blue', 'yellow'],
+                                range=['red', 'green', 'blue', 'yellow'])
 
     # Create the chart using Altair
     chart = alt.Chart(color_df.reset_index()).mark_bar().encode(
