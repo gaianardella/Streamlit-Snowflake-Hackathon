@@ -406,6 +406,7 @@ def stats():
             st.image(dislikes[2], width=300)
     st.divider()
     #controllo colori
+    #CREARE GRAFICO COLORI TIPO BARPLOT ANZICHè TESTO
     st.write("**Your favourite colors :heart: :rainbow:**") #+ str(like_colors))
     for color in like_colors:
         command=color.lower().replace("'","")
