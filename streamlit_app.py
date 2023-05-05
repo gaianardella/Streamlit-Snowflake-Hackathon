@@ -526,7 +526,9 @@ def delete_clothes():
         if delete:
             with cnx.cursor() as my_cur:
                 for item in checked:
-                    quoted_item = '"{}"'.format(item)
+                    hex_str = binascii.hexlify(item).decode('utf-8')
+                    quoted_item = '"{}"'.format(hex_str)
+                    st.write(hex_str)
                     my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{quoted_item}'")
                     #non elimina record, controllare item
             cnx.close()
