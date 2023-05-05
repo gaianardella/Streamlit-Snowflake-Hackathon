@@ -155,7 +155,7 @@ def choose_temperature():
 def check_colors(colors_top,colors_bottom):
     # Convert the color names into numerical values
     color_dict = {'black': 0, 'white': 1, 'grey': 2, 'red': 3, 'blue': 4, 'green': 5, 'yellow': 6, 'purple': 7, 'pink': 8}
-    
+    outcomes=[]
     for top in colors_top:
         for bottom in colors_bottom:
             color_1=top.replace(' ','').lower().strip()
@@ -169,9 +169,10 @@ def check_colors(colors_top,colors_bottom):
             prediction = model.predict(new_input)
             
             if prediction == 'yes':
-                return True
+                outcomes.append('yes')
             elif prediction == 'no':
-                return False
+                outcomes.append('no')
+    return outcomes
         
 
     
