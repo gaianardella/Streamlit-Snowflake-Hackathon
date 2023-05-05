@@ -53,7 +53,7 @@ def login():
 #       # Displays the sidebar menu
         with st.sidebar:
             option_icons = {
-                "Home": "house",
+                "Home :house:": "house",
                 "Upload Clothes": "box-arrow-in-up",
                 "Pick me an outfit": "palette-fill",
                 "Give me some stats": "bar-chart-fill",
