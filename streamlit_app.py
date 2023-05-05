@@ -143,7 +143,7 @@ def choose_temperature():
     st.title("Generate an outfit :dress::necktie:")
     st.subheader("This is the Pick me an outfit page.")
     with st.expander("**Select Temperature** :fire: :snowflake:", expanded=True):
-        temperature = st.radio("What's the temperature?", ('Hot', 'Cold'))
+        temperature = st.radio("What's the temperature?", ('Cold', 'Hot'))
         if temperature == 'Hot':
             st.write("**You selected: Hot :fire:**")
         elif temperature == 'Cold':
@@ -162,6 +162,7 @@ def check_colors(colors_top,colors_bottom):
             color_2=bottom.replace(' ','').lower().strip()
             new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
             new_input = new_input.replace(color_dict)
+            st.write(new_input)
             url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pkl?raw=true'
             model_file = BytesIO(requests.get(url).content)
             model = pickle.load(model_file)
