@@ -466,8 +466,8 @@ if __name__ == '__main__':
 #     df = pd.read_csv(url)
     df = pd.read_csv(url, index_col=0)
     # Convert the DataFrame to a Snowpark DataFrame
-#     session.create_dataframe(df)
-#     session.write_pandas(df, "COLOR_PAIRS")
+    session.create_dataframe(df)
+    session.write_pandas(df, "COLOR_PAIRS")
 
 
     # Log in the user
