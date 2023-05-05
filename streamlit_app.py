@@ -338,7 +338,9 @@ def stats():
     
     # Define the color palette
     color_palette = alt.Scale(domain=color_df.index.tolist(),
-                              range=['red', 'green', 'blue', 'yellow'])
+                              range=range_colors)
+    
+    #range=['red', 'green', 'blue', 'yellow']
     
 
     # Create the chart using Altair
