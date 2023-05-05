@@ -172,7 +172,11 @@ def check_colors(colors_top,colors_bottom):
                 outcomes.append('yes')
             elif prediction == 'no':
                 outcomes.append('no')
-    return outcomes
+                
+    if 'yes' in outcomes:
+        return True
+    else:
+        return False
         
 
     
