@@ -469,12 +469,11 @@ if __name__ == '__main__':
         col1 = row['color_1']
         col2 = row['color_2']
         col3 = row['target']
-        st.write(col1)
     # Convert the DataFrame to a Snowpark DataFrame
 #     session.create_dataframe(df, ["color_1", "color_2", "target"])
-#     df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex], "TYPE": [item_selected[0]], "COLORS": [np.array(colors_selected)], "LIKES":[0], "DISLIKES":[0]})
+        df = pd.DataFrame({"COLOR_1": [col1], "COLOR_2": [col2], "TARGET": [col3})
 #                 session.write_pandas(df, "CLOTHES_TABLE")
-    session.write_pandas(df, "COLOR_PAIRS")
+        session.write_pandas(df, "COLOR_PAIRS")
 
 
     # Log in the user
