@@ -195,9 +195,6 @@ def generate_top_bottom(top_type,bottom_type):
                 elif item == "Trousers" or item=="Shorts":
                     bottom_colors.append(color)
                     
-            pair=check_colors(top_colors,bottom_colors)
-            st.write(pair)
-
             hex_str = random_row[0].strip('"')
             items["items_hex"].append(hex_str)
             byte_str = bytes.fromhex(hex_str)
@@ -207,6 +204,10 @@ def generate_top_bottom(top_type,bottom_type):
             if img.shape[0] < img.shape[1]:
                 img = np.rot90(img, k=3)
             items["items_bytes"].append(img)
+            
+    pair=check_colors(top_colors,bottom_colors)
+    st.write(pair)
+
     cnx.close()    
     return items
 
