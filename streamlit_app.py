@@ -13,7 +13,6 @@ import pickle
 import requests
 from io import BytesIO
 import altair as alt
-import binascii
 
 
 st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
@@ -51,7 +50,7 @@ def login():
                 st.error('Invalid username or password')
     if 'login' in st.session_state:
         st.empty()
-#         """Displays the sidebar menu"""
+#       # Displays the sidebar menu
         with st.sidebar:
             option_icons = {
                 "Home": "house",
@@ -83,9 +82,6 @@ def upload_clothes():
     st.title("Upload your clothes :camera_with_flash:")
     st.subheader("This is the Upload Clothes page.")
         
-    # Let's put a pick list here so they can pick the fruit they want to include
-    #vedere se usare st.form()
-#     st.subheader("1) Pick Item")
     item_selected = st.multiselect("**1) Pick Item :womans_clothes: :shorts:**", list(my_item_list), ['Sweater'])
     if len(item_selected) == 1:
         st.write(f"You selected: _{item_selected[0]}_") #inserire icona vestito
@@ -94,8 +90,7 @@ def upload_clothes():
         st.error("Select only one item")
     
     st.divider()
-                
-#     st.subheader("2) Pick Colors")   
+                  
     colors_selected = st.multiselect("**2) Pick Colors :large_yellow_square: :large_green_square:**", list(my_color_list), ['Blue','Red'])
     if len(colors_selected) > 0:
         if len(colors_selected)>1:
@@ -113,7 +108,6 @@ def upload_clothes():
     st.divider()
 
     # Upload photo
-#     st.subheader("3) Upload Photo")
     uploaded_file = st.file_uploader("**3) Upload Photo :outbox_tray:**") #Choose a file
     if uploaded_file is not None:
         # Convert image base64 string into hex
@@ -127,19 +121,6 @@ def upload_clothes():
                 # Write image data in Snowflake table
                 df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex], "TYPE": [item_selected[0]], "COLORS": [np.array(colors_selected)], "LIKES":[0], "DISLIKES":[0]})
                 session.write_pandas(df, "CLOTHES_TABLE")
-                # Prepare a SQL query to insert the photo data and colors into the appropriate table
-                # Use a dynamic SQL query to generate the appropriate number of columns based on the length of the colors_selected list
-                # query = "INSERT INTO clothes_table (id, item, type"
-                # for i in range(len(colors_selected)):
-                #     query += f", color{i+1}"
-                # query += ") VALUES ('{id}', '{bytes_data}', '{item_selected}'"
-                # for color in colors_selected:
-                #     query += f", '{color}'..."
-                # query += ")"
-                
-
-                    # Close the database connection
-#                     cnx.close()
             else:
                 st.error("Please select an item and color(s) before uploading a photo.")
 
@@ -167,7 +148,6 @@ def check_colors(colors_top,colors_bottom):
             new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
             new_input = new_input.replace(color_dict)
             url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pkl?raw=true'
-#             model = pickle.load(BytesIO(requests.get(url).content))
             model_file = BytesIO(requests.get(url).content)
             model = pickle.load(model_file)
             prediction = model.predict(new_input)
@@ -187,7 +167,7 @@ def check_colors(colors_top,colors_bottom):
 
 @st.cache_resource
 def generate_top_bottom(top_type,bottom_type):
-    #     # Establish a connection to your Snowflake database
+    # Establish a connection to your Snowflake database
     items_strings=[top_type,bottom_type]
     top_colors=[]
     bottom_colors=[]
@@ -233,9 +213,8 @@ def generate_outfit(temperature):
         
     if 'top_bottom' not in st.session_state:
             st.session_state.top_bottom = True
-    #devo ancora generare
-    if st.session_state.top_bottom==True:  #(if st.session_state.top == True)
-        #lista [top,bottom]
+            
+    if st.session_state.top_bottom==True:
         images=generate_top_bottom(top_type,bottom_type)    
             
         
@@ -259,9 +238,6 @@ def generate_outfit(temperature):
                 my_cur.execute(f"UPDATE clothes_table SET LIKES = LIKES + 1 WHERE ITEM = '{images['items_hex'][0]}'")
                 my_cur.execute(f"UPDATE clothes_table SET LIKES = LIKES + 1 WHERE ITEM = '{images['items_hex'][1]}'")
             cnx.close()
-#             home_button=st.button("Return home :arrow_right:", use_container_width=True)
-#             if home_button:
-#                 home()
             
         dislike = st.button("**Dislike :thumbsdown:**", use_container_width=True)
         if dislike:
@@ -271,90 +247,11 @@ def generate_outfit(temperature):
                 my_cur.execute(f"UPDATE clothes_table SET DISLIKES = DISLIKES + 1 WHERE ITEM = '{images['items_hex'][1]}'")
             cnx.close()
             st.cache_resource.clear()
-            
-            
-
-#     with col2:
-#         st.header("Bottom")
-#         if flag_bottom == True:
-# #             generate_bottom(cnx, bottom_type)
-#             img_bottom=generate_bottom(bottom_type)
-#         st.image(img_bottom)
-#     with col3:
-#         for i in range(15):
-#             st.write("")
-# #         placeholder_like = st.empty()
-# #         placeholder_dislike = st.empty()
-#         if 'preference' not in st.session_state:
-#             st.session_state['preference'] = 0
-
-#         if 'button' not in st.session_state:
-#             col4, col5 = st.columns(2)
-
-#             with col4:
-# #                 for i in range(60):
-# #                     st.write("")
-
-#                 placeholder_like = st.empty()
-#                 with placeholder_like:
-#                     like = st.button("Like :thumbsup:", use_container_width=True, on_click=callback())
-#                     if like:
-#                         st.session_state['button'] = True
-#                         st.session_state['preference'] = 1
-
-#             with col5:
-# #                 for j in range(16):
-# #                     st.write("")
-
-#                 placeholder_dislike = st.empty()
-# #                 with placeholder_dislike:
-# #                     dislike = st.button("Dislike :thumbsdown:", use_container_width=True)
-# #                     if dislike:
-# #                         st.session_state['button'] = True
-# #                         st.session_state['preference'] = -1
-
-#         if 'button' in st.session_state:
-# #             placeholder_like.empty()
-# #             placeholder_dislike.empty()
-# #             st.empty()
-
-#             col6, col7, col8 = st.columns(3)
-# #             placeholder_like.empty()
-# #             placeholder_dislike.empty()
-
-# #             with col6:
-# #                 if st.session_state.preference == -1:
-# #                     top = st.button("Generate Top", use_container_width=True)
-# #                     if top:
-# #                         for key in st.session_state.keys():
-# #                             del st.session_state[key]
-# #                         generate_outfit(temperature, flag_top=True, flag_bottom=False)
-
-#             with col7:
-#                 if st.session_state.preference == 1:
-#                     st.success("Preference saved!")
-#                 if st.session_state.preference == -1:
-#                     bottom = st.button("Generate Bottom", use_container_width=True)
-#                     if bottom:
-#                         for key in st.session_state.keys():
-#                             if key=="button" or key=="preference":
-#                                 del st.session_state[key]
-#                         generate_outfit(temperature, flag_top=False, flag_bottom=True)
-
-#             with col8:
-#                if st.session_state.preference == -1:
-#                     outfit = st.button("Generate Outfit", use_container_width=True)
-#                     if outfit:
-#                         for key in st.session_state.keys():
-#                             del st.session_state[key]
-#                         generate_outfit(temperature, flag_top=True, flag_bottom=False)
-                        
 
     
 def stats():
     st.title("Stats Page :bar_chart:")
     st.header("This is the Stats page.")
-    #Ordina sql in base a lke/dislike e scegli i primi 3
     # Execute the query
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
@@ -379,7 +276,6 @@ def stats():
         rows=my_cur.fetchall()
         for row in rows:
             file=row[1]
-#             st.write(id)
             hex_str = file.strip('"')
             byte_str = bytes.fromhex(hex_str)
             image = Image.open(io.BytesIO(byte_str))
@@ -389,7 +285,6 @@ def stats():
                 img = np.rot90(img, k=3)
             dislikes.append(img)
     
-#     st.write("Your favourite items: ")
     with st.expander("**Your favourite items :heart: :dress:**", expanded=True):
         col1,col2,col3 = st.columns(3)
         with col1:
@@ -399,7 +294,7 @@ def stats():
         with col3:
             st.image(likes[2], width=300)
     st.divider()
-#     st.write("Your least favourite items: ")
+    
     with st.expander("**Your least favourite items :x: :dress:**", expanded=True):
         col4,col5,col6 = st.columns(3)
         with col4:
@@ -409,9 +304,6 @@ def stats():
         with col6:
             st.image(dislikes[2], width=300)
     st.divider()
-    #controllo colori
-    #CREARE GRAFICO COLORI TIPO BARPLOT ANZICHè TESTO
-#     st.write("**Your favourite colors :heart: :rainbow:**") #+ str(like_colors))
     
     # Create a dictionary of color frequencies
     color_dict = {'red': 10, 'green': 5, 'blue': 3, 'yellow': 8}
@@ -437,17 +329,6 @@ def stats():
         # Display the chart in Streamlit
         st.altair_chart(chart, theme=None, use_container_width=True)
     
-    
-    
-    
-#     for color in like_colors:
-#         command=color.lower().replace("'","")
-#         st.write(len(command))
-#         st.write(f"**:'{command}'['{color}']**")
-#         #:blue[colors] per scrivere la parola colors di colore blu
-#     st.divider()
-#     st.write("**Your least favourite colors :x: :rainbow:**")
-    # Close the connection
     cnx.close()
 
 def delete_clothes():
@@ -533,18 +414,8 @@ def delete_clothes():
         if delete:
             with cnx.cursor() as my_cur:
                 for item in checked:
-                    # Convert array to bytes
-#                     byte_str = item.tobytes()
-
-#                     # Convert bytes to hex
-# #                     hex_str = binascii.hexlify(byte_str).decode('utf-8')
-#                     hex_str = bytes_str.hex()
-#                     li.append(hex_str)
-#                     st.write(li)
-#                     quoted_item = '"{}"'.format(hex_str)
-#                     my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{quoted_item}'")
                     my_cur.execute(f"DELETE FROM clothes_table WHERE id = '{item}'")
-                    #non elimina record, controllare item
+                    
             cnx.close()
             st.success("Items succesfully deleted")
             st.experimental_rerun()
@@ -566,45 +437,6 @@ if __name__ == '__main__':
     # Connect to Snowflake
     session = connect_to_snowflake()
     
-    # Convert the DataFrame to a Snowpark DataFrame
-#     url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/color_pairs.csv?raw=true'
-#     df = pd.read_csv(url)
-#     for index, row in df.iterrows():
-#         col1 = row['color_1']
-#         col2 = row['color_2']
-#         col3 = row['target']
-#         df = pd.DataFrame({"COLOR_1": [col1], "COLOR_2": [col2], "TARGET": [col3]})
-#         session.write_pandas(df, "COLOR_PAIRS")
-    
-        # Query the data from Snowflake
-#         cnx = snowflake.connector.connect(**st.secrets["snowflake"])
-#         with cnx.cursor() as cur:
-#             cur.execute('SELECT color_1, color_2, target FROM COLOR_PAIRS')
-#             rows = cur.fetchall()
-#             col_names = [desc[0] for desc in cur.description]
-
-        # Convert the resultset to a pandas DataFrame
-#         df = pd.DataFrame(rows, columns=col_names)
-        
-    
-        # Split the data into training and testing sets
-#         X_train, X_test, y_train, y_test = train_test_split(df[['color_1', 'color_2']], df['target'], test_size=0.2, random_state=42)
-
-
-#         # Convert the color names into numerical values
-#         color_dict = {'black': 0, 'white': 1, 'grey': 2, 'red': 3, 'blue': 4, 'green': 5, 'yellow': 6, 'purple': 7, 'pink': 8}
-#         X_train = X_train.replace(color_dict)
-#         X_test = X_test.replace(color_dict)
-
-#         # Create a logistic regression model and fit it to the training data
-#         model = LogisticRegression()
-#         model.fit(X_train, y_train)
-
-#         serialized_model=pickle.dumps(model)
-
-
-    # Log in the user
-#     login()
     selected = login()
     if selected == "Home":
         home()
@@ -617,27 +449,3 @@ if __name__ == '__main__':
         stats()
     elif selected == "Manage your closet":
         delete_clothes()
-        
-        #st.experimental_memo
-
-#     # If login is successful, display the sidebar menu
-#     if 'login' in st.session_state and st.session_state['login']:
-#         # Set page config
-# #         st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
-
-#         # Display the sidebar menu
-#         while True:
-#             selected = sidebar()
-#             if selected == "Home":
-#                 home()
-#             elif selected == "Upload Clothes":
-#                 upload_clothes()
-# #             elif selected == "Pick me an outfit":
-# #                 pick_outfit()
-# #             elif selected == "Give me some stats":
-# #                 stats()
-# #             elif selected == "Settings":
-# #                 settings()
-
-#CREA USER, DATABASE UTENTI, GLI ITEM DEVONO ESSERE ASSOCIATI AGLI UTENTI, PAGINA DI ELIMINAZIONE ITEM (con checkbox per selezione)
-#SCONTORNARE IMMAGINI, DIRE IN HOMEPAGE CHE APP E' CONNESSA A STREAMLIT
