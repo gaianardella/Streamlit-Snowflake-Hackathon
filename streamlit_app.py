@@ -165,8 +165,6 @@ def check_colors(colors_top,colors_bottom):
             url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pkl?raw=true'
 #             model = pickle.load(BytesIO(requests.get(url).content))
             model_file = BytesIO(requests.get(url).content)
-            st.write(model_file)
-            return model_file
 #             model = pickle.load(model_file)
 #             prediction = model.predict(new_input)
 #             return prediction
@@ -198,15 +196,22 @@ def generate_top_bottom(top_type,bottom_type):
                 elif item == "Trousers" or item=="Shorts":
                     bottom_colors.append(color)
                     
-            pair=check_colors(top_colors,bottom_colors)
-            st.write(pair)
-                
-                
-#             st.write(colors)
-             #SELEZIONARE COLORI
-           #funzione contorllo colori e restituisce true e continua oppure false e richiama generate_top_bottom
-            #colors=[]
-            #VEDERE RECORD TARGET
+#             pair=check_colors(top_colors,bottom_colors)
+            color_dict = {'black': 0, 'white': 1, 'grey': 2, 'red': 3, 'blue': 4, 'green': 5, 'yellow': 6, 'purple': 7, 'pink': 8}
+    
+            for top in colors_top:
+                for bottom in colors_bottom:
+                    color_1=top.lower()
+                    color_2=bottom.lower()
+                    new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
+                    new_input = new_input.replace(color_dict)
+                    url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pkl?raw=true'
+        #             model = pickle.load(BytesIO(requests.get(url).content))
+                    model_file = BytesIO(requests.get(url).content)
+                    model = pickle.load(model_file)
+#             prediction = model.predict(new_input)
+
+
             hex_str = random_row[0].strip('"')
             items["items_hex"].append(hex_str)
             byte_str = bytes.fromhex(hex_str)
