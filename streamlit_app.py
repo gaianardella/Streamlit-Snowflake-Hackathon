@@ -478,7 +478,7 @@ if __name__ == '__main__':
 
         # Query the data from Snowflake
         cur = conn.cursor()
-            cur.execute('SELECT color_1, color_2, target FROM COLOR_PAIRS')
+        cur.execute('SELECT color_1, color_2, target FROM COLOR_PAIRS')
         rows = cur.fetchall()
         col_names = [desc[0] for desc in cur.description]
 
