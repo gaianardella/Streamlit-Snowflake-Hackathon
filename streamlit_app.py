@@ -76,10 +76,10 @@ def home():
     st.subheader(":three: Manage your wardrobe :hammer_and_wrench:")
     st.write("With our app, you can easily manage your wardrobe by checking which items you like the most and the least. You can also remove items that you no longer need or add new items to your collection.")
     st.video(io.open("https://youtu.be/jYB_Jion5OQ"))
-    st.write("Our clothing management app is designed to make it easy for you to manage your wardrobe and create stylish outfits for any occasion. Start using our app today to simplify your clothing management process!")
+#     st.write("Our clothing management app is designed to make it easy for you to manage your wardrobe and create stylish outfits for any occasion. Start using our app today to simplify your clothing management process!")
 
 def upload_clothes():
-    """Displays the Upload Clothes page"""
+    #"""Displays the Upload Clothes page"""
     st.title("Upload your clothes :camera_with_flash:")
     st.subheader("This is the Upload Clothes page.")
         
