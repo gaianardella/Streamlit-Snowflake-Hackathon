@@ -272,6 +272,7 @@ def stats():
     with cnx.cursor() as my_cur:
         my_cur.execute("SELECT * FROM clothes_table ORDER BY LIKES DESC LIMIT 3")
         likes=[]
+        like_colors={}
         rows=my_cur.fetchall()
         for row in rows:
             file=row[1]
@@ -283,8 +284,8 @@ def stats():
             if img.shape[0] < img.shape[1]:
                 img = np.rot90(img, k=3)
             likes.append(img)
-            like_colors = row[3].strip("[").strip("]").replace('"','').replace("\n","").replace(" ","").split(",")
-            count = row[4]
+            colors = row[3].strip("[").strip("]").replace('"','').replace("\n","").replace(" ","").split(",")
+        st.write(colors)
 
         
         my_cur.execute("SELECT * FROM clothes_table ORDER BY LIKES ASC LIMIT 3")
