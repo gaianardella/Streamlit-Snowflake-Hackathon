@@ -159,6 +159,10 @@ def generate_top_bottom(top_type,bottom_type):
         for item in items_strings:
             my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{item}'")
             random_row = my_cur.fetchone()
+             #SELEZIONARE COLORI
+           #funzione contorllo colori e restituisce true e continua oppure false e richiama generate_top_bottom
+            #colors=[]
+            #VEDERE RECORD TARGET
             hex_str = random_row[0].strip('"')
             items["items_hex"].append(hex_str)
             byte_str = bytes.fromhex(hex_str)
@@ -490,7 +494,7 @@ if __name__ == '__main__':
 #         df = pd.DataFrame(rows, columns=col_names)
 
         # Split the data into training and testing sets
-        X_train, X_test, y_train, y_test = train_test_split(df[['color_1', 'color_2']], df['target'], test_size=0.2)
+        X_train, X_test, y_train, y_test = train_test_split(df[['color_1', 'color_2']], df['target'], test_size=0.2, random_state=42)
 
 
 #         # Convert the color names into numerical values
