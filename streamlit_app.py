@@ -529,7 +529,7 @@ def delete_clothes():
                 for item in checked:
                     # Convert array to bytes
                     byte_str = item.tobytes()
-
+                    st.write(byte_str)
                     # Convert bytes to hex
                     hex_str = binascii.hexlify(byte_str).decode('utf-8')
 
