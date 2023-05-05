@@ -13,6 +13,7 @@ import pickle
 import requests
 from io import BytesIO
 import altair as alt
+import binascii
 
 
 st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
