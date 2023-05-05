@@ -325,8 +325,6 @@ def stats():
             st.image(dislikes[2], width=300)
     st.divider()
     
-    # Create a dictionary of color frequencies
-#     color_dict = {'red': 10, 'green': 5, 'blue': 3, 'yellow': 8}
 
     # Convert the dictionary to a Pandas DataFrame and sort it by frequency in descending order
     color_df = pd.DataFrame.from_dict(like_colors, orient='index', columns=['frequency']).sort_values('frequency', ascending=False)
@@ -334,13 +332,11 @@ def stats():
     range_colors=[]
     for key in like_colors.keys():
         range_colors.append(key.lower())
-    st.write(range_colors)
     
     # Define the color palette
     color_palette = alt.Scale(domain=color_df.index.tolist(),
                               range=range_colors)
     
-    #range=['red', 'green', 'blue', 'yellow']
     
 
     # Create the chart using Altair
