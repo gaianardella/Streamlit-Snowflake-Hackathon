@@ -51,15 +51,25 @@ def login():
     if 'login' in st.session_state:
         st.empty()
 #       # Displays the sidebar menu
-        with st.sidebar:
-            option_icons = {
-                "Home :house:": "house",
-                "Upload Clothes": "box-arrow-in-up",
-                "Pick me an outfit": "palette-fill",
-                "Give me some stats": "bar-chart-fill",
-                "Manage your closet": "gear"
-            }
-            selected = st.selectbox("Main Menu :gear:", options=list(option_icons.keys()), index=0, key="sidebar")
+#         with st.sidebar:
+#             option_icons = {
+#                 "Home": "house",
+#                 "Upload Clothes": "box-arrow-in-up",
+#                 "Pick me an outfit": "palette-fill",
+#                 "Give me some stats": "bar-chart-fill",
+#                 "Manage your closet": "gear"
+#             }
+#             selected = st.selectbox("Main Menu :gear:", options=list(option_icons.keys()), index=0, key="sidebar")
+#             return selected
+            with st.sidebar:
+            option_choices = [
+                "Home",
+                "Upload Clothes",
+                "Pick me an outfit",
+                "Give me some stats",
+                "Manage your closet"
+            ]
+            selected = st.selectbox("Main Menu :gear:", options=list(option_choices), index=0, key="sidebar")
             return selected
 
 def home():
