@@ -9,6 +9,7 @@ import io
 import sklearn
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+import pickle
 
 st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
 my_color_list = ["Blue", "Red", "White", "Black", "Green", "Yellow", "Purple", "Pink", "Grey"]
@@ -153,6 +154,21 @@ def choose_temperature():
 def colors(colors_top,colors_bottom):
     # Convert the color names into numerical values
     color_dict = {'black': 0, 'white': 1, 'grey': 2, 'red': 3, 'blue': 4, 'green': 5, 'yellow': 6, 'purple': 7, 'pink': 8}
+    
+    for top in colors_top:
+        for bottom in colors_bottom:
+            color_1=top.lower()
+            color_2=bottom.lower()
+            new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
+            new_input = new_input.replace(color_dict)
+            url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pickle?raw=true'
+            model = pickle.load(f)
+            prediction = model.predict(new_input)
+            if prediction == 'yes':
+                return True
+            elif prediction == 'no':
+                return False
+        
 
     
 
@@ -170,14 +186,14 @@ def generate_top_bottom(top_type,bottom_type):
             random_row = my_cur.fetchone()
             colors = random_row[1].strip("[").strip("]").replace('"','').split(",")
             for color in colors:
-                strip_color = color.strip(" ")
-                st.write("This is the color:" +strip_color)
                 if item == "Sweater" or item=="T-Shirt":
                     top_colors.append(strip_color)
                 elif item == "Trousers" or item=="Shorts":
                     bottom_colors.append(strip_color)
-            st.write(top_colors)
-            st.write(bottom_colors)
+                    
+            pair =colors(top_colors,bottom_colors):
+            st.write(pair)
+                
                 
 #             st.write(colors)
              #SELEZIONARE COLORI
