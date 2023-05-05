@@ -530,13 +530,12 @@ def delete_clothes():
                 for item in checked:
                     # Convert array to bytes
                     byte_str = item.tobytes()
-                    li.append(byte_str)
-                    st.write(li)
 
-                    
                     # Convert bytes to hex
 #                     hex_str = binascii.hexlify(byte_str).decode('utf-8')
                     hex_str = bytes_str.hex()
+                    li.append(hex_str)
+                    st.write(li)
                     
                     
                     quoted_item = '"{}"'.format(hex_str)
@@ -636,6 +635,5 @@ if __name__ == '__main__':
 # #             elif selected == "Settings":
 # #                 settings()
 
-#MANCANO: ALGORITMO COLORI, STATISTICHE, RENDERE BELLA L'APP
 #CREA USER, DATABASE UTENTI, GLI ITEM DEVONO ESSERE ASSOCIATI AGLI UTENTI, PAGINA DI ELIMINAZIONE ITEM (con checkbox per selezione)
 #SCONTORNARE IMMAGINI, DIRE IN HOMEPAGE CHE APP E' CONNESSA A STREAMLIT
