@@ -222,7 +222,7 @@ def generate_top_bottom(top_type,bottom_type):
         
 
 
-def generate_outfit(temperature, flag_top, flag_bottom):
+def generate_outfit(temperature):
     if temperature == 'Hot':
         top_type = 'T-Shirt'
         bottom_type = 'Shorts'
@@ -596,7 +596,7 @@ if __name__ == '__main__':
         upload_clothes()
     elif selected == "Pick me an outfit":
         temp=choose_temperature()
-        generate_outfit(temp, flag_top=True, flag_bottom=True)
+        generate_outfit(temp)
     elif selected == "Give me some stats":
         stats()
     elif selected == "Manage your closet":
