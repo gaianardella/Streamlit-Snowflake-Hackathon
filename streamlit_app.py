@@ -359,7 +359,6 @@ def stats():
         rows=my_cur.fetchall()
         for row in rows:
             file=row[1]
-            like_colors = row[3].strip("[").strip("]").replace('"','').replace("\n","").replace(" ","").split(",")
             hex_str = file.strip('"')
             byte_str = bytes.fromhex(hex_str)
             image = Image.open(io.BytesIO(byte_str))
@@ -368,6 +367,12 @@ def stats():
             if img.shape[0] < img.shape[1]:
                 img = np.rot90(img, k=3)
             likes.append(img)
+            like_colors = row[3].strip("[").strip("]").replace('"','').replace("\n","").replace(" ","").split(",")
+        for color in like_colors:
+            command=color.lower()
+            st.write(f":'{command}'['{color}']")
+            #:blue[colors] per scrivere la parola colors di colore blu
+            
         
         my_cur.execute("SELECT * FROM clothes_table ORDER BY LIKES ASC LIMIT 3")
         dislikes=[]
