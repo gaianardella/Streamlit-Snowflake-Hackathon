@@ -204,9 +204,9 @@ def generate_top_bottom(top_type,bottom_type):
                 for bottom in bottom_colors:
                     color_1=top.lower()
                     color_2=bottom.lower()
-                    new_input = pd.DataFrame({'COLOR1': [color_1], 'COLOR2': [color_2]})
+                    new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
 #                     new_input = new_input.replace(color_dict)
-                    st.write(new_input)
+                    st.write(new_input.collect())
                     url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pkl?raw=true'
         #             model = pickle.load(BytesIO(requests.get(url).content))
                     model_file = BytesIO(requests.get(url).content)
