@@ -158,10 +158,13 @@ def check_colors(colors_top,colors_bottom):
     
     for top in colors_top:
         for bottom in colors_bottom:
-#             color_1=top.lower()
-#             color_2=bottom.lower()
-            new_input = pd.DataFrame({'color_1': [top.lower()], 'color_2': [bottom.lower()]})
-            st.write(new_input)
+            color_1=top.lower()
+            color_2=bottom.lower()
+            st.write(color_1)
+#             new_input = pd.DataFrame({'color_1': [top.lower()], 'color_2': [bottom.lower()]})
+            input = pd.DataFrame({'color_1': ['blue'], 'color_2': ['red']})
+            st.write(input)
+#             st.write(new_input)
 #             new_input = new_input.replace(color_dict)
             url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pkl?raw=true'
 #             model = pickle.load(BytesIO(requests.get(url).content))
