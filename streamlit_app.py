@@ -466,8 +466,10 @@ if __name__ == '__main__':
 #     df = pd.read_csv(url)
     df = pd.read_csv(url, index_col=0)
     # Convert the DataFrame to a Snowpark DataFrame
-#     session.create_dataframe(df)
-    session.write_pandas(df, "COLOR_PAIRS")
+    session.create_dataframe(df)
+#     df = pd.DataFrame({"ID": [file_name], "ITEM": [bytes_data_in_hex], "TYPE": [item_selected[0]], "COLORS": [np.array(colors_selected)], "LIKES":[0], "DISLIKES":[0]})
+#                 session.write_pandas(df, "CLOTHES_TABLE")
+#     session.write_pandas(df, "COLOR_PAIRS")
 
 
     # Log in the user
