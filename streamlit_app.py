@@ -415,11 +415,8 @@ def stats():
     # Create a dictionary of color frequencies
     color_dict = {'red': 10, 'green': 5, 'blue': 3, 'yellow': 8}
 
-    # Convert the dictionary to a Pandas DataFrame
-    color_df = pd.DataFrame.from_dict(color_dict, orient='index', columns=['frequency'])
-
-    # Sort the DataFrame by frequency in descending order
-    color_df = color_df.sort_values('frequency', ascending=False)
+    # Convert the dictionary to a Pandas DataFrame and sort it by frequency in descending order
+    color_df = pd.DataFrame.from_dict(color_dict, orient='index', columns=['frequency']).sort_values('frequency', ascending=False)
 
     # Define the color palette
     color_palette = alt.Scale(domain=color_df.index.tolist(),
