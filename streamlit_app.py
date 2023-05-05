@@ -199,8 +199,8 @@ def generate_top_bottom(top_type,bottom_type):
 #             pair=check_colors(top_colors,bottom_colors)
             color_dict = {'black': 0, 'white': 1, 'grey': 2, 'red': 3, 'blue': 4, 'green': 5, 'yellow': 6, 'purple': 7, 'pink': 8}
     
-            for top in colors_top:
-                for bottom in colors_bottom:
+            for top in top_colors:
+                for bottom in bottom_colors:
                     color_1=top.lower()
                     color_2=bottom.lower()
                     new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
