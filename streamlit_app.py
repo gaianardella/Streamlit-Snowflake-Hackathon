@@ -526,6 +526,7 @@ def delete_clothes():
         cnx = snowflake.connector.connect(**st.secrets["snowflake"])
         if delete:
             with cnx.cursor() as my_cur:
+                st.write(checked)
                 for item in checked:
                     hex_str = binascii.hexlify(item).decode('utf-8')
                     quoted_item = '"{}"'.format(hex_str)
