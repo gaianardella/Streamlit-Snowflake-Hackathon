@@ -80,7 +80,13 @@ def home():
         st.video("https://youtu.be/JUIXQTZhSNA")
         
     st.divider()
-    st.subheader(":three: Manage your wardrobe :hammer_and_wrench:")
+    st.subheader(":three: See the stats :bar_chart:")
+    st.write("Check which items you wear the most, your favourite colors and which you don't wear.")
+#     with st.expander("**Watch the video :clapper:**", expanded=False):
+#         st.video("https://youtu.be/jYB_Jion5OQ")
+    
+    st.divider()
+    st.subheader(":four: Manage your wardrobe :hammer_and_wrench:")
     st.write("With our app, you can easily manage your wardrobe by checking which items you like the most and the least. You can also remove items that you no longer need or add new items to your collection.")
     with st.expander("**Watch the video :clapper:**", expanded=False):
         st.video("https://youtu.be/jYB_Jion5OQ")
