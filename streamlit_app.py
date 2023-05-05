@@ -330,10 +330,16 @@ def stats():
 
     # Convert the dictionary to a Pandas DataFrame and sort it by frequency in descending order
     color_df = pd.DataFrame.from_dict(like_colors, orient='index', columns=['frequency']).sort_values('frequency', ascending=False)
-
+    
+    range_colors=[]
+    for key in like_colors.keys():
+        range.append(color.lower())
+    st.write(range_colors)
+    
     # Define the color palette
     color_palette = alt.Scale(domain=color_df.index.tolist(),
                               range=['red', 'green', 'blue', 'yellow'])
+    
 
     # Create the chart using Altair
     chart = alt.Chart(color_df.reset_index()).mark_bar().encode(
