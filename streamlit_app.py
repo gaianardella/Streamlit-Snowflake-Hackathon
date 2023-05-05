@@ -533,8 +533,6 @@ def delete_clothes():
         if delete:
             with cnx.cursor() as my_cur:
                 for item in checked:
-                    st.write(item)
-                    st.stop()
                     # Convert array to bytes
 #                     byte_str = item.tobytes()
 
@@ -543,10 +541,9 @@ def delete_clothes():
 #                     hex_str = bytes_str.hex()
 #                     li.append(hex_str)
 #                     st.write(li)
-                    
-                    
-                    quoted_item = '"{}"'.format(hex_str)
-                    my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{quoted_item}'")
+#                     quoted_item = '"{}"'.format(hex_str)
+#                     my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{quoted_item}'")
+                    my_cur.execute(f"DELETE FROM clothes_table WHERE id = '{item}'")
                     #non elimina record, controllare item
             cnx.close()
             st.success("Items succesfully deleted")
