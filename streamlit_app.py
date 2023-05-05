@@ -359,7 +359,7 @@ def stats():
         rows=my_cur.fetchall()
         for row in rows:
             file=row[1]
-            like_colors = row[3].strip("[").strip("]").replace('"','').split(",")
+            like_colors = row[3].strip("[").strip("]").replace('"','').strip("\n").strip(" ").split(",")
             hex_str = file.strip('"')
             byte_str = bytes.fromhex(hex_str)
             image = Image.open(io.BytesIO(byte_str))
