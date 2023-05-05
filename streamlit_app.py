@@ -191,7 +191,7 @@ def generate_top_bottom(top_type,bottom_type):
                 elif item == "Trousers" or item=="Shorts":
                     bottom_colors.append(strip_color)
                     
-            pair =colors(top_colors,bottom_colors):
+            pair =colors(top_colors,bottom_colors)
             st.write(pair)
                 
                 
