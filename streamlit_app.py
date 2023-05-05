@@ -409,6 +409,7 @@ def stats():
     st.write("**Your favourite colors :heart: :rainbow:**") #+ str(like_colors))
     for color in like_colors:
         command=color.lower().replace("'","")
+        st.write(len(command))
         st.write(f"**:'{command}'['{color}']**")
         #:blue[colors] per scrivere la parola colors di colore blu
     st.divider()
