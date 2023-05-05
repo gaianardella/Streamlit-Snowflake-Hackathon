@@ -526,7 +526,8 @@ def delete_clothes():
         if delete:
             with cnx.cursor() as my_cur:
                 for item in checked:
-                    my_cur.execute('DELETE FROM clothes_table WHERE item = "' +str(item)+'"')
+                    quoted_item = '"{}"'.format(item)
+                    my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{quoted_item}'")
                     #non elimina record, controllare item
             cnx.close()
             st.success("Items succesfully deleted")
