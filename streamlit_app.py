@@ -10,7 +10,7 @@ import sklearn
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 import pickle
-import joblib
+import requests
 from io import BytesIO
 st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
 my_color_list = ["Blue", "Red", "White", "Black", "Green", "Yellow", "Purple", "Pink", "Grey"]
@@ -165,11 +165,12 @@ def check_colors(colors_top,colors_bottom):
             url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pickle?raw=true'
 #             model = pickle.load(BytesIO(requests.get(url).content))
             model = joblib.load(BytesIO(requests.get(url).content))
-            prediction = model.predict(new_input)
-            if prediction == 'yes':
-                return True
-            elif prediction == 'no':
-                return False
+            model = BytesIO(requests.get(url).content)
+#             prediction = model.predict(new_input)
+#             if prediction == 'yes':
+#                 return True
+#             elif prediction == 'no':
+#                 return False
         
 
     
