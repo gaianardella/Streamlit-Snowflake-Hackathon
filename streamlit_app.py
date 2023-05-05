@@ -547,7 +547,7 @@ def delete_clothes():
                     #non elimina record, controllare item
             cnx.close()
             st.success("Items succesfully deleted")
-#             st.experimental_rerun()
+            st.experimental_rerun()
 
 # def model():
     
