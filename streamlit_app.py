@@ -61,16 +61,16 @@ def login():
 #             }
 #             selected = st.selectbox("Main Menu :gear:", options=list(option_icons.keys()), index=0, key="sidebar")
 #             return selected
-            with st.sidebar:
-            option_choices = [
-                "Home",
-                "Upload Clothes",
-                "Pick me an outfit",
-                "Give me some stats",
-                "Manage your closet"
-            ]
-            selected = st.selectbox("Main Menu :gear:", options=list(option_choices), index=0, key="sidebar")
-            return selected
+        with st.sidebar:
+        option_choices = [
+            "Home",
+            "Upload Clothes",
+            "Pick me an outfit",
+            "Give me some stats",
+            "Manage your closet"
+        ]
+        selected = st.selectbox("Main Menu :gear:", options=list(option_choices), index=0, key="sidebar")
+        return selected
 
 def home():
     """Displays the Home page"""
