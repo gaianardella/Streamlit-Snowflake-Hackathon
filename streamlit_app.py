@@ -448,15 +448,14 @@ def stats():
 #     st.write("**Your least favourite colors :x: :rainbow:**")
     # Close the connection
     cnx.close()
-    
-    return
+
 def delete_clothes():
     st.title("Manage your wardrobe :hammer_and_wrench:")
     st.header("Here you can delete the clothes you don't wear anymore")
     clothes_selected = st.multiselect("**Pick Clothes :womans_clothes: :shorts:**", list(my_item_list), ['Sweater'])
     if len(clothes_selected) > 0:
         if len(clothes_selected)>1:
-            # Join the colors with commas, except for the last on
+            # Join the clothes with commas, except for the last on
             clothes_string = ', '.join(clothes_selected[:-1])
             # Add the last color to the string
             clothes_string += ' and ' + clothes_selected[-1]
@@ -527,7 +526,7 @@ def delete_clothes():
         if delete:
             with cnx.cursor() as my_cur:
                 for item in checked:
-                    my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{item}'")
+                    my_cur.execute(f'DELETE FROM clothes_table WHERE item = "'{item}'"')
                     #non elimina record, controllare item
             cnx.close()
             st.success("Items succesfully deleted")
