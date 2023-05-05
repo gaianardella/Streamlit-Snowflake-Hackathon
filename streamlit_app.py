@@ -408,13 +408,40 @@ def stats():
     #controllo colori
     #CREARE GRAFICO COLORI TIPO BARPLOT ANZICHè TESTO
     st.write("**Your favourite colors :heart: :rainbow:**") #+ str(like_colors))
-    for color in like_colors:
-        command=color.lower().replace("'","")
-        st.write(len(command))
-        st.write(f"**:'{command}'['{color}']**")
-        #:blue[colors] per scrivere la parola colors di colore blu
-    st.divider()
-    st.write("**Your least favourite colors :x: :rainbow:**")
+    # Create a dictionary of color frequencies
+    color_dict = {'red': 10, 'green': 5, 'blue': 3, 'yellow': 8}
+
+    # Convert the dictionary to a Pandas DataFrame
+    color_df = pd.DataFrame.from_dict(color_dict, orient='index', columns=['frequency'])
+
+    # Sort the DataFrame by frequency in descending order
+    color_df = color_df.sort_values('frequency', ascending=False)
+
+    # Define the color palette
+    color_palette = alt.Scale(domain=color_df.index.tolist(),
+                              range=['red', 'green', 'blue', 'yellow'])
+
+    # Create the chart using Altair
+    chart = alt.Chart(color_df.reset_index()).mark_bar().encode(
+        x='index',
+        y='frequency',
+        color=alt.Color('index', scale=color_palette),
+        tooltip=['index', 'frequency']
+    ).properties(width=500, height=300)
+
+    # Display the chart in Streamlit
+    st.altair_chart(chart, use_container_width=True)
+    
+    
+    
+    
+#     for color in like_colors:
+#         command=color.lower().replace("'","")
+#         st.write(len(command))
+#         st.write(f"**:'{command}'['{color}']**")
+#         #:blue[colors] per scrivere la parola colors di colore blu
+#     st.divider()
+#     st.write("**Your least favourite colors :x: :rainbow:**")
     # Close the connection
     cnx.close()
     
