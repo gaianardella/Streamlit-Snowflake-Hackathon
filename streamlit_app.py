@@ -150,7 +150,7 @@ def choose_temperature():
     return temperature
 
 
-def colors(color_top,color_bottom):
+def colors(colors_top,colors_bottom):
     # Convert the color names into numerical values
     color_dict = {'black': 0, 'white': 1, 'grey': 2, 'red': 3, 'blue': 4, 'green': 5, 'yellow': 6, 'purple': 7, 'pink': 8}
 
@@ -160,13 +160,16 @@ def colors(color_top,color_bottom):
 def generate_top_bottom(top_type,bottom_type):
     #     # Establish a connection to your Snowflake database
     items_strings=[top_type,bottom_type]
+    top_colors=[]
+    bottom_colors=[]
     items={"items_hex":[], "items_bytes":[]}
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
         for item in items_strings:
             my_cur.execute(f"SELECT item,colors FROM clothes_table sample row (1 rows) WHERE type = '{item}'")
             random_row = my_cur.fetchone()
-            color = st.write(type(random_row[1]))
+            colors = list(random_row[1])
+            st.write(colors)
              #SELEZIONARE COLORI
            #funzione contorllo colori e restituisce true e continua oppure false e richiama generate_top_bottom
             #colors=[]
