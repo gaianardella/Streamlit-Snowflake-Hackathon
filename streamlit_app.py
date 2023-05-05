@@ -530,10 +530,12 @@ def delete_clothes():
                 for item in checked:
                     # Convert array to bytes
                     byte_str = item.tobytes()
-                    li.append(byte_str)
-                    st.write(li)
+                    
                     # Convert bytes to hex
                     hex_str = binascii.hexlify(byte_str).decode('utf-8')
+                    
+                    li.append(hex_str)
+                    st.write(li)
 
                     quoted_item = '"{}"'.format(hex_str)
                     my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{quoted_item}'")
