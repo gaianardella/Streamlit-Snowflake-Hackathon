@@ -482,6 +482,8 @@ if __name__ == '__main__':
 #                 session.write_pandas(df, "CLOTHES_TABLE")
         session.write_pandas(df2, "COLOR_PAIRS")
     
+    # Convert the color names into numerical values
+    color_dict = {'black': 0, 'white': 1, 'grey': 2, 'red': 3, 'blue': 4, 'green': 5, 'yellow': 6, 'purple': 7, 'pink': 8}
 
         # Query the data from Snowflake
 #         cnx = snowflake.connector.connect(**st.secrets["snowflake"])
