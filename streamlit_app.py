@@ -434,27 +434,6 @@ def stats():
 #     ).properties(width=500, height=300)
     color = alt.Color("weather:N", scale=scale)
 
-    # We create two selections:
-    # - a brush that is active on the top panel
-    # - a multi-click that is active on the bottom panel
-    brush = alt.selection_interval(encodings=["x"])
-    click = alt.selection_multi(encodings=["color"])
-#         chart = (
-#             alt.Chart()
-#             .mark_bar()
-#             .encode(
-#                 x="count()",
-#                 y="weather:N",
-#                 color=alt.condition(click, color, alt.value("lightgray")),
-#             )
-#             .transform_filter(brush)
-#             .properties(
-#                 width=550,
-#             )
-#             .add_selection(click)
-#         )
-    
-    # Bottom panel is a bar chart of weather type
     chart = (
         alt.Chart()
         .mark_bar()
@@ -469,6 +448,7 @@ def stats():
         )
         .add_selection(click)
     )
+
 
     with st.expander("**Your favourite colors :heart: :rainbow:**", expanded=True):
         # Display the chart in Streamlit
