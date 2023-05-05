@@ -116,7 +116,7 @@ def upload_clothes():
         else:
             colors_string = colors_selected[0]
         # Write color string
-        st.write(f"You selected: _{colors_string}_") #:blue[colors] per scrivere la parola colors di colore blu
+        st.write(f"You selected: _{colors_string}_")
     else:
         st.error("Insert Colors")
         
@@ -160,8 +160,6 @@ def check_colors(colors_top,colors_bottom):
         for bottom in colors_bottom:
             color_1=top.replace(' ','').lower().strip()
             color_2=bottom.replace(' ','').lower().strip()
-            st.write(color_1)
-            st.write(color_2)
             new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
             new_input = new_input.replace(color_dict)
             url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pkl?raw=true'
@@ -345,7 +343,7 @@ def stats():
     chart = alt.Chart(color_df.reset_index()).mark_bar().encode(
         x='index',
         y='frequency',
-        color=alt.Color('index', scale=color_palette),
+        color=alt.Color('colors', scale=color_palette),
         tooltip=['index', 'frequency']
     ).properties(width=500, height=300)
 
