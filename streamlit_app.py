@@ -410,7 +410,7 @@ def stats():
     st.divider()
     #controllo colori
     #CREARE GRAFICO COLORI TIPO BARPLOT ANZICHè TESTO
-    st.write("**Your favourite colors :heart: :rainbow:**") #+ str(like_colors))
+#     st.write("**Your favourite colors :heart: :rainbow:**") #+ str(like_colors))
     
     # Create a dictionary of color frequencies
     color_dict = {'red': 10, 'green': 5, 'blue': 3, 'yellow': 8}
@@ -432,9 +432,10 @@ def stats():
         color=alt.Color('index', scale=color_palette),
         tooltip=['index', 'frequency']
     ).properties(width=500, height=300)
-
-    # Display the chart in Streamlit
-    st.altair_chart(chart, use_container_width=True)
+    
+    with st.expander("**Your favourite colors :heart: :rainbow:**", expanded=True):
+        # Display the chart in Streamlit
+        st.altair_chart(chart, use_container_width=True)
     
     
     
