@@ -7,8 +7,8 @@ from PIL import Image
 import snowflake.connector
 import io
 import sklearn
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
+# from sklearn.linear_model import LogisticRegression
+# from sklearn.model_selection import train_test_split
 import pickle
 import requests
 from io import BytesIO
