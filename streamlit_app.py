@@ -158,25 +158,21 @@ def check_colors(colors_top,colors_bottom):
     
     for top in colors_top:
         for bottom in colors_bottom:
-            color_1=top.lower()
-            color_2=bottom.lower()
-            st.write(color_1)
-#             new_input = pd.DataFrame({'color_1': [top.lower()], 'color_2': [bottom.lower()]})
-            input = pd.DataFrame({'color_1': [color_dict['black']], 'color_2': ['red']})
-            st.write(input)
-#             st.write(new_input)
-#             new_input = new_input.replace(color_dict)
+            color_1=top.replace(' ','').lower().strip()
+            color_2=bottom.replace(' ','').lower().strip()
+            st.write(color_dict[color_1])
+            new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
+            new_input = new_input.replace(color_dict)
             url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pkl?raw=true'
 #             model = pickle.load(BytesIO(requests.get(url).content))
             model_file = BytesIO(requests.get(url).content)
-#             model = pickle.load(model_file)
-#             prediction = model.predict(new_input)
-#             return prediction
+            model = pickle.load(model_file)
+            prediction = model.predict(new_input)
             
-#             if prediction == 'yes':
-#                 return True
-#             elif prediction == 'no':
-#                 return False
+            if prediction == 'yes':
+                return True
+            elif prediction == 'no':
+                return False
         
 
     
@@ -200,23 +196,8 @@ def generate_top_bottom(top_type,bottom_type):
                 elif item == "Trousers" or item=="Shorts":
                     bottom_colors.append(color)
                     
-#             pair=check_colors(top_colors,bottom_colors)
-            color_dict = {'black': 0, 'white': 1, 'grey': 2, 'red': 3, 'blue': 4, 'green': 5, 'yellow': 6, 'purple': 7, 'pink': 8}
-    
-            for top in top_colors:
-                for bottom in bottom_colors:
-                    color_1=top.replace(' ','').lower().strip()
-                    color_2=bottom.replace(' ','').lower().strip()
-                    st.write(color_dict[color_1])
-                    new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
-                    new_input = new_input.replace(color_dict)
-                    url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pkl?raw=true'
-        #             model = pickle.load(BytesIO(requests.get(url).content))
-                    model_file = BytesIO(requests.get(url).content)
-                    model = pickle.load(model_file)
-                    prediction = model.predict(new_input)
-                    st.write(prediction)
-
+            pair=check_colors(top_colors,bottom_colors)
+            st.write(pair)
 
             hex_str = random_row[0].strip('"')
             items["items_hex"].append(hex_str)
