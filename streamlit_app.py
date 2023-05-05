@@ -290,7 +290,6 @@ def stats():
                     like_colors[color]=row[4]
                 else:
                     like_colors[color]+=row[4]
-        st.write(like_colors)
         
         my_cur.execute("SELECT * FROM clothes_table ORDER BY LIKES ASC LIMIT 3")
         dislikes=[]
@@ -327,10 +326,10 @@ def stats():
     st.divider()
     
     # Create a dictionary of color frequencies
-    color_dict = {'red': 10, 'green': 5, 'blue': 3, 'yellow': 8}
+#     color_dict = {'red': 10, 'green': 5, 'blue': 3, 'yellow': 8}
 
     # Convert the dictionary to a Pandas DataFrame and sort it by frequency in descending order
-    color_df = pd.DataFrame.from_dict(color_dict, orient='index', columns=['frequency']).sort_values('frequency', ascending=False)
+    color_df = pd.DataFrame.from_dict(like_colors, orient='index', columns=['frequency']).sort_values('frequency', ascending=False)
 
     # Define the color palette
     color_palette = alt.Scale(domain=color_df.index.tolist(),
