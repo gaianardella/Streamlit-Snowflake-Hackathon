@@ -207,9 +207,7 @@ def generate_top_bottom(top_type,bottom_type):
                 for bottom in bottom_colors:
                     color_1=top.replace(' ','').lower().strip()
                     color_2=bottom.lower()
-                    st.write("color is:"+str(color_1))
-                    for el in str(color_1):
-                        st.write("ch"+el+"ch")
+                    st.write(str(color_1))
 #                     st.write(color_dict[color_1.strip(' ')])
 #                     new_input = {'color_1': [color_1], 'color_2': [color_2]}
 #                     new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
