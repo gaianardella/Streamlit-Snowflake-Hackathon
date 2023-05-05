@@ -149,6 +149,13 @@ def choose_temperature():
     st.divider()
     return temperature
 
+
+def colors(color_top,color_bottom):
+    # Convert the color names into numerical values
+    color_dict = {'black': 0, 'white': 1, 'grey': 2, 'red': 3, 'blue': 4, 'green': 5, 'yellow': 6, 'purple': 7, 'pink': 8}
+
+    
+
 @st.cache_resource
 def generate_top_bottom(top_type,bottom_type):
     #     # Establish a connection to your Snowflake database
@@ -157,8 +164,9 @@ def generate_top_bottom(top_type,bottom_type):
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
         for item in items_strings:
-            my_cur.execute(f"SELECT item FROM clothes_table sample row (1 rows) WHERE type = '{item}'")
+            my_cur.execute(f"SELECT item,colors FROM clothes_table sample row (1 rows) WHERE type = '{item}'")
             random_row = my_cur.fetchone()
+            st.write(random_row)
              #SELEZIONARE COLORI
            #funzione contorllo colori e restituisce true e continua oppure false e richiama generate_top_bottom
             #colors=[]
@@ -482,9 +490,6 @@ if __name__ == '__main__':
 #                 session.write_pandas(df, "CLOTHES_TABLE")
         session.write_pandas(df2, "COLOR_PAIRS")
     
-    # Convert the color names into numerical values
-    color_dict = {'black': 0, 'white': 1, 'grey': 2, 'red': 3, 'blue': 4, 'green': 5, 'yellow': 6, 'purple': 7, 'pink': 8}
-
         # Query the data from Snowflake
 #         cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 #         with cnx.cursor() as cur:
