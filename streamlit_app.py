@@ -343,7 +343,7 @@ def stats():
     chart = alt.Chart(color_df.reset_index()).mark_bar().encode(
         x='index',
         y='frequency',
-        color=alt.Color('colors', scale=color_palette),
+        color=alt.Color('index', scale=color_palette),
         tooltip=['index', 'frequency']
     ).properties(width=500, height=300)
 
