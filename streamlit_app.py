@@ -474,6 +474,31 @@ if __name__ == '__main__':
         df = pd.DataFrame({"COLOR_1": [col1], "COLOR_2": [col2], "TARGET": [col3]})
 #                 session.write_pandas(df, "CLOTHES_TABLE")
         session.write_pandas(df, "COLOR_PAIRS")
+    
+
+        # Query the data from Snowflake
+        cur = conn.cursor()
+            cur.execute('SELECT color_1, color_2, target FROM COLOR_PAIRS')
+        rows = cur.fetchall()
+        col_names = [desc[0] for desc in cur.description]
+
+        # Convert the resultset to a pandas DataFrame
+        df = pd.DataFrame(rows, columns=col_names)
+
+        # Split the data into training and testing sets
+        X_train, X_test, y_train, y_test = train_test_split(df[['color_1', 'color_2']], df['target'], test_size=0.2, random_state=42)
+
+
+#         # Convert the color names into numerical values
+#         color_dict = {'black': 0, 'white': 1, 'grey': 2, 'red': 3, 'blue': 4, 'green': 5, 'yellow': 6, 'purple': 7, 'pink': 8}
+#         X_train = X_train.replace(color_dict)
+#         X_test = X_test.replace(color_dict)
+
+#         # Create a logistic regression model and fit it to the training data
+#         model = LogisticRegression()
+#         model.fit(X_train, y_train)
+
+#         serialized_model=pickle.dumps(model)
 
 
     # Log in the user
