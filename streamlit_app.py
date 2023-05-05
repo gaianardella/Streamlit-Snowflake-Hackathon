@@ -171,7 +171,7 @@ def generate_top_bottom(top_type,bottom_type):
             colors = random_row[1].strip("[").strip("]").replace('"','').replace(' ','').split(",")
             for color in colors:
                 strip_color=color.strip('"')
-                st.write("This is the color:" +strip_color)
+                st.write("This is the color:" +color)
                 if item == "Sweater" or item=="T-Shirt":
                     top_colors.append(strip_color)
                 elif item == "Trousers" or item=="Shorts":
