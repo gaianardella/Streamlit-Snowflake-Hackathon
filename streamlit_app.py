@@ -284,6 +284,7 @@ def stats():
                 img = np.rot90(img, k=3)
             likes.append(img)
             like_colors = row[3].strip("[").strip("]").replace('"','').replace("\n","").replace(" ","").split(",")
+            count = row[4]
 
         
         my_cur.execute("SELECT * FROM clothes_table ORDER BY LIKES ASC LIMIT 3")
