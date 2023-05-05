@@ -210,11 +210,13 @@ def generate_top_bottom(top_type,bottom_type):
                 img = np.rot90(img, k=3)
             items["items_bytes"].append(img)
             
+    cnx.close()   
     pair=check_colors(top_colors,bottom_colors)
-    st.write(pair)
-
-    cnx.close()    
-    return items
+    if pair == True:
+        return items
+    else:
+        generate_top_bottom(top_type,bottom_type)
+        
 
 
 def generate_outfit(temperature, flag_top, flag_bottom):
