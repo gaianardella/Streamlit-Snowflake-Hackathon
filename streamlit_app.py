@@ -526,9 +526,13 @@ def delete_clothes():
         cnx = snowflake.connector.connect(**st.secrets["snowflake"])
         if delete:
             with cnx.cursor() as my_cur:
-                st.write(checked)
                 for item in checked:
-                    hex_str = binascii.hexlify(item).decode('utf-8')
+                    # Convert array to bytes
+                    byte_str = -item.tobytes()
+
+                    # Convert bytes to hex
+                    hex_str = binascii.hexlify(byte_str).decode('utf-8')
+
                     quoted_item = '"{}"'.format(hex_str)
                     my_cur.execute(f"DELETE FROM clothes_table WHERE item = '{quoted_item}'")
                     #non elimina record, controllare item
