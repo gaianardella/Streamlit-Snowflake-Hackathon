@@ -344,7 +344,7 @@ def stats():
         x='index',
         y='frequency',
         color=alt.Color('index', scale=color_palette),
-        tooltip=['colors', 'frequency']
+        tooltip=['index', 'frequency']
     ).properties(width=500, height=300)
 
 
