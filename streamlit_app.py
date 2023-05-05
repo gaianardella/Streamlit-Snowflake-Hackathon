@@ -168,7 +168,7 @@ def generate_top_bottom(top_type,bottom_type):
         for item in items_strings:
             my_cur.execute(f"SELECT item,colors FROM clothes_table sample row (1 rows) WHERE type = '{item}'")
             random_row = my_cur.fetchone()
-            colors = list(random_row[1])
+            colors = random_row[1].strip("[").strip("]")
             st.write(colors)
              #SELEZIONARE COLORI
            #funzione contorllo colori e restituisce true e continua oppure false e richiama generate_top_bottom
