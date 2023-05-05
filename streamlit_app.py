@@ -525,11 +525,13 @@ def delete_clothes():
         delete = st.button("Delete")
         cnx = snowflake.connector.connect(**st.secrets["snowflake"])
         if delete:
+            li=[]
             with cnx.cursor() as my_cur:
                 for item in checked:
                     # Convert array to bytes
                     byte_str = item.tobytes()
-                    st.write(byte_str)
+                    li.append(byte_str)
+                    st.write(li)
                     # Convert bytes to hex
                     hex_str = binascii.hexlify(byte_str).decode('utf-8')
 
