@@ -532,7 +532,8 @@ def delete_clothes():
                     byte_str = item.tobytes()
                     
                     # Convert bytes to hex
-                    hex_str = binascii.hexlify(byte_str).decode('utf-8')
+#                     hex_str = binascii.hexlify(byte_str).decode('utf-8')
+                    hex_str = bytes_str.hex()
                     
                     li.append(hex_str)
                     st.write(li)
