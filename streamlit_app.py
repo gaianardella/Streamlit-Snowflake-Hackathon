@@ -166,7 +166,7 @@ def check_colors(colors_top,colors_bottom):
 #             model = pickle.load(BytesIO(requests.get(url).content))
             model_file = BytesIO(requests.get(url).content)
             model = pickle.load(model_file)
-#             prediction = model.predict(new_input)
+            prediction = model.predict(new_input)
             
 #             if prediction == 'yes':
 #                 return True
