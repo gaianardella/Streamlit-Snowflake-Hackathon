@@ -169,9 +169,9 @@ def generate_top_bottom(top_type,bottom_type):
             my_cur.execute(f"SELECT item,colors FROM clothes_table sample row (1 rows) WHERE type = '{item}'")
             random_row = my_cur.fetchone()
             colors = random_row[1].strip("[").strip("]").replace('"','').replace(' ','').split(",")
-            st.write(colors)
             for color in colors:
                 strip_color=color.strip('"')
+                st.write("This is the color:" +strip_color)
                 if item == "Sweater" or item=="T-Shirt":
                     top_colors.append(strip_color)
                 elif item == "Trousers" or item=="Shorts":
