@@ -160,12 +160,12 @@ def check_colors(colors_top,colors_bottom):
         for bottom in colors_bottom:
             color_1=top.replace(' ','').lower().strip()
             color_2=bottom.replace(' ','').lower().strip()
+            st.write(color_1)
+            st.write(color_2)
             new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
             new_input = new_input.replace(color_dict)
-            st.write(new_input)
             url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pkl?raw=true'
             model_file = BytesIO(requests.get(url).content)
-            st.write(model_file)
             model = pickle.load(model_file)
             prediction = model.predict(new_input)
             
