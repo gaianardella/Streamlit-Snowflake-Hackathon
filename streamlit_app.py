@@ -151,7 +151,7 @@ def choose_temperature():
     return temperature
 
 
-def colors(colors_top,colors_bottom):
+def check_colors(colors_top,colors_bottom):
     # Convert the color names into numerical values
     color_dict = {'black': 0, 'white': 1, 'grey': 2, 'red': 3, 'blue': 4, 'green': 5, 'yellow': 6, 'purple': 7, 'pink': 8}
     
@@ -191,7 +191,7 @@ def generate_top_bottom(top_type,bottom_type):
                 elif item == "Trousers" or item=="Shorts":
                     bottom_colors.append(color)
                     
-            pair =colors(top_colors,bottom_colors)
+            pair=check_colors(top_colors,bottom_colors)
             st.write(pair)
                 
                 
