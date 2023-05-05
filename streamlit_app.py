@@ -59,7 +59,7 @@ def login():
                 "Give me some stats": "bar-chart-fill",
                 "Manage your closet": "gear"
             }
-            selected = st.selectbox("Main Menu", options=list(option_icons.keys()), index=0, key="sidebar")
+            selected = st.selectbox("Main Menu :gear:", options=list(option_icons.keys()), index=0, key="sidebar")
             return selected
 
 def home():
