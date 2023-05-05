@@ -470,11 +470,13 @@ def delete_clothes():
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
         column=[]
+        elements=[]
         for item in clothes_selected:
-            my_cur.execute(f"SELECT item FROM clothes_table WHERE type = '{item}'")
+            my_cur.execute(f"SELECT id, item FROM clothes_table WHERE type = '{item}'")
             rows=my_cur.fetchall()
             for row in rows:
-                file=row[0]
+                file_name=row[0]
+                file=row[1]
                 hex_str = file.strip('"')
                 byte_str = bytes.fromhex(hex_str)
                 image = Image.open(io.BytesIO(byte_str))
@@ -482,7 +484,11 @@ def delete_clothes():
                 # Check the shape of the image arrays and rotate them if necessary
                 if img.shape[0] < img.shape[1]:
                     img = np.rot90(img, k=3)
-                column.append(img)
+                
+                elements.append(file_name)
+                elements.append(img)
+                column.append(elements)
+                elements=[]
                 
     cnx.close()
     col1,col2,col3 = st.columns(3)
@@ -491,10 +497,10 @@ def delete_clothes():
         index=1
         for item in column:
             if index == 1:
-                st.image(item, width=300)
+                st.image(item[1], width=300)
                 box = st.checkbox(label="", value=False, key=item)
                 if box:
-                    checked.append(item)
+                    checked.append(item[0])
             if index ==3:
                 index=1
             else:
@@ -503,10 +509,10 @@ def delete_clothes():
         index=1
         for item in column:
             if index == 2:
-                st.image(item, width=300)
+                st.image(item[1], width=300)
                 box = st.checkbox(label="", value=False, key=item)
                 if box:
-                    checked.append(item)
+                    checked.append(item[0])
             if index ==3:
                 index=1
             else:
@@ -515,27 +521,28 @@ def delete_clothes():
         index=1
         for item in column:
             if index == 3:
-                st.image(item, width=300)
+                st.image(item[1], width=300)
                 box = st.checkbox(label="", value=False, key=item)
                 if box:
-                    checked.append(item)
+                    checked.append(item[0])
                 index=1
             else:
                 index+=1
         delete = st.button("Delete")
         cnx = snowflake.connector.connect(**st.secrets["snowflake"])
         if delete:
-            li=[]
             with cnx.cursor() as my_cur:
                 for item in checked:
+                    st.write(item)
+                    st.stop()
                     # Convert array to bytes
-                    byte_str = item.tobytes()
+#                     byte_str = item.tobytes()
 
-                    # Convert bytes to hex
-#                     hex_str = binascii.hexlify(byte_str).decode('utf-8')
-                    hex_str = bytes_str.hex()
-                    li.append(hex_str)
-                    st.write(li)
+#                     # Convert bytes to hex
+# #                     hex_str = binascii.hexlify(byte_str).decode('utf-8')
+#                     hex_str = bytes_str.hex()
+#                     li.append(hex_str)
+#                     st.write(li)
                     
                     
                     quoted_item = '"{}"'.format(hex_str)
