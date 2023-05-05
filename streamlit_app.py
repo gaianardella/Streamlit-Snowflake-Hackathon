@@ -368,11 +368,7 @@ def stats():
                 img = np.rot90(img, k=3)
             likes.append(img)
             like_colors = row[3].strip("[").strip("]").replace('"','').replace("\n","").replace(" ","").split(",")
-        for color in like_colors:
-            command=color.lower()
-            st.write(f":'{command}'['{color}']")
-            #:blue[colors] per scrivere la parola colors di colore blu
-            
+
         
         my_cur.execute("SELECT * FROM clothes_table ORDER BY LIKES ASC LIMIT 3")
         dislikes=[]
@@ -410,7 +406,11 @@ def stats():
             st.image(dislikes[2], width=300)
     st.divider()
     #controllo colori
-    st.write("**Your favourite colors :heart: :rainbow:**"+ str(like_colors))
+    st.write("**Your favourite colors :heart: :rainbow:**") #+ str(like_colors))
+    for color in like_colors:
+        command=color.lower()
+        st.write(f"**:'{command}'['{color}']**")
+        #:blue[colors] per scrivere la parola colors di colore blu
     st.divider()
     st.write("**Your least favourite colors :x: :rainbow:**")
     # Close the connection
