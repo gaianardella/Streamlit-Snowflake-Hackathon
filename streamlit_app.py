@@ -160,7 +160,7 @@ def check_colors(colors_top,colors_bottom):
         for bottom in colors_bottom:
             color_1=top.replace(' ','').lower().strip()
             color_2=bottom.replace(' ','').lower().strip()
-            new_input = pd.Da.taFrame({'color_1': [color_1], 'color_2': [color_2]})
+            new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
             new_input = new_input.replace(color_dict)
             url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pkl?raw=true'
 #             model = pickle.load(BytesIO(requests.get(url).content))
