@@ -50,17 +50,6 @@ def login():
                 st.error('Invalid username or password')
     if 'login' in st.session_state:
         st.empty()
-#       # Displays the sidebar menu
-#         with st.sidebar:
-#             option_icons = {
-#                 "Home": "house",
-#                 "Upload Clothes": "box-arrow-in-up",
-#                 "Pick me an outfit": "palette-fill",
-#                 "Give me some stats": "bar-chart-fill",
-#                 "Manage your closet": "gear"
-#             }
-#             selected = st.selectbox("Main Menu :gear:", options=list(option_icons.keys()), index=0, key="sidebar")
-#             return selected
         with st.sidebar:
             option_choices = [
                 "Home",
@@ -342,7 +331,7 @@ def stats():
     cnx.close()
 
 def delete_clothes():
-    st.title("Manage your wardrobe :hammer_and_wrench:")
+    st.title("Manage your closet :hammer_and_wrench:")
     st.header("Here you can delete the clothes you don't wear anymore")
     clothes_selected = st.multiselect("**Pick Clothes :womans_clothes: :shorts:**", list(my_item_list), ['Sweater'])
     if len(clothes_selected) > 0:
