@@ -477,18 +477,15 @@ if __name__ == '__main__':
     # Connect to Snowflake
     session = connect_to_snowflake()
     
-    url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/color_pairs.csv?raw=true'
-#     df = pd.read_csv(url)
-    df = pd.read_csv(url)
-    for index, row in df.iterrows():
-        col1 = row['color_1']
-        col2 = row['color_2']
-        col3 = row['target']
     # Convert the DataFrame to a Snowpark DataFrame
-#     session.create_dataframe(df, ["color_1", "color_2", "target"])
-        df2 = pd.DataFrame({"COLOR_1": [col1], "COLOR_2": [col2], "TARGET": [col3]})
-#                 session.write_pandas(df, "CLOTHES_TABLE")
-        session.write_pandas(df2, "COLOR_PAIRS")
+#     url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/color_pairs.csv?raw=true'
+#     df = pd.read_csv(url)
+#     for index, row in df.iterrows():
+#         col1 = row['color_1']
+#         col2 = row['color_2']
+#         col3 = row['target']
+#         df = pd.DataFrame({"COLOR_1": [col1], "COLOR_2": [col2], "TARGET": [col3]})
+#         session.write_pandas(df, "COLOR_PAIRS")
     
         # Query the data from Snowflake
 #         cnx = snowflake.connector.connect(**st.secrets["snowflake"])
