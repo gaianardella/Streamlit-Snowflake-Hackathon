@@ -422,20 +422,57 @@ def stats():
     color_df = color_df.sort_values('frequency', ascending=False)
 
     # Define the color palette
-    color_palette = alt.Scale(domain=color_df.index.tolist(),
+    scale = alt.Scale(domain=color_df.index.tolist(),
                               range=['red', 'green', 'blue', 'yellow'])
 
     # Create the chart using Altair
-    chart = alt.Chart(color_df.reset_index()).mark_bar().encode(
-        x='index',
-        y='frequency',
-        color=alt.Color('index', scale=color_palette),
-        tooltip=['index', 'frequency']
-    ).properties(width=500, height=300)
+#     chart = alt.Chart(color_df.reset_index()).mark_bar().encode(
+#         x='index',
+#         y='frequency',
+#         color=alt.Color('index', scale=color_palette),
+#         tooltip=['index', 'frequency']
+#     ).properties(width=500, height=300)
+    color = alt.Color("weather:N", scale=scale)
+
+    # We create two selections:
+    # - a brush that is active on the top panel
+    # - a multi-click that is active on the bottom panel
+    brush = alt.selection_interval(encodings=["x"])
+    click = alt.selection_multi(encodings=["color"])
+#         chart = (
+#             alt.Chart()
+#             .mark_bar()
+#             .encode(
+#                 x="count()",
+#                 y="weather:N",
+#                 color=alt.condition(click, color, alt.value("lightgray")),
+#             )
+#             .transform_filter(brush)
+#             .properties(
+#                 width=550,
+#             )
+#             .add_selection(click)
+#         )
     
+    # Bottom panel is a bar chart of weather type
+    chart = (
+        alt.Chart()
+        .mark_bar()
+        .encode(
+            x="count()",
+            y="weather:N",
+            color=alt.condition(click, color, alt.value("lightgray")),
+        )
+        .transform_filter(brush)
+        .properties(
+            width=550,
+        )
+        .add_selection(click)
+    )
+
     with st.expander("**Your favourite colors :heart: :rainbow:**", expanded=True):
         # Display the chart in Streamlit
-        st.altair_chart(chart, use_container_width=True)
+        st.altair_chart(chart, theme=None, use_container_width=True)
     
     
     
