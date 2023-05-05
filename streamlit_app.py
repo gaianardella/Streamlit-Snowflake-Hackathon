@@ -205,7 +205,7 @@ def generate_top_bottom(top_type,bottom_type):
     
             for top in top_colors:
                 for bottom in bottom_colors:
-                    color_1=top.lower()
+                    color_1=top.strip("'").lower()
                     color_2=bottom.lower()
                     st.write(f"color is:'{color_1}'")
 #                     st.write(color_dict[color_1.strip(' ')])
