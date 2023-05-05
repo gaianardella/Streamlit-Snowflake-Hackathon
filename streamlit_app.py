@@ -341,10 +341,10 @@ def stats():
 
     # Create the chart using Altair
     chart = alt.Chart(color_df.reset_index()).mark_bar().encode(
-        x='colors',
+        x='index',
         y='frequency',
         color=alt.Color('index', scale=color_palette),
-        tooltip=['index', 'frequency']
+        tooltip=['colors', 'frequency']
     ).properties(width=500, height=300)
 
 
