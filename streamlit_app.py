@@ -12,6 +12,9 @@ from sklearn.model_selection import train_test_split
 import pickle
 import requests
 from io import BytesIO
+import altair as alt
+
+
 st.set_page_config(page_title="A Cloud Closet", page_icon=":dress:", layout="wide")
 my_color_list = ["Blue", "Red", "White", "Black", "Green", "Yellow", "Purple", "Pink", "Grey"]
 my_item_list = ["Sweater", "Trousers", "T-Shirt", "Shorts"]
@@ -408,6 +411,7 @@ def stats():
     #controllo colori
     #CREARE GRAFICO COLORI TIPO BARPLOT ANZICHè TESTO
     st.write("**Your favourite colors :heart: :rainbow:**") #+ str(like_colors))
+    
     # Create a dictionary of color frequencies
     color_dict = {'red': 10, 'green': 5, 'blue': 3, 'yellow': 8}
 
@@ -418,9 +422,8 @@ def stats():
     color_df = color_df.sort_values('frequency', ascending=False)
 
     # Define the color palette
-#     color_palette = alt.Scale(domain=color_df.index.tolist(),
-#                               range=['red', 'green', 'blue', 'yellow'])
-    color_palette = alt.Scale(domain=["sun", "fog", "drizzle", "rain", "snow"], range=["#e7ba52", "#a7a7a7", "#aec7e8", "#1f77b4", "#9467bd"],)
+    color_palette = alt.Scale(domain=color_df.index.tolist(),
+                              range=['red', 'green', 'blue', 'yellow'])
 
     # Create the chart using Altair
     chart = alt.Chart(color_df.reset_index()).mark_bar().encode(
