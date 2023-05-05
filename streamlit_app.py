@@ -164,7 +164,7 @@ def check_colors(colors_top,colors_bottom):
             new_input = new_input.replace(color_dict)
             url = 'https://github.com/gaianardella/Streamlit-Snowflake-Hackathon/blob/main/my_model.pickle?raw=true'
 #             model = pickle.load(BytesIO(requests.get(url).content))
-            model = joblib.load(BytesIO(requests.get(url).content))
+#             model = joblib.load(BytesIO(requests.get(url).content))
             model = BytesIO(requests.get(url).content)
 #             prediction = model.predict(new_input)
 #             if prediction == 'yes':
