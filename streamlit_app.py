@@ -485,9 +485,10 @@ if __name__ == '__main__':
 
         # Convert the resultset to a pandas DataFrame
         df = pd.DataFrame(rows, columns=col_names)
+        st.write(df.collect())
 
         # Split the data into training and testing sets
-        X_train, X_test, y_train, y_test = train_test_split(df[['color_1', 'color_2']], df['target'], test_size=0.2, random_state=42)
+#         X_train, X_test, y_train, y_test = train_test_split(df[['color_1', 'color_2']], df['target'], test_size=0.2, random_state=42)
 
 
 #         # Convert the color names into numerical values
