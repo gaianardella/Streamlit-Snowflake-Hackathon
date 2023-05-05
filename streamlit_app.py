@@ -477,10 +477,11 @@ if __name__ == '__main__':
     
 
         # Query the data from Snowflake
-        cur = conn.cursor()
-        cur.execute('SELECT color_1, color_2, target FROM COLOR_PAIRS')
-        rows = cur.fetchall()
-        col_names = [desc[0] for desc in cur.description]
+        cnx = snowflake.connector.connect(**st.secrets["snowflake"])
+        with cnx.cursor() as cur:
+            cur.execute('SELECT color_1, color_2, target FROM COLOR_PAIRS')
+            rows = cur.fetchall()
+            col_names = [desc[0] for desc in cur.description]
 
         # Convert the resultset to a pandas DataFrame
         df = pd.DataFrame(rows, columns=col_names)
