@@ -207,7 +207,7 @@ def generate_top_bottom(top_type,bottom_type):
                 for bottom in bottom_colors:
                     color_1=top.lower()
                     color_2=bottom.lower()
-                    st.write(color_dict[color_1])
+                    st.write(color_dict[color_1.strip(' ')])
 #                     new_input = {'color_1': [color_1], 'color_2': [color_2]}
 #                     new_input = pd.DataFrame({'color_1': [color_1], 'color_2': [color_2]})
 #                     new_input = new_input.replace(color_dict)
