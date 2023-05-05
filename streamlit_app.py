@@ -209,7 +209,8 @@ def generate_top_bottom(top_type,bottom_type):
         #             model = pickle.load(BytesIO(requests.get(url).content))
                     model_file = BytesIO(requests.get(url).content)
                     model = pickle.load(model_file)
-#             prediction = model.predict(new_input)
+                    prediction = model.predict(new_input)
+                    st.write(prediction)
 
 
             hex_str = random_row[0].strip('"')
