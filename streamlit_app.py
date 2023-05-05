@@ -528,7 +528,7 @@ def delete_clothes():
             with cnx.cursor() as my_cur:
                 for item in checked:
                     # Convert array to bytes
-                    byte_str = -item.tobytes()
+                    byte_str = item.tobytes()
 
                     # Convert bytes to hex
                     hex_str = binascii.hexlify(byte_str).decode('utf-8')
