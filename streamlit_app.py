@@ -140,7 +140,6 @@ def upload_clothes():
 
 def choose_temperature():
     st.title("Generate an outfit :dress::necktie:")
-    st.subheader("This is the Pick me an outfit page.")
     with st.expander("**Select Temperature** :fire: :snowflake:", expanded=True):
         temperature = st.radio("What's the temperature?", ('Cold', 'Hot'))
         if temperature == 'Hot':
@@ -264,8 +263,8 @@ def generate_outfit(temperature):
 
     
 def stats():
-    st.title("Stats Page :bar_chart:")
-    st.header("This is the Stats page.")
+    st.title("Stats :bar_chart:")
+    st.header("Here you can check some statistics about your clothes")
     # Execute the query
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
