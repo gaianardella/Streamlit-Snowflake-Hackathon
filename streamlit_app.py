@@ -62,32 +62,32 @@ def login():
         return selected
 
 def home():
-    """Displays the Home page"""
+    # Displays the Home page
     st.title("Home page :house:")
     st.header("Welcome to your cloud closet! :cloud: :dress:")
-    st.write("Welcome to our clothing management app! With our app, you can easily upload your clothing photos and save them to our secure Snowflake database. Here's a step-by-step guide to using our app:")
+    st.write("Welcome to our clothing management Streamlit app! With our app, you can easily upload your clothing photos and save them to our secure Snowflake :snowflake: database. Here's a step-by-step guide to using our app:")
     
     st.divider()
     st.subheader(":one: Upload your photos :camera_with_flash:")
-    st.write("Start by choosing the type of clothing and its color that you want to upload. Simply click on the 'Upload' button and select the photo from your device. Your photo will be saved securely in our Snowflake database.")
+    st.write("Start by choosing the type of clothing and its color that you want to upload. Simply click on the 'Upload' button and select the photo from your device. Your photo will be saved in our Snowflake :snowflake: database.")
     with st.expander("**Watch the video :clapper:**", expanded=False):
         st.video("https://youtu.be/0tkyvmZ0xmE")
         
     st.divider()
     st.subheader(":two: Generate an outfit :tshirt: :jeans:")
-    st.write("Our app allows you to generate an outfit for both hot and cold temperatures. You can select the temperature and choose from a variety of clothing items to create the perfect outfit for any occasion.")
+    st.write("Our Streamlit app allows you to generate an outfit for both hot and cold temperatures. You can select the temperature and choose from a variety of clothing items to create the perfect outfit for any occasion.")
     with st.expander("**Watch the video :clapper:**", expanded=False):
         st.video("https://youtu.be/JUIXQTZhSNA")
         
     st.divider()
     st.subheader(":three: See the stats :bar_chart:")
-    st.write("Check which items you wear the most, your favourite colors and which you don't wear.")
-#     with st.expander("**Watch the video :clapper:**", expanded=False):
-#         st.video("https://youtu.be/jYB_Jion5OQ")
+    st.write("fter you've uploaded your clothing photos and generated some outfits, you can take a look at your clothing statistics! Our app keeps track of your favorite and least favorite clothing items, as well as your most and least worn colors. You can use this information to make more informed decisions about what to wear, and even identify gaps in your wardrobe.")
+    with st.expander("**Watch the video :clapper:**", expanded=False):
+        st.video("https://youtu.be/4jgpOD5KTkY")
     
     st.divider()
     st.subheader(":four: Manage your wardrobe :hammer_and_wrench:")
-    st.write("With our app, you can easily manage your wardrobe by checking which items you like the most and the least. You can also remove items that you no longer need or add new items to your collection.")
+    st.write("Managing your wardrobe has never been easier! With our app, you can easily delete any clothing items that you no longer need.")
     with st.expander("**Watch the video :clapper:**", expanded=False):
         st.video("https://youtu.be/jYB_Jion5OQ")
 #     st.write("Our clothing management app is designed to make it easy for you to manage your wardrobe and create stylish outfits for any occasion. Start using our app today to simplify your clothing management process!")
