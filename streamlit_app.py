@@ -264,7 +264,7 @@ def generate_outfit(temperature):
     
 def stats():
     st.title("Stats :bar_chart:")
-    st.header("Here you can check some statistics about your clothes")
+    st.header("Here you can check some statistics about your clothes :eyes:")
     # Execute the query
     cnx = snowflake.connector.connect(**st.secrets["snowflake"])
     with cnx.cursor() as my_cur:
@@ -355,7 +355,7 @@ def stats():
 
 def delete_clothes():
     st.title("Manage your closet :hammer_and_wrench:")
-    st.header("Here you can delete the clothes you don't wear anymore")
+    st.header("Here you can delete the clothes you don't wear anymore :wastebasket:")
     clothes_selected = st.multiselect("**Pick Clothes :womans_clothes: :shorts:**", list(my_item_list), ['Sweater'])
     if len(clothes_selected) > 0:
         if len(clothes_selected)>1:
