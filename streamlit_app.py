@@ -65,7 +65,7 @@ def home():
     # Displays the Home page
     st.title("Home page :house:")
     st.header("Welcome to your cloud closet! :cloud: :dress:")
-    st.write("Welcome to our clothing management Streamlit app! With our app, you can easily upload your clothing photos and save them to our secure Snowflake :snowflake: database. Here's a step-by-step guide to using our app:")
+    st.write("Welcome to our clothing management Streamlit app! With our app, you can easily upload your clothing photos and save them to our secure Snowflake :snowflake: database. Here's a step-by-step guide to using our app.")
     
     st.divider()
     st.subheader(":one: Upload your photos :camera_with_flash:")
@@ -81,7 +81,7 @@ def home():
         
     st.divider()
     st.subheader(":three: See the stats :bar_chart:")
-    st.write("fter you've uploaded your clothing photos and generated some outfits, you can take a look at your clothing statistics! Our app keeps track of your favorite and least favorite clothing items, as well as your most and least worn colors. You can use this information to make more informed decisions about what to wear, and even identify gaps in your wardrobe.")
+    st.write("After you've uploaded your clothing photos and generated some outfits, you can take a look at your clothing statistics! Our app keeps track of your favorite and least favorite clothing items, as well as your most and least worn colors. You can use this information to make more informed decisions about what to wear, and even identify gaps in your wardrobe.")
     with st.expander("**Watch the video :clapper:**", expanded=False):
         st.video("https://youtu.be/4jgpOD5KTkY")
     
@@ -93,9 +93,8 @@ def home():
 #     st.write("Our clothing management app is designed to make it easy for you to manage your wardrobe and create stylish outfits for any occasion. Start using our app today to simplify your clothing management process!")
 
 def upload_clothes():
-    #"""Displays the Upload Clothes page"""
+    # Displays the Upload Clothes page
     st.title("Upload your clothes :camera_with_flash:")
-    st.subheader("This is the Upload Clothes page.")
         
     item_selected = st.multiselect("**1) Pick Item :womans_clothes: :shorts:**", list(my_item_list), ['Sweater'])
     if len(item_selected) == 1:
